@@ -1,0 +1,25 @@
+@tailwind base;
+
+/* Write your own custom base styles here */
+
+/* Start purging... */
+@tailwind components;
+
+/* Stop purging. */
+
+/* Write you own custom component styles here */
+.main > * {
+  grid-column: 2;
+}
+
+.full-bleed {
+  grid-column: 1 / 4;
+  width: 100%;
+}
+
+/* Start purging... */
+@tailwind utilities;
+
+/* Stop purging. */
+
+/* Your own custom utilities */

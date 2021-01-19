@@ -1,0 +1,11 @@
+.icon {
+  @apply inline-block text-current align-baseline not-italic text-center normal-case;
+  line-height: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon > svg {
+  @apply inline-block leading-none;
+}
