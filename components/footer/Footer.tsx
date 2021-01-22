@@ -128,7 +128,7 @@ export function Footer({ copyrightDate }: Props) {
           </ExternalLink>
 
           <ExternalLink
-            href="/"
+            href="https://github.com/dev-cprice/boring-cars-detailing/issues/new"
             aria-label="Report a Bug"
             data-microtip-position="top"
             data-microtip-size="fit"
