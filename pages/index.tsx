@@ -11,7 +11,7 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Home() {
   return (
     <main className="bg-gray-950 text-gray-50 via-gray-950 bg-gradient-to-b from-gray-950 to-branded">
-      <figure className="h-screen w-full px-4">
+      <figure className="h-screen w-full">
         <Image
           alt="Photo by Jason Leung on Unsplash"
           className="z-0"
@@ -22,7 +22,7 @@ export default function Home() {
           src="/assets/imgs/hero_5760x3840.jpg"
         />
         <div className="absolute bg-gray-950 opacity-70 z-0 top-0 right-0 left-0 bottom-0" />
-        <div className="h-full flex flex-col justify-center items-center">
+        <div className="h-full w-full flex flex-col justify-center items-center">
           <GlitchHero />
         </div>
       </figure>
