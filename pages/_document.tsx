@@ -18,6 +18,8 @@ class MyDocument extends Document {
       <Html className="h-full">
         <Head>
           <link rel="stylesheet" href="assets/fonts/inter.css" />
+          <link rel="stylesheet" href="assets/fonts/flash-back.css" />
+          <link rel="stylesheet" href="assets/fonts/outrun-future.css" />
         </Head>
         <body className="bg-background h-full text-gray-50">
           <Main />

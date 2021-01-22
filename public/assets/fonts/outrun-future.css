@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Outrun Future";
+  src: url("/assets/fonts/OutrunFuture.woff2") format("woff2"),
+    url("/assets/fonts/OutrunFuture.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
