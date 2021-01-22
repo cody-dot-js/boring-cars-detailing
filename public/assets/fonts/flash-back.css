@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Flash Back";
+  src: url("/assets/fonts/flash_back-webfont.woff2") format("woff2"),
+    url("/assets/fonts/flash_back-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
