@@ -1,6 +1,6 @@
 import { BoringCarsDetailing } from "components/BoringCarsDetailing";
 import Image from "next/image";
-import classnames from "classnames";
+import cx from "classnames";
 
 interface Props {
   className?: string;
@@ -9,7 +9,7 @@ interface Props {
 export function GlitchHero({ className }: Props) {
   return (
     <figure
-      className={classnames(
+      className={cx(
         "select-none relative w-full h-full flex flex-col justify-center items-center",
         className
       )}

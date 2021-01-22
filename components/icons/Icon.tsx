@@ -1,23 +1,10 @@
-import styles from "./Icon.module.css";
-
-export interface IconProps {
+export interface Props {
   className?: string;
 }
 
-interface Props {
-  label: string;
-  children: React.ReactNode;
-}
-
-export const commonProps = {
+export const baseProps = {
   focusable: false,
-  width: "1em",
-  height: "1em",
   "aria-hidden": true,
+  className: "h-6 w-6",
+  xmlns: "http://www.w3.org/2000/svg",
 };
-
-export const Icon = ({ label, children }: Props) => (
-  <span role="img" aria-label={label} className={styles.icon}>
-    {children}
-  </span>
-);

@@ -1,4 +1,4 @@
-import classnames from "classnames";
+import cx from "classnames";
 import { Glitch } from "components/glitch/Glitch";
 
 interface Props {
@@ -7,11 +7,9 @@ interface Props {
 
 export function BoringCarsDetailing({ className }: Props) {
   return (
-    <div
-      className={classnames("flex flex-col items-end leading-none", className)}
-    >
+    <div className={cx("flex flex-col items-end leading-none", className)}>
       <Glitch
-        className={classnames(
+        className={cx(
           "relative z-10",
           "font-outrun-future",
           "text-gray-300 text-1em"
@@ -20,7 +18,7 @@ export function BoringCarsDetailing({ className }: Props) {
         Boring
       </Glitch>
       <Glitch
-        className={classnames(
+        className={cx(
           "relative z-20",
           "font-flash-back",
           "transform-gpu -translate-y-1/3 -rotate-12",

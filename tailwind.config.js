@@ -4,7 +4,11 @@ const { laserwave, gray } = require("./theme/colors");
 
 module.exports = {
   purge: ["./pages/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
-  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/aspect-ratio"),
+  ],
   theme: {
     extend: {
       colors: {
@@ -36,6 +40,7 @@ module.exports = {
     extend: {
       opacity: ["disabled"],
       visibility: ["hover", "focus"],
+      borderRadius: ["hover", "focus"],
     },
   },
 };
