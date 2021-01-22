@@ -1,3 +1,5 @@
+@import "microtip";
+
 @tailwind base;
 
 /* Write your own custom base styles here */
@@ -47,8 +49,4 @@
 
 .font-flash-back {
   font-family: "Flash Back", cursive;
-}
-
-.font-caveat {
-  font-family: "Caveat", cursive;
 }

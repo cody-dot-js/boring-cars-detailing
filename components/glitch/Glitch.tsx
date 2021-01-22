@@ -1,4 +1,4 @@
-import classnames from "classnames";
+import cx from "classnames";
 import styles from "./styles.module.css";
 interface Props {
   children: string;
@@ -7,7 +7,7 @@ interface Props {
 
 export function Glitch({ children, className }: Props) {
   return (
-    <div className={classnames(styles.glitch, className)} data-text={children}>
+    <div className={cx(styles.glitch, className)} data-text={children}>
       {children}
     </div>
   );
