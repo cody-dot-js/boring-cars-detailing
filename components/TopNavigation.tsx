@@ -190,7 +190,7 @@ export function TopNavigation() {
               <button
                 type="button"
                 onClick={() => setIsOpen((s) => !s)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-300"
                 aria-expanded={isOpen}
               >
                 <span className="sr-only">Open main menu</span>
