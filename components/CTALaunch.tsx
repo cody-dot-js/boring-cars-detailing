@@ -7,7 +7,6 @@ import {
 } from "external-apis/convertKit";
 import { ExclamationCircleIcon } from "./icons/ExclamationCircleIcon";
 import cx from "classnames";
-import { WretcherResponse } from "wretch";
 
 export function CTALaunch() {
   const [didSubscribe, setDidSubscribe] = React.useState<boolean>(false);
@@ -76,8 +75,13 @@ export function CTALaunch() {
           </div>
           {!didSubscribe && (
             <SubscribeForm
-              onSubscribeSuccess={() => setDidSubscribe(true)}
-              onSubscribeError={() => {}}
+              onSubscribeSuccess={() => {
+                setDidSubscribe(true);
+              }}
+              onSubscribeError={() => {
+                setDidSubscribe(false);
+                // TODO(cody): error handling/notifications
+              }}
             />
           )}
           {didSubscribe && (
@@ -88,7 +92,9 @@ export function CTALaunch() {
                 </h2>
                 <p className="mt-6 mx-auto max-w-2xl text-lg text-white">
                   Please check your email for a subscription confirmation from{" "}
-                  <code className="text-gray-100 font-bold">support@boringcarsdetailing.com</code>
+                  <code className="text-gray-100 font-bold">
+                    support@boringcarsdetailing.com
+                  </code>
                 </p>
                 <p className="text-9xl mt-6">🥳</p>
               </div>
@@ -102,7 +108,7 @@ export function CTALaunch() {
 
 interface SubscribeFormProps {
   onSubscribeSuccess?: () => void;
-  onSubscribeError?: (res: WretcherResponse) => void;
+  onSubscribeError?: (error: Error) => void;
 }
 
 function SubscribeForm({
@@ -128,15 +134,9 @@ function SubscribeForm({
           email: "",
           name: "",
         }}
-        onSubmit={async (values) => {
-          const res = await subscribe(values);
-
-          if (res.ok) {
-            onSubscribeSuccess?.();
-          } else {
-            onSubscribeError?.(res);
-          }
-        }}
+        onSubmit={(values) =>
+          subscribe(values).then(onSubscribeSuccess).catch(onSubscribeError)
+        }
         validationSchema={validationSchema}
       >
         {({ isSubmitting, errors }) => (
