@@ -2,6 +2,7 @@ import { ExternalLink } from "components/ExternalLink";
 import { FacebookIcon } from "components/icons/FacebookIcon";
 import { InstagramIcon } from "components/icons/InstagramIcon";
 import { Layout, LayoutMeta } from "components/Layout";
+import { urls } from "config";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import { copyrightDate } from "utils/copyrightDate";
@@ -72,7 +73,7 @@ export default function About({ meta }: Props) {
                       <ul className="flex space-x-5">
                         <li>
                           <ExternalLink
-                            href="https://www.facebook.com/cem.barandir.3"
+                            href={urls.cem.facebook}
                             className="text-gray-400 hover:text-gray-300"
                           >
                             <span className="sr-only">Facebook</span>
@@ -81,7 +82,7 @@ export default function About({ meta }: Props) {
                         </li>
                         <li>
                           <ExternalLink
-                            href="https://www.instagram.com/cemb35/"
+                            href={urls.cem.instagram}
                             className="text-gray-400 hover:text-gray-300"
                           >
                             <span className="sr-only">Instagram</span>

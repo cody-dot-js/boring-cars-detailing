@@ -8,6 +8,7 @@ import { BugIcon } from "../icons/BugIcon";
 import { FacebookIcon } from "../icons/FacebookIcon";
 import { InstagramIcon } from "../icons/InstagramIcon";
 import styles from "./styles.module.css";
+import { urls } from "config";
 
 interface Props {
   children?: React.ReactNode;
@@ -80,7 +81,7 @@ export function Footer({ copyrightDate }: Props) {
         </nav>
         <div className="mt-8 flex justify-center space-x-6">
           <ExternalLink
-            href="https://www.facebook.com/boringcarsdetailing/"
+            href={urls.facebook}
             aria-label="Facebook"
             data-microtip-position="top"
             data-microtip-size="fit"
@@ -92,7 +93,7 @@ export function Footer({ copyrightDate }: Props) {
           </ExternalLink>
 
           <ExternalLink
-            href="https://www.instagram.com/boringcarsdetailing/"
+            href={urls.instagram}
             aria-label="Instagram"
             data-microtip-position="top"
             data-microtip-size="fit"
@@ -104,7 +105,7 @@ export function Footer({ copyrightDate }: Props) {
           </ExternalLink>
 
           <ExternalLink
-            href="https://twitter.com/boringcarsdeta1"
+            href={urls.twitter}
             aria-label="Twitter"
             data-microtip-position="top"
             data-microtip-size="fit"
@@ -116,7 +117,7 @@ export function Footer({ copyrightDate }: Props) {
           </ExternalLink>
 
           <ExternalLink
-            href="https://github.com/dev-cprice/boring-cars-detailing"
+            href={urls.github}
             aria-label="View Source Code"
             data-microtip-position="top"
             data-microtip-size="fit"
@@ -128,7 +129,7 @@ export function Footer({ copyrightDate }: Props) {
           </ExternalLink>
 
           <ExternalLink
-            href="https://github.com/dev-cprice/boring-cars-detailing/issues/new"
+            href={urls.bugReport}
             aria-label="Report a Bug"
             data-microtip-position="top"
             data-microtip-size="fit"
