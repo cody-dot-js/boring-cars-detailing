@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Testimonials } from "components/Testimonials";
 import { pageMeta, PageMeta } from "utils/pageMeta";
 import { getPageLayout } from "components/Layout";
+import { Pricing } from "components/Pricing";
 import type { BasePageProps } from "types/BasePageProps";
 
 interface Props extends BasePageProps {
@@ -25,6 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
 Home.pageLayout = getPageLayout;
 
 export default function Home() {
+  const pricingRef = React.useRef<HTMLHeadingElement>(null);
   const launchRef = React.useRef<HTMLHeadingElement>(null);
 
   return (
@@ -40,15 +42,24 @@ export default function Home() {
         />
         <div className="absolute z-0 top-0 right-0 left-0 bottom-0 bg-gray-950 opacity-70" />
         <GlitchHero>
-          <div className="relative z-30 max-w-md mx-auto sm:flex sm:justify-center -mt-28">
+          <div className="relative z-10 space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
+            <button
+              type="button"
+              onClick={() =>
+                pricingRef.current?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-pink-500 hover:bg-pink-700 sm:px-8"
+            >
+              Get started
+            </button>
             <button
               type="button"
               onClick={() =>
                 launchRef.current?.scrollIntoView({ behavior: "smooth" })
               }
-              className="rounded-md shadow-primary-md w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium text-white bg-pink-600 hover:bg-pink-700 md:py-4 md:text-lg md:px-10"
+              className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-pink-200 bg-gray-600 bg-opacity-60 hover:bg-opacity-70 sm:px-8"
             >
-              Get Started
+              Subscribe
             </button>
           </div>
         </GlitchHero>
@@ -62,6 +73,7 @@ export default function Home() {
       </h2>
       <CTALaunch />
       <Testimonials />
+      <Pricing ref={pricingRef} />
     </>
   );
 }
