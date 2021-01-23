@@ -25,16 +25,16 @@ export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
             typical car wash.
           </p>
         </div>
-        <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-          <div className="pt-16 xl:grid xl:grid-cols-3 xl:gap-x-8">
+        <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+          <div className="pt-8 xl:grid xl:grid-cols-3 xl:gap-x-8">
             <div>
               <h2 className="text-base font-semibold text-pink-300 tracking-wide uppercase">
                 Everything you need
               </h2>
-              <p className="mt-2 text-3xl font-extrabold text-gray-300">
+              <p className="mt-2 text-3xl font-extrabold text-gray-100">
                 All-in-one platform
               </p>
-              <p className="mt-4 text-lg text-gray-200">
+              <p className="mt-4 text-lg text-gray-300">
                 Ac euismod vel sit maecenas id pellentesque eu sed consectetur.
                 Malesuada adipiscing sagittis vel nulla nec. Urna, sed a lectus
                 elementum blandit et.
@@ -42,7 +42,7 @@ export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
             </div>
             <div className="mt-4 sm:mt-8 md:mt-10 md:grid md:grid-cols-2 md:gap-x-8 xl:mt-0 xl:col-span-2">
               <ul className="divide-y divide-gray-700">
-                <ListItem>
+                <ListItem className="md:py-0 md:pb-4">
                   Vitae in pulvinar odio id utobortis in inter.
                 </ListItem>
 
@@ -300,8 +300,7 @@ function ListItem({
 }) {
   return (
     <li className={cx("py-4 flex", className)}>
-      <CheckIcon className="flex-shrink-0 text-cyan-500" />
-
+      <CheckIcon className="flex-shrink-0 text-cyan-300" />
       <span className="ml-3 text-base text-gray-100">{children}</span>
     </li>
   );
