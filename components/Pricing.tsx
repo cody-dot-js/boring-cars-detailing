@@ -259,8 +259,8 @@ export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
                   </h3>
                 </div>
                 <div className="mt-4 text-lg text-gray-50">
-                  Get full access to all of standard license features for solo
-                  projects that make less than $20k gross revenue for{" "}
+                  Amet aliqua pariatur anim irure esse excepteur commodo ullamco
+                  adipisicing elit adipisicing cupidatat velit{" "}
                   <span className="font-bold text-gray-300">$29</span>.
                 </div>
               </div>
