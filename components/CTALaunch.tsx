@@ -148,6 +148,7 @@ function SubscribeForm({
                 </label>
                 <div className="mt-1 relative rounded-md shadow-sm">
                   <Field
+                    id="cta_name"
                     name="name"
                     type="text"
                     autoComplete="name"
@@ -178,6 +179,7 @@ function SubscribeForm({
                 </label>
                 <div className="mt-1 relative rounded-md shadow-sm">
                   <Field
+                    id="cta_email"
                     name="email"
                     type="email"
                     autoComplete="email"

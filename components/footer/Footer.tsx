@@ -38,7 +38,7 @@ function ComingSoonLink({
       role="tooltip"
       onClick={(e) => e.preventDefault()}
     >
-      <span className="opacity-40">{children}</span>
+      <span className="opacity-80">{children}</span>
     </a>
   );
 }
@@ -148,7 +148,7 @@ export function Footer({ copyrightDate }: Props) {
           . All rights reserved.
         </p>
 
-        <p className="mt-8 text-center text-base text-gray-600">
+        <p className="mt-8 text-center text-base text-gray-400 opacity-80">
           Made with{" "}
           <svg
             className="inline-block h-4 w-4 -mt-1"
