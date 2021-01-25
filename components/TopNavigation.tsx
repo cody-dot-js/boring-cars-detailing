@@ -3,7 +3,6 @@ import Link from "next/link";
 import cx from "classnames";
 import { Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
-import Image from "next/image";
 
 interface NavLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
@@ -115,17 +114,13 @@ export function TopNavigation() {
               <div className="flex-shrink-0">
                 <Link href="/">
                   <div className="cursor-pointer">
-                    <Image
-                      className="lg:mr-4"
+                    <img
+                      className="inline-block h-16 w-auto lg:mr-4"
                       src="/assets/imgs/nav-icon.png"
                       alt="Boring Cars Detailing"
-                      layout="fixed"
-                      height="64"
-                      width="64"
-                      priority
-                      quality="100"
+                      width="64px"
+                      height="64px"
                     />
-
                     <h1 className="hidden lg:inline-block text-white primary-text-glow text-xl cursor-pointer flex-initial sm:inline-block mr-4 font-bold leading-tight">
                       Boring Cars Detailing
                     </h1>
@@ -283,15 +278,12 @@ export function TopNavigation() {
                   <div>
                     <Link href="/">
                       <div className="cursor-pointer">
-                        <Image
-                          className="lg:mr-4"
+                        <img
+                          className="inline-block h-16 w-auto lg:mr-4"
                           src="/assets/imgs/nav-icon.png"
                           alt="Boring Cars Detailing"
-                          layout="fixed"
-                          height="64"
-                          width="64"
-                          priority
-                          quality="100"
+                          width="64px"
+                          height="64px"
                         />
                         <h1 className="hidden lg:inline-block text-white primary-text-glow text-xl cursor-pointer flex-initial sm:inline-block mr-4 font-bold leading-tight">
                           Boring Cars Detailing
