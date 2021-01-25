@@ -15,7 +15,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html className="h-full">
+      <Html lang="en-US" dir="ltr" className="h-full">
         <Head>
           <link rel="stylesheet" href="assets/fonts/inter.css" />
           <link rel="stylesheet" href="assets/fonts/flash-back.css" />
