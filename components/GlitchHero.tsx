@@ -9,10 +9,11 @@ interface Props {
 
 export function GlitchHero({ className, children }: Props) {
   return (
-    <>
+    <div className="h-full w-full">
       <figure
         className={cx(
-          "select-none relative w-full h-full flex flex-col justify-center items-center",
+          "absolute z-10 top-0 left-0 right-0 bottom-0",
+          "max-w-lg lg:max-w-5xl mx-auto",
           className
         )}
       >
@@ -24,11 +25,11 @@ export function GlitchHero({ className, children }: Props) {
           priority
           quality="100"
         />
-        <div className="flex flex-col justify-center items-center">
-          <BoringCarsDetailing className="text-12vw" />
-        </div>
       </figure>
-      {children}
-    </>
+      <div className="relative h-full w-full flex flex-col items-center justify-center">
+        <BoringCarsDetailing className="text-12vw mt-16 pb-32" />
+        {children}
+      </div>
+    </div>
   );
 }
