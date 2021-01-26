@@ -1,9 +1,7 @@
 import * as React from "react";
 import { CheckIcon } from "./icons/CheckIcon";
-import { VolkswagenBeetleIcon } from "components/icons/VolkswagenBeetleIcon";
-import { TruckIcon } from "../components/icons/TruckIcon";
-import { SuvIcon } from "components/icons/SuvIcon";
 import { Badge } from "./Badge";
+import Image from "next/image";
 import cx from "classnames";
 
 export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
@@ -86,7 +84,7 @@ export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="relative lg:grid lg:grid-cols-7">
               <div className="mx-auto max-w-md lg:mx-0 lg:max-w-none lg:col-start-1 lg:col-end-3 lg:row-start-2 lg:row-end-3">
-                <div className="h-full flex flex-col rounded-lg shadow-lg overflow-hidden lg:rounded-none lg:rounded-l-lg">
+                <div className="h-full flex flex-col overflow-hidden rounded-lg shadow-lg lg:rounded-none lg:rounded-l-lg">
                   <div className="flex-1 flex flex-col">
                     <div className="bg-gray-800 px-6 py-10">
                       <div>
@@ -106,11 +104,18 @@ export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
                         </div>
                       </div>
                     </div>
-                    <div className="flex-1 flex flex-col justify-between border-t-2 border-gray-950 p-6 bg-gradient-to-bl from-gray-900 to-purple-900 sm:p-10 lg:p-6 xl:p-10">
-                      <h4 className="text-xl text-gray-300 w-full text-center font-bold">
+                    <div className="relative flex-1 flex flex-col justify-between border-t-2 border-gray-900 p-6 sm:p-10 lg:p-6 xl:p-10">
+                      <Image
+                        className="rounded-b-lg lg:rounded-none lg:rounded-bl-lg"
+                        src="/assets/imgs/pricing/regular.jpg"
+                        alt="Photo by Kerem Karaarslan on Unsplash"
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                      <div className="absolute top-0 bottom-0 right-0 left-0 bg-gradient-to-bl from-gray-900 to-purple-900 opacity-80 rounded-b-lg lg:rounded-none lg:rounded-bl-lg" />
+                      <h4 className="relative my-36 text-xl text-gray-300 w-full text-center font-bold">
                         Compact Vehicles
                       </h4>
-                      <VolkswagenBeetleIcon className="block w-full h-56 text-purple-300" />
                       <div className="mt-8">
                         <div className="rounded-lg shadow-md">
                           {/* <a
@@ -136,12 +141,12 @@ export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
                 </div>
               </div>
               <div className="mt-10 max-w-lg mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-start-3 lg:col-end-6 lg:row-start-1 lg:row-end-4">
-                <div className="relative z-10 rounded-lg shadow-xl">
+                <div className="relative z-20 rounded-lg shadow-xl">
                   <div
-                    className="pointer-events-none absolute inset-0 rounded-lg border-2 border-pink-600"
+                    className="pointer-events-none absolute z-10 inset-0 rounded-lg border-2 border-pink-600"
                     aria-hidden="true"
                   />
-                  <div className="absolute inset-x-0 top-0 transform translate-y-px">
+                  <div className="absolute z-20 inset-x-0 top-0 transform translate-y-px">
                     <div className="flex justify-center transform -translate-y-1/2">
                       <span className="inline-flex rounded-full bg-pink-600 px-4 py-1 text-sm font-semibold tracking-wider uppercase text-white">
                         Most popular
@@ -166,11 +171,18 @@ export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
                       </div>
                     </div>
                   </div>
-                  <div className="border-t-2 border-gray-950 rounded-b-lg pt-10 pb-8 px-6 bg-gradient-to-b from-gray-900 to-cyan-900 sm:px-10 sm:py-10">
-                    <h4 className="text-xl text-gray-300 w-full text-center font-bold">
+                  <div className="relative z-0 bg-bottom border-t-2 border-gray-900 rounded-b-lg pt-10 pb-8 px-6 sm:px-10 sm:py-10">
+                    <Image
+                      className="rounded-b-lg"
+                      src="/assets/imgs/pricing/plus.jpg"
+                      alt="Photo by Nev Chonkar on Unsplash"
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                    <div className="absolute z-0 top-0 bottom-0 right-0 left-0 bg-gradient-to-b from-gray-900 to-cyan-900 opacity-80 rounded-b-lg" />
+                    <h4 className="relative my-48 text-xl text-gray-300 w-full text-center font-bold">
                       SUV and Crossovers
                     </h4>
-                    <SuvIcon className="block w-full h-60 text-cyan-200" />
                     <div className="mt-10">
                       <div className="rounded-lg shadow-md">
                         {/* <a
@@ -195,7 +207,7 @@ export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
                 </div>
               </div>
               <div className="mt-10 mx-auto max-w-md lg:m-0 lg:max-w-none lg:col-start-6 lg:col-end-8 lg:row-start-2 lg:row-end-3">
-                <div className="h-full flex flex-col rounded-lg shadow-lg overflow-hidden lg:rounded-none lg:rounded-r-lg">
+                <div className="h-full flex flex-col overflow-hidden shadow-lg rounded-lg lg:rounded-none lg:rounded-r-lg">
                   <div className="flex-1 flex flex-col">
                     <div className="bg-gray-800 px-6 py-10">
                       <div>
@@ -215,11 +227,18 @@ export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
                         </div>
                       </div>
                     </div>
-                    <div className="relative flex-1 flex flex-col justify-between border-t-2 border-gray-950 p-6 bg-gradient-to-br from-gray-900 to-fuchsia-900 sm:p-10 lg:p-6 xl:p-10">
-                      <h4 className="text-xl text-gray-300 w-full text-center font-bold">
+                    <div className="relative flex-1 flex flex-col justify-between border-t-2 border-gray-900 p-6 sm:p-10 lg:p-6 xl:p-10">
+                      <Image
+                        className="rounded-b-lg lg:rounded-none lg:rounded-br-lg"
+                        src="/assets/imgs/pricing/premium.jpg"
+                        alt="Photo by Pavel Anoshin on Unsplash"
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                      <div className="absolute top-0 bottom-0 right-0 left-0 bg-gradient-to-br from-gray-900 to-fuchsia-900 opacity-80 rounded-b-lg lg:rounded-none lg:rounded-br-lg" />
+                      <h4 className="relative my-36 text-xl text-gray-300 w-full text-center font-bold">
                         Oversized Vehicles
                       </h4>
-                      <TruckIcon className="block w-full h-56 text-fuchsia-200" />
                       <div className="mt-8">
                         <div className="rounded-lg shadow-md">
                           {/* <a
@@ -247,8 +266,8 @@ export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
             {/* */}
           </div>
         </div>
-        <div className="mt-4 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:mt-5">
-          <div className="max-w-md mx-auto lg:max-w-5xl">
+        <div className="mt-10 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:mt-16">
+          <div className="w-full mx-auto lg:max-w-5xl">
             <div className="rounded-lg bg-gray-800 px-6 py-8 sm:p-10 lg:flex lg:items-center">
               <div className="flex-1">
                 <div>
