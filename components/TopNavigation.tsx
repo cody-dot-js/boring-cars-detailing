@@ -116,7 +116,7 @@ export function TopNavigation() {
                   <div className="cursor-pointer">
                     <img
                       className="inline-block h-16 w-auto lg:mr-4"
-                      src="/assets/imgs/nav-icon.png"
+                      src="/assets/imgs/nav-icon-128x128.png"
                       alt="Boring Cars Detailing"
                       width="64px"
                       height="64px"
@@ -280,7 +280,7 @@ export function TopNavigation() {
                       <div className="cursor-pointer">
                         <img
                           className="inline-block h-16 w-auto lg:mr-4"
-                          src="/assets/imgs/nav-icon.png"
+                          src="/assets/imgs/nav-icon-128x128.png"
                           alt="Boring Cars Detailing"
                           width="64px"
                           height="64px"
