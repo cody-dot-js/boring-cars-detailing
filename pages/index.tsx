@@ -29,45 +29,6 @@ export default function Home() {
   const pricingRef = React.useRef<HTMLHeadingElement>(null);
   const launchRef = React.useRef<HTMLHeadingElement>(null);
 
-  if (meta.copyrightDate === "") {
-    return (
-      <div className="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">
-        <div className="text-center">
-          <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
-            <div className="rounded-md shadow">
-              <button
-                type="button"
-                onClick={() =>
-                  pricingRef.current?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 md:py-4 md:text-lg md:px-10"
-              >
-                Get started
-              </button>
-              {/* <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 md:py-4 md:text-lg md:px-10">
-                Get started
-              </a> */}
-            </div>
-            <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-              <button
-                type="button"
-                onClick={() =>
-                  launchRef.current?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="w-full flex items-center justify-center border border-transparent text-base font-medium rounded-md shadow-sm text-pink-200 bg-gray-600 bg-opacity-60 hover:bg-opacity-70 px-8 py-3 md:py-4 md:text-lg md:px-10"
-              >
-                Subscribe
-              </button>
-              {/* <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
-                Live demo
-              </a> */}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <>
       <section className="relative z-0 h-screen w-full">
@@ -82,37 +43,31 @@ export default function Home() {
         <div className="absolute z-0 top-0 right-0 left-0 bottom-0 bg-gray-950 opacity-70" />
         <GlitchHero>
           <div className="relative z-30 w-full mx-auto max-w-7xl px-4">
-              <div className="text-center max-w-sm mx-auto sm:flex sm:justify-center">
-                <div className="rounded-md shadow">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      pricingRef.current?.scrollIntoView({ behavior: "smooth" })
-                    }
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 md:py-4 md:text-lg md:px-10"
-                  >
-                    Get started
-                  </button>
-                  {/* <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 md:py-4 md:text-lg md:px-10">
-                Get started
-              </a> */}
-                </div>
-                <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      launchRef.current?.scrollIntoView({ behavior: "smooth" })
-                    }
-                    className="w-full flex items-center justify-center border border-transparent text-base font-medium rounded-md shadow-sm text-pink-200 bg-gray-600 bg-opacity-60 hover:bg-opacity-70 px-8 py-3 md:py-4 md:text-lg md:px-10"
-                  >
-                    Subscribe
-                  </button>
-                  {/* <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
-                Live demo
-              </a> */}
-                </div>
+            <div className="text-center max-w-sm mx-auto sm:flex sm:justify-center">
+              <div className="rounded-md shadow">
+                <button
+                  type="button"
+                  onClick={() =>
+                    pricingRef.current?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 md:py-4 md:text-lg md:px-10"
+                >
+                  Get started
+                </button>
+              </div>
+              <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+                <button
+                  type="button"
+                  onClick={() =>
+                    launchRef.current?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="w-full flex items-center justify-center border border-transparent text-base font-medium rounded-md shadow-sm text-pink-200 bg-gray-600 bg-opacity-60 hover:bg-opacity-70 px-8 py-3 md:py-4 md:text-lg md:px-10"
+                >
+                  Subscribe
+                </button>
               </div>
             </div>
+          </div>
         </GlitchHero>
       </section>
       <h2
