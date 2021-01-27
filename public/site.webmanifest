@@ -1,0 +1,42 @@
+{
+  "background_color": "#121212",
+  "categories": [
+    "business",
+    "personalization",
+    "shoppings",
+    "travel",
+    "utilities"
+  ],
+  "description": "Website for Boring Cars Detailing",
+  "dir": "ltr",
+  "display": "minimal-ui",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "en-US",
+  "name": "boringcarsdetailing.com",
+  "short_name": "boringcarsdetailing",
+  "shortcuts": [
+    {
+      "name": "Pricing",
+      "url": "/pricing",
+      "description": "List of detailing services and their prices."
+    },
+    {
+      "name": "About",
+      "url": "/about",
+      "description": "About Boring Cars Detailing"
+    }
+  ],
+  "start_url": "https://boringcarsdetailing.com",
+  "theme_color": "#ec4899"
+}
