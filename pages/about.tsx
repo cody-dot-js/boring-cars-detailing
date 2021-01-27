@@ -4,7 +4,6 @@ import { InstagramIcon } from "components/icons/InstagramIcon";
 import { Layout, LayoutMeta } from "components/Layout";
 import { urls } from "config";
 import { GetStaticProps } from "next";
-import Head from "next/head";
 import { copyrightDate } from "utils/copyrightDate";
 
 interface Props {
@@ -25,10 +24,11 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function About({ meta }: Props) {
   return (
-    <Layout meta={meta}>
-      <Head>
-        <title>About | Boring Cars Detailing</title>
-      </Head>
+    <Layout
+      meta={meta}
+      title="About"
+      description="About Boring Cars Detailing."
+    >
       <section className="mx-auto py-16 sm:py-24 px-4 max-w-7xl sm:px-6 lg:px-8">
         <div className="space-y-12 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
           <div className="space-y-5 sm:space-y-4">

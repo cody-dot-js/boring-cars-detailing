@@ -1,23 +1,24 @@
 import Head from "next/head";
 
-export function SEO() {
+export interface SEOProps {
+  title?: string;
+  description?: string;
+  robots?: string;
+}
+
+const defaultTitle = "Boring Cars Detailing";
+const defaultDescription = "Website for Boring Cars Detailing";
+const defaultRobots = "index,follow";
+
+export function SEO({ title, description, robots }: SEOProps) {
   return (
     <Head>
-      <title>Boring Cars Detailing</title>
-      <meta name="robots" content="index,follow" />
+      <Title>{title}</Title>
+      <Description>{description}</Description>
+      <Robots>{robots}</Robots>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="description" content="Website for Boring Cars Detailing." />
-      <meta property="og:title" content="Boring Cars Detailing" />
-      <meta
-        property="og:description"
-        content="Website for Boring Cars Detailing."
-      />
       <meta property="og:image" content="/og-image.png" />
-      <meta
-        property="twitter:description"
-        content="Website for Boring Cars Detailing."
-      />
       <meta property="twitter:image" content="/og-image.png" />
       <meta name="twitter:site" content="@boringcarsdeta1" />
       <meta name="twitter:card" content="summary" />
@@ -43,5 +44,44 @@ export function SEO() {
       <meta name="theme-color" content="#db2577" />
       <meta name="msapplication-TileColor" content="#db2577" />
     </Head>
+  );
+}
+
+function Title({ children }: { children?: string }) {
+  const title = Boolean(children)
+    ? `${children} | ${defaultTitle}`
+    : defaultTitle;
+
+  return (
+    <>
+      <title>{title}</title>
+      <meta property="og:title" key="title" content={title} />
+    </>
+  );
+}
+
+function Robots({ children }: { children?: string }) {
+  return (
+    <meta name="robots" key="robots" content={children || defaultRobots} />
+  );
+}
+
+function Description({ children }: { children?: string }) {
+  const description = children || defaultDescription;
+
+  return (
+    <>
+      <meta name="description" key="description" content={description} />
+      <meta
+        property="og:description"
+        key="og:description"
+        content={description}
+      />
+      <meta
+        property="twitter:description"
+        key="twitter:description"
+        content={description}
+      />
+    </>
   );
 }
