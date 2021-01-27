@@ -13,7 +13,7 @@ const defaultRobots = "index,follow";
 export function SEO({ title, description, robots }: SEOProps) {
   return (
     <Head>
-      <Title>{title}</Title>
+      <Title title={title} />
       <Description>{description}</Description>
       <Robots>{robots}</Robots>
       <meta charSet="utf-8" />
@@ -47,15 +47,13 @@ export function SEO({ title, description, robots }: SEOProps) {
   );
 }
 
-function Title({ children }: { children?: string }) {
-  const title = Boolean(children)
-    ? `${children} | ${defaultTitle}`
-    : defaultTitle;
+function Title({ title }: { title?: string }) {
+  const content = Boolean(title) ? `${title} | ${defaultTitle}` : defaultTitle;
 
   return (
     <>
-      <title>{title}</title>
-      <meta property="og:title" key="title" content={title} />
+      <title key="title">{content}</title>
+      <meta property="og:title" key="og:title" content={content} />
     </>
   );
 }
