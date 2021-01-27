@@ -65,15 +65,15 @@
   "shortcuts": [
     {
       "name": "Pricing",
-      "url": "/pricing?source=pwa",
+      "url": "/pricing",
       "description": "List of detailing services and their prices."
     },
     {
       "name": "About",
-      "url": "/about?source=pwa",
+      "url": "/about",
       "description": "About Boring Cars Detailing"
     }
   ],
-  "start_url": "/?source=pwa",
+  "start_url": "/",
   "theme_color": "#ec4899"
 }
