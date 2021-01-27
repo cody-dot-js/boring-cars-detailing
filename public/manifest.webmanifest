@@ -54,19 +54,20 @@
   ],
   "lang": "en-US",
   "name": "boringcarsdetailing.com",
+  "scope": "/",
   "short_name": "boringcarsdetailing",
   "shortcuts": [
     {
       "name": "Pricing",
-      "url": "/pricing",
+      "url": "/pricing?source=pwa",
       "description": "List of detailing services and their prices."
     },
     {
       "name": "About",
-      "url": "/about",
+      "url": "/about?source=pwa",
       "description": "About Boring Cars Detailing"
     }
   ],
-  "start_url": "/",
+  "start_url": "/?source=pwa",
   "theme_color": "#ec4899"
 }
