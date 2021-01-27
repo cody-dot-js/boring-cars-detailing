@@ -10,7 +10,7 @@ export function BoringCarsDetailing({ className }: Props) {
     <div className={cx("flex flex-col items-end leading-none", className)}>
       <Glitch
         className={cx(
-          "relative z-10",
+          "relative",
           "font-outrun-future",
           "text-gray-300 text-1em"
         )}
@@ -19,7 +19,7 @@ export function BoringCarsDetailing({ className }: Props) {
       </Glitch>
       <Glitch
         className={cx(
-          "relative z-20",
+          "relative",
           "font-flash-back",
           "transform-gpu -translate-y-1/3 -rotate-12",
           "text-orange-400 text-0.75em"

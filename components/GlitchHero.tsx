@@ -12,7 +12,7 @@ export function GlitchHero({ className, children }: Props) {
     <div className="h-full w-full">
       <figure
         className={cx(
-          "absolute z-10 top-0 left-0 right-0 bottom-0",
+          "absolute top-0 left-0 right-0 bottom-0",
           "max-w-lg lg:max-w-5xl mx-auto",
           className
         )}
