@@ -10,12 +10,32 @@ const defaultTitle = "Boring Cars Detailing";
 const defaultDescription = "Website for Boring Cars Detailing";
 const defaultRobots = "index,follow";
 
-export function SEO({ title, description, robots }: SEOProps) {
+export function SEO(props: SEOProps) {
+  const title: string = Boolean(props.title)
+    ? `${props.title} | ${defaultTitle}`
+    : defaultTitle;
+  const description: string = props.description || defaultDescription;
+  const robots: string = props.robots || defaultRobots;
+
   return (
     <Head>
-      <Title title={title} />
-      <Description>{description}</Description>
-      <Robots>{robots}</Robots>
+      <title key="title">{title}</title>
+      <meta property="og:title" key="og:title" content={title} />
+
+      <meta name="description" key="description" content={description} />
+      <meta
+        property="og:description"
+        key="og:description"
+        content={description}
+      />
+      <meta
+        property="twitter:description"
+        key="twitter:description"
+        content={description}
+      />
+
+      <meta name="robots" key="robots" content={robots} />
+
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta property="og:image" content="/og-image.png" />
@@ -44,42 +64,5 @@ export function SEO({ title, description, robots }: SEOProps) {
       <meta name="theme-color" content="#db2577" />
       <meta name="msapplication-TileColor" content="#db2577" />
     </Head>
-  );
-}
-
-function Title({ title }: { title?: string }) {
-  const content = Boolean(title) ? `${title} | ${defaultTitle}` : defaultTitle;
-
-  return (
-    <>
-      <title key="title">{content}</title>
-      <meta property="og:title" key="og:title" content={content} />
-    </>
-  );
-}
-
-function Robots({ children }: { children?: string }) {
-  return (
-    <meta name="robots" key="robots" content={children || defaultRobots} />
-  );
-}
-
-function Description({ children }: { children?: string }) {
-  const description = children || defaultDescription;
-
-  return (
-    <>
-      <meta name="description" key="description" content={description} />
-      <meta
-        property="og:description"
-        key="og:description"
-        content={description}
-      />
-      <meta
-        property="twitter:description"
-        key="twitter:description"
-        content={description}
-      />
-    </>
   );
 }
