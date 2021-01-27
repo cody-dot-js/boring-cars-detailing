@@ -64,7 +64,7 @@ export function SEO(props: SEOProps) {
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ec4899" />
       <meta name="theme-color" content="#ec4899" />
       <meta name="msapplication-TileColor" content="#ec4899" />
-      <link rel="manifest" href="/manifest.webmanifest" crossOrigin="anonymous" />
+      <link rel="manifest" href="/manifest.webmanifest" />
     </Head>
   );
 }
