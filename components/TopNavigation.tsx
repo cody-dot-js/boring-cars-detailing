@@ -106,7 +106,7 @@ export function TopNavigation() {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   return (
-    <header className="relative z-10 bg-transparent">
+    <header className="relative z-40 bg-transparent">
       <nav className="relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
