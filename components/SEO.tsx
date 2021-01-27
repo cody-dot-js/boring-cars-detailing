@@ -38,6 +38,7 @@ export function SEO(props: SEOProps) {
 
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="og:type" content="website" />
       <meta property="og:image" content="/og-image.png" />
       <meta property="twitter:image" content="/og-image.png" />
       <meta name="twitter:site" content="@boringcarsdeta1" />
@@ -63,6 +64,7 @@ export function SEO(props: SEOProps) {
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#db2577" />
       <meta name="theme-color" content="#ec4899" />
       <meta name="msapplication-TileColor" content="#db2577" />
+      <link rel="manifest" href="/manifest.webmanifest" crossOrigin="anonymous" />
     </Head>
   );
 }
