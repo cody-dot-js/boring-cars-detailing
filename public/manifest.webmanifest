@@ -50,6 +50,11 @@
       "src": "/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/maskable_icon-1024x1024.png",
+      "sizes": "1024x1024",
+      "purpose": "maskable"
     }
   ],
   "lang": "en-US",
