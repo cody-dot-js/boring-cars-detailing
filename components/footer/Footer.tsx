@@ -43,47 +43,145 @@ function ComingSoonLink({
   );
 }
 
-export function Footer({ copyrightDate }: Props) {
-  return (
-    <footer
-      className={cx(
-        "relative mt-24 bg-gray-900 sm:mt-12 overflow-hidden",
-        styles.footer
-      )}
-    >
-      <div className="mx-auto max-w-md py-12 px-4 overflow-hidden sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
+export const Footer = ({ copyrightDate }: Props) => (
+  <footer
+    className={cx(
+      "relative mt-24 bg-gray-900 sm:mt-12 overflow-hidden",
+      styles.footer
+    )}
+    aria-labelledby="footerHeading"
+  >
+    <h2 id="footerHeading" className="sr-only">
+      Footer
+    </h2>
+    <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+      <div className="xl:grid xl:grid-cols-3 xl:gap-8">
         <nav
-          className="-mx-5 -my-2 flex flex-wrap justify-center"
-          aria-label="Footer"
+          className="grid grid-cols-2 gap-8 xl:col-span-2"
+          aria-label="Footer navigation"
         >
-          <ul className="flex flex-wrap justify-center">
-            <li className="px-5 py-2">
-              <ComingSoonLink tooltip="Pricing coming soon!" href="/pricing">
-                Pricing
-              </ComingSoonLink>
-            </li>
-            <li className="px-5 py-2">
-              <ComingSoonLink tooltip="Gallery coming soon!" href="/gallery">
-                Gallery
-              </ComingSoonLink>
-            </li>
-            <li className="px-5 py-2">
-              <Link href="/about">
-                <a
-                  href="/about"
-                  className="text-base text-gray-400 hover:text-gray-300"
-                >
-                  About
-                </a>
-              </Link>
-            </li>
-          </ul>
+          <div className="md:grid md:grid-cols-2 md:gap-8">
+            <div>
+              <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                Solutions
+              </h3>
+              <ul className="mt-4 space-y-4">
+                <li>
+                  <ComingSoonLink
+                    tooltip="Services coming soon!"
+                    href="/services"
+                  >
+                    Services
+                  </ComingSoonLink>
+                </li>
+                <li>
+                  <ComingSoonLink
+                    tooltip="Scheduling coming soon!"
+                    href="/schedule"
+                  >
+                    Schedule
+                  </ComingSoonLink>
+                </li>
+              </ul>
+            </div>
+            <div className="mt-12 md:mt-0">
+              <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                Support
+              </h3>
+              <ul className="mt-4 space-y-4">
+                <li>
+                  <ComingSoonLink
+                    tooltip="Pricing coming soon!"
+                    href="/pricing"
+                  >
+                    Pricing
+                  </ComingSoonLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="md:grid md:grid-cols-2 md:gap-8">
+            <div>
+              <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                Company
+              </h3>
+              <ul className="mt-4 space-y-4">
+                <li>
+                  <ComingSoonLink
+                    tooltip="Gallery coming soon!"
+                    href="/gallery"
+                  >
+                    Gallery
+                  </ComingSoonLink>
+                </li>
+                <li>
+                  <Link href="/about">
+                    <a
+                      href="/about"
+                      className="text-base text-gray-400 hover:text-gray-300"
+                    >
+                      About
+                    </a>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="mt-12 md:mt-0">
+              <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                Legal
+              </h3>
+              <ul className="mt-4 space-y-4">
+                <li>
+                  <Link href="/privacy-policy">
+                    <a
+                      href="/privacy-policy"
+                      className="text-base text-gray-400 hover:text-gray-300"
+                    >
+                      Privacy
+                    </a>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
         </nav>
-        <div className="mt-8 flex justify-center space-x-6">
+        {/* <div className="mt-8 xl:mt-0">
+          <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+            Subscribe to our newsletter
+          </h3>
+          <p className="mt-4 text-base text-gray-300">
+            The latest news, articles, and resources, sent to your inbox weekly.
+          </p>
+          <form className="mt-4 sm:flex sm:max-w-md">
+            <label htmlFor="emailAddress" className="sr-only">
+              Email address
+            </label>
+            <input
+              type="email"
+              name="emailAddress"
+              id="emailAddress"
+              autoComplete="email"
+              required
+              className="appearance-none min-w-0 w-full bg-white border border-transparent rounded-md py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white focus:border-white focus:placeholder-gray-400"
+              placeholder="Enter your email"
+            />
+            <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+              <button
+                type="submit"
+                className="w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500"
+              >
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div> */}
+      </div>
+      <div className="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
+        <div className="flex space-x-6 md:order-2">
           <ExternalLink
             href={urls.facebook}
             aria-label="Facebook"
-            data-microtip-position="top"
+            data-microtip-position="top-left"
             data-microtip-size="fit"
             role="tooltip"
             className="text-gray-400 hover:text-gray-300"
@@ -95,7 +193,7 @@ export function Footer({ copyrightDate }: Props) {
           <ExternalLink
             href={urls.instagram}
             aria-label="Instagram"
-            data-microtip-position="top"
+            data-microtip-position="top-left"
             data-microtip-size="fit"
             role="tooltip"
             className="text-gray-400 hover:text-gray-300"
@@ -107,7 +205,7 @@ export function Footer({ copyrightDate }: Props) {
           <ExternalLink
             href={urls.twitter}
             aria-label="Twitter"
-            data-microtip-position="top"
+            data-microtip-position="top-left"
             data-microtip-size="fit"
             role="tooltip"
             className="text-gray-400 hover:text-gray-300"
@@ -119,7 +217,7 @@ export function Footer({ copyrightDate }: Props) {
           <ExternalLink
             href={urls.github}
             aria-label="View Source Code"
-            data-microtip-position="top"
+            data-microtip-position="top-left"
             data-microtip-size="fit"
             role="tooltip"
             className="text-gray-400 hover:text-gray-300 text-2xl leading-none"
@@ -131,7 +229,7 @@ export function Footer({ copyrightDate }: Props) {
           <ExternalLink
             href={urls.bugReport}
             aria-label="Report a Bug"
-            data-microtip-position="top"
+            data-microtip-position="top-left"
             data-microtip-size="fit"
             role="tooltip"
             className="text-gray-400 hover:text-gray-300"
@@ -140,35 +238,34 @@ export function Footer({ copyrightDate }: Props) {
             <BugIcon />
           </ExternalLink>
         </div>
-        <p className="mt-8 text-center text-base text-gray-400">
+        <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
           &copy; {copyrightDate}{" "}
           <span className="font-bold">
             Boring&nbsp;Cars&nbsp;Detailing &&nbsp;Wash&nbsp;Services&nbsp;LLC
           </span>
           . All rights reserved.
         </p>
-
-        <p className="mt-8 text-center text-base text-gray-400 opacity-80">
-          Made with{" "}
-          <svg
-            className="inline-block h-4 w-4 -mt-1"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-              clipRule="evenodd"
-            />
-          </svg>{" "}
-          by{" "}
-          <ExternalLink className="font-bold" href="https://codyaprice.com">
-            Cody A. Price
-          </ExternalLink>
-          .
-        </p>
       </div>
-      <div className={styles.retroLines} />
-    </footer>
-  );
-}
+      <p className="mt-8 text-center text-base text-gray-400 opacity-80">
+        Made with{" "}
+        <svg
+          className="inline-block h-4 w-4 -mt-1"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fillRule="evenodd"
+            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+            clipRule="evenodd"
+          />
+        </svg>{" "}
+        by{" "}
+        <ExternalLink className="font-bold" href="https://codyaprice.com">
+          Cody A. Price
+        </ExternalLink>
+        .
+      </p>
+    </div>
+    <div className={styles.retroLines} />
+  </footer>
+);
