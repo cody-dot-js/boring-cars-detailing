@@ -1,4 +1,5 @@
 export const urls = {
+  bcd: "https://www.boringcarsdetailing.com",
   facebook: "https://www.facebook.com/boringcarsdetailing/",
   instagram: "https://www.instagram.com/boringcarsdetailing/",
   twitter: "https://twitter.com/boringcarsdeta1",
