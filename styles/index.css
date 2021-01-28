@@ -32,6 +32,22 @@
   width: 100%;
 }
 
+.headingLink {
+  text-decoration: none;
+}
+
+.headingLink:hover {
+  text-decoration: none;
+}
+
+a.headingLink {
+  text-decoration: none;
+}
+
+.max-w-80ch {
+  max-width: 80ch;
+}
+
 /* Start purging... */
 @tailwind utilities;
 

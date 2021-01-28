@@ -37,6 +37,54 @@ module.exports = {
       height: {
         128: "29rem",
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme("colors.gray.50"),
+            a: {
+              color: theme("colors.pink.300"),
+              "&:hover": {
+                color: theme("colors.pink.500"),
+              },
+            },
+            h1: {
+              color: theme("colors.gray.300"),
+            },
+            h2: {
+              color: theme("colors.gray.300"),
+            },
+            h3: {
+              color: theme("colors.gray.300"),
+            },
+            h4: {
+              color: theme("colors.gray.300"),
+            },
+            h5: {
+              color: theme("colors.gray.300"),
+            },
+            h6: {
+              color: theme("colors.gray.300"),
+            },
+            strong: {
+              color: theme("colors.gray.500"),
+            },
+
+            code: {
+              color: theme("colors.gray.300"),
+            },
+
+            figcaption: {
+              color: theme("colors.gray.500"),
+            },
+            blockquote: {
+              color: theme("colors.gray.500"),
+            },
+            thead: {
+              color: theme("colors.gray.500"),
+            },
+          },
+        },
+      }),
     },
   },
   variants: {
