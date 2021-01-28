@@ -121,11 +121,12 @@ function SubscribeForm({
     <div className="relative">
       <div className="sm:text-center">
         <h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
-          Get notified when we&rsquo;re launching.
+          Get notified when we launch.
         </h2>
         <p className="mt-6 mx-auto max-w-2xl text-lg text-rose-100">
           Be among the first to know when you can schedule any of our phenomenal
-          mobile cleaning and detailing services!
+          mobile cleaning and detailing services! We'll let you know on February
+          15th, 2021!
         </p>
       </div>
 

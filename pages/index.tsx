@@ -5,6 +5,7 @@ import { Layout, LayoutMeta } from "components/Layout";
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import { copyrightDate } from "utils/copyrightDate";
+import { Testimonials } from "components/Testimonials";
 
 interface Props {
   meta: LayoutMeta;
@@ -54,11 +55,12 @@ export default function Home({ meta }: Props) {
       <h2
         id="launch"
         ref={launchRef}
-        className="relative z-40 text-center px-4 py-8 text-xl font-semibold tracking-wider text-gray-400 uppercase"
+        className="relative z-40 text-center px-4 py-8 text-xl font-semibold tracking-wider text-cyan-300 uppercase"
       >
-        We're launching soon! 🚀
+        We're launching February 15th, 2021! 🚀
       </h2>
       <CTALaunch />
+      <Testimonials />
     </Layout>
   );
 }

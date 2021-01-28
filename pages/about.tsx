@@ -4,6 +4,7 @@ import { InstagramIcon } from "components/icons/InstagramIcon";
 import { Layout, LayoutMeta } from "components/Layout";
 import { urls } from "config";
 import { GetStaticProps } from "next";
+import Image from "next/image";
 import { copyrightDate } from "utils/copyrightDate";
 
 interface Props {
@@ -114,11 +115,12 @@ export default function About({ meta }: Props) {
               />
               <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:p-0 lg:h-full">
                 <div className="aspect-w-10 aspect-h-6 rounded-xl shadow-xl overflow-hidden sm:aspect-w-16 sm:aspect-h-10 lg:h-full">
-                  <img
+                  <Image
                     className="object-cover lg:h-full lg:w-full"
                     src="/assets/imgs/about/family3_4x3.jpg"
                     alt="Cem and family enjoying the beach"
-                    decoding="async"
+                    objectFit="cover"
+                    layout="fill"
                   />
                 </div>
               </div>
@@ -154,20 +156,22 @@ export default function About({ meta }: Props) {
           </div>
         </div>
         <div className="mt-16 mx-auto max-w-md px-4 grid gap-8 sm:max-w-lg sm:px-6 lg:px-8 lg:grid-cols-2 lg:max-w-5xl">
-          <div className="relative rounded-lg shadow-lg overflow-hidden">
-            <img
+          <div className="relative rounded-lg shadow-lg overflow-hidden h-128">
+            <Image
               className="h-full w-full object-cover"
               src="/assets/imgs/about/family1_sq.jpg"
               alt="Cem and family near the ocean"
-              decoding="async"
+              objectFit="cover"
+              layout="fill"
             />
           </div>
-          <div className="relative rounded-lg shadow-lg overflow-hidden">
-            <img
+          <div className="relative rounded-lg shadow-lg overflow-hidden h-128">
+            <Image
               className="h-full w-full object-cover"
               src="/assets/imgs/about/family2_4x3.jpg"
               alt="Cem and family on a park bench"
-              decoding="async"
+              objectFit="cover"
+              layout="fill"
             />
           </div>
         </div>
