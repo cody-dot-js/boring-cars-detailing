@@ -1,51 +1,32 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { FormValues } from "apis/contact";
-// import { WretcherError } from "wretch";
-// import wretch from "utils/nodeWretch";
+import { sendEmail } from "utils/sendEmail";
+import { contactEmailHtml, contactEmailText } from "templates/contact-email";
+
+const { CONTACT_EMAIL_FROM, CONTACT_EMAIL_TO } = process.env;
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const {
-    firstName,
-    lastName,
-    email,
-    company,
-    phoneNumber,
-    body,
-    discovery,
-  }: FormValues = req.body;
-  // const api_key = process.env.CK_API_KEY;
-  // const formId = process.env.CK_FORM_ID;
+  const content: FormValues = req.body;
+  const { email, firstName, lastName } = content;
 
-  console.log("contact handler", {
-    firstName,
-    lastName,
-    email,
-    company,
-    phoneNumber,
-    body,
-    discovery,
-  });
+  try {
+    const html = contactEmailHtml(content);
+    const text = contactEmailText(content);
 
-  // try {
-  //   const response = await convertKitApi
-  //     .url(path)
-  //     .json({
-  //       api_key,
-  //       email,
-  //       first_name: name,
-  //     })
-  //     .post()
-  //     .res();
-
-  //   const json = await response.json();
-
-  //   return res.status(response.status).json(json);
-  // } catch (e) {
-  //   const { text, status }: WretcherError = e;
-  //   const { message = "" }: { message: string } = JSON.parse(text);
-
-  //   return res.status(status).json({ status, message });
-  // }
+    const response = await sendEmail({
+      to: CONTACT_EMAIL_TO,
+      from: CONTACT_EMAIL_FROM,
+      replyTo: `${firstName} ${lastName} <${email}>`,
+      subject: "Contact Request | Boring Cars Detailing",
+      text,
+      html,
+    });
+    return res.status(response.statusCode).json(response);
+  } catch (e) {
+    return res
+      .status(e.statusCode || 500)
+      .json({ message: JSON.stringify(e, undefined, 2) });
+  }
 }
 
 export default handler;

@@ -360,7 +360,7 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
               How did you hear about us?
             </label>
             <div className="mt-1">
-              <input
+              <Field
                 type="text"
                 name="discovery"
                 id="discovery"
