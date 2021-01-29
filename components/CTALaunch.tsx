@@ -1,10 +1,6 @@
 import * as React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import {
-  FormValues,
-  subscribe,
-  useValidationSchema,
-} from "external-apis/convertKit";
+import { FormValues, subscribe, validationSchema } from "apis/convertKit";
 import { ExclamationCircleIcon } from "./icons/ExclamationCircleIcon";
 import cx from "classnames";
 
@@ -115,8 +111,6 @@ function SubscribeForm({
   onSubscribeSuccess,
   onSubscribeError,
 }: SubscribeFormProps) {
-  const validationSchema = useValidationSchema();
-
   return (
     <div className="relative">
       <div className="sm:text-center">
@@ -140,7 +134,7 @@ function SubscribeForm({
         }
         validationSchema={validationSchema}
       >
-        {({ isSubmitting, errors }) => (
+        {({ isSubmitting, errors, touched }) => (
           <Form className="mt-12 sm:mx-auto sm:max-w-lg">
             <div className="grid grid-cols-6 gap-4 ">
               <div className="col-span-6">
@@ -155,7 +149,8 @@ function SubscribeForm({
                     autoComplete="name"
                     className={cx(
                       "block w-full border border-transparent rounded-md px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-pink-500",
-                      Boolean(errors.name) &&
+                      errors.name &&
+                        touched.name &&
                         "border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-300"
                     )}
                     placeholder="Enter your name"
@@ -186,7 +181,8 @@ function SubscribeForm({
                     autoComplete="email"
                     className={cx(
                       "block w-full border border-transparent rounded-md px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-pink-500",
-                      Boolean(errors.email) &&
+                      errors.email &&
+                        touched.email &&
                         "border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-300"
                     )}
                     placeholder="Enter your email"
@@ -210,7 +206,7 @@ function SubscribeForm({
                   type="submit"
                   disabled={isSubmitting}
                   aria-disabled={isSubmitting}
-                  className="block disabled:opacity-40 w-full rounded-md border border-transparent px-5 py-3 bg-cyan-700 text-base font-medium text-white shadow hover:bg-cyan-900 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-pink-500 sm:px-10"
+                  className="block disabled:opacity-60 w-full rounded-md border border-transparent px-5 py-3 bg-cyan-700 text-base font-medium text-white shadow hover:bg-cyan-900 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-pink-500 sm:px-10"
                 >
                   Notify me
                 </button>

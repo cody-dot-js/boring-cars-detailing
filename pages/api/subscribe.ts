@@ -3,20 +3,13 @@ import {
   FormValues,
   convertKitApiBaseUrl,
   pathForSubscribeToForm,
-} from "external-apis/convertKit";
-import wretch, { WretcherError } from "wretch";
-import fetch from "node-fetch";
+} from "apis/convertKit";
+import { WretcherError } from "wretch";
+import wretch from "utils/nodeWretch";
 
-const convertKitApi = wretch()
-  .polyfills({
-    fetch,
-  })
-  .url(convertKitApiBaseUrl);
+const convertKitApi = wretch.url(convertKitApiBaseUrl);
 
-export default async function subscribe(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { name, email }: FormValues = req.body;
   const api_key = process.env.CK_API_KEY;
   const formId = process.env.CK_FORM_ID;
@@ -43,3 +36,5 @@ export default async function subscribe(
     return res.status(status).json({ status, message });
   }
 }
+
+export default handler;

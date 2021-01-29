@@ -6,15 +6,13 @@ export interface FormValues {
   email: string;
 }
 
-export function useValidationSchema() {
-  return yup.object({
-    email: yup
-      .string()
-      .email("Your email must be a valid email.")
-      .required("Your email is a required field."),
-    name: yup.string().required("Your name is a required field."),
-  });
-}
+export const validationSchema = yup.object({
+  email: yup
+    .string()
+    .email("Your email must be a valid email.")
+    .required("Your email is a required field."),
+  name: yup.string().required("Your name is a required field."),
+});
 
 export const convertKitApiBaseUrl = "https://api.convertkit.com/v3";
 

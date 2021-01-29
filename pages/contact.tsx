@@ -1,12 +1,14 @@
+import * as React from "react";
+import { validationSchema, FormValues, contact } from "apis/contact";
 import { ExternalLink } from "components/ExternalLink";
 import { EmailIcon } from "components/icons/EmailIcon";
 import { PhoneIcon } from "components/icons/PhoneIcon";
 import { Layout, LayoutMeta } from "components/Layout";
-import { urls } from "config";
 import { GetStaticProps } from "next";
-import Image from "next/image";
 import { copyrightDate } from "utils/copyrightDate";
-
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import { ExclamationCircleIcon } from "components/icons/ExclamationCircleIcon";
+import cx from "classnames";
 interface Props {
   meta: LayoutMeta;
 }
@@ -52,7 +54,10 @@ export default function Contact({ meta }: Props) {
                 <dt className="sr-only">Phone number</dt>
                 <dd className="flex">
                   <PhoneIcon className="flex-shrink-0 h-6 w-6 text-gray-400" />
-                  <ExternalLink className="ml-3" href="tel:+1(916)385-7257">
+                  <ExternalLink
+                    className="ml-3 text-cyan-200"
+                    href="tel:+1(916)385-7257"
+                  >
                     +1 (916) 385-7257
                   </ExternalLink>
                 </dd>
@@ -62,7 +67,7 @@ export default function Contact({ meta }: Props) {
                 <dd className="flex">
                   <EmailIcon className="flex-shrink-0 h-6 w-6 text-gray-400" />
                   <ExternalLink
-                    className="ml-3"
+                    className="ml-3 text-cyan-200"
                     href="mailto:hello@boringcarsdetailing.com"
                   >
                     hello@boringcarsdetailing.com
@@ -95,168 +100,303 @@ export default function Contact({ meta }: Props) {
                 Detailing service? We've got you covered! Get in touch and let
                 us know how we can help.
               </p>
-              <form
-                action="#"
-                method="POST"
-                className="mt-9 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
-              >
-                <div>
-                  <label
-                    htmlFor="first_name"
-                    className="block text-sm font-medium text-gray-300"
-                  >
-                    First name
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="first_name"
-                      id="first_name"
-                      autoComplete="given-name"
-                      className="block w-full shadow-sm sm:text-sm focus:ring-pink-500 focus:border-pink-500 bg-gray-500 border-gray-600 rounded-md"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    htmlFor="last_name"
-                    className="block text-sm font-medium text-gray-300"
-                  >
-                    Last name
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="last_name"
-                      id="last_name"
-                      autoComplete="family-name"
-                      className="block w-full shadow-sm sm:text-sm focus:ring-pink-500 focus:border-pink-500 bg-gray-500 border-gray-600 rounded-md"
-                    />
-                  </div>
-                </div>
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-300"
-                  >
-                    Email
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      autoComplete="email"
-                      className="block w-full shadow-sm sm:text-sm focus:ring-pink-500 focus:border-pink-500 bg-gray-500 border-gray-600 rounded-md"
-                    />
-                  </div>
-                </div>
-                <div className="sm:col-span-2">
-                  <div className="flex justify-between">
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-medium text-gray-300"
-                    >
-                      Company
-                    </label>
-                    <span
-                      id="phone_description"
-                      className="text-sm text-gray-500"
-                    >
-                      Optional
-                    </span>
-                  </div>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="phone"
-                      id="phone"
-                      autoComplete="tel"
-                      aria-describedby="phone_description"
-                      className="block w-full shadow-sm sm:text-sm focus:ring-pink-500 focus:border-pink-500 bg-gray-500 border-gray-600 rounded-md"
-                    />
-                  </div>
-                </div>
-                <div className="sm:col-span-2">
-                  <div className="flex justify-between">
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-medium text-gray-300"
-                    >
-                      Phone
-                    </label>
-                    <span
-                      id="phone_description"
-                      className="text-sm text-gray-500"
-                    >
-                      Optional
-                    </span>
-                  </div>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="phone"
-                      id="phone"
-                      autoComplete="tel"
-                      aria-describedby="phone_description"
-                      className="block w-full shadow-sm sm:text-sm focus:ring-pink-500 focus:border-pink-500 bg-gray-500 border-gray-600 rounded-md"
-                    />
-                  </div>
-                </div>
-                <div className="sm:col-span-2">
-                  <div className="flex justify-between">
-                    <label
-                      htmlFor="how_can_we_help"
-                      className="block text-sm font-medium text-gray-300"
-                    >
-                      How can we help you?
-                    </label>
-                    <span
-                      id="how_can_we_help_description"
-                      className="text-sm text-gray-500"
-                    >
-                      Max. 500 characters
-                    </span>
-                  </div>
-                  <div className="mt-1">
-                    <textarea
-                      id="how_can_we_help"
-                      name="how_can_we_help"
-                      aria-describedby="how_can_we_help_description"
-                      rows={4}
-                      className="block w-full shadow-sm sm:text-sm focus:ring-pink-500 focus:border-pink-500 bg-gray-500 border-gray-600 rounded-md"
-                    />
-                  </div>
-                </div>
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="how_did_you_hear_about_us"
-                    className="block text-sm font-medium text-gray-300"
-                  >
-                    How did you hear about us?
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="how_did_you_hear_about_us"
-                      id="how_did_you_hear_about_us"
-                      className="shadow-sm focus:ring-pink-500 focus:border-pink-500 block w-full sm:text-sm bg-gray-500 border-gray-600 rounded-md"
-                    />
-                  </div>
-                </div>
-                <div className="text-right sm:col-span-2">
-                  <button
-                    type="submit"
-                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
-                  >
-                    Submit
-                  </button>
-                </div>
-              </form>
+              <ContactForm
+                onError={(e) => {
+                  console.log("ContactForm.onError", e.message);
+                }}
+                onSuccess={() => {
+                  console.log("ContactForm.onSuccess!");
+                }}
+              />
             </div>
           </div>
         </div>
       </section>
     </Layout>
+  );
+}
+
+interface ContactFormProps {
+  onSuccess?: () => void;
+  onError?: (error: Error) => void;
+}
+
+function ContactForm({ onSuccess, onError }: ContactFormProps) {
+  return (
+    <Formik<FormValues>
+      initialValues={{
+        body: "",
+        company: "",
+        discovery: "",
+        email: "",
+        firstName: "",
+        lastName: "",
+        phoneNumber: "",
+      }}
+      onSubmit={(values) => contact(values).then(onSuccess).catch(onError)}
+      validationSchema={validationSchema}
+    >
+      {({ isSubmitting, errors, touched }) => (
+        <Form className="mt-9 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+          <div>
+            <label
+              htmlFor="firstName"
+              className="block text-sm font-medium text-gray-300"
+            >
+              First name
+            </label>
+            <div className="mt-1">
+              <Field
+                id="firstName"
+                name="firstName"
+                type="text"
+                autoComplete="given-name"
+                className={cx(
+                  "block w-full text-gray-50 placeholder-gray-300 shadow-sm sm:text-sm focus:ring-pink-500 focus:border-pink-500 bg-gray-500 border-gray-600 rounded-md",
+                  errors.firstName &&
+                    touched.firstName &&
+                    "border-red-500 text-red-300 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500"
+                )}
+              />
+              <ErrorMessage name="firstName">
+                {() => (
+                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                    <ExclamationCircleIcon className="h-5 w-5 text-red-300" />
+                  </div>
+                )}
+              </ErrorMessage>
+            </div>
+            <ErrorMessage
+              name="firstName"
+              className="mt-2 text-sm text-red-300"
+              component="p"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="lastName"
+              className="block text-sm font-medium text-gray-300"
+            >
+              Last name
+            </label>
+            <div className="mt-1">
+              <Field
+                id="lastName"
+                name="lastName"
+                type="text"
+                autoComplete="family-name"
+                className={cx(
+                  "block w-full text-gray-50 placeholder-gray-300 shadow-sm sm:text-sm focus:ring-pink-500 focus:border-pink-500 bg-gray-500 border-gray-600 rounded-md",
+                  errors.lastName &&
+                    touched.lastName &&
+                    "border-red-500 text-red-300 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500"
+                )}
+              />
+              <ErrorMessage name="lastName">
+                {() => (
+                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                    <ExclamationCircleIcon className="h-5 w-5 text-red-300" />
+                  </div>
+                )}
+              </ErrorMessage>
+            </div>
+            <ErrorMessage
+              name="lastName"
+              className="mt-2 text-sm text-red-300"
+              component="p"
+            />
+          </div>
+          <div className="sm:col-span-2">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-300"
+            >
+              Email
+            </label>
+            <div className="mt-1">
+              <Field
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                className={cx(
+                  "block w-full shadow-sm sm:text-sm focus:ring-pink-500 focus:border-pink-500 bg-gray-500 border-gray-600 rounded-md",
+                  errors.email &&
+                    touched.email &&
+                    "border-red-500 text-red-300 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500"
+                )}
+              />
+              <ErrorMessage name="email">
+                {() => (
+                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                    <ExclamationCircleIcon className="h-5 w-5 text-red-300" />
+                  </div>
+                )}
+              </ErrorMessage>
+            </div>
+            <ErrorMessage
+              name="email"
+              className="mt-2 text-sm text-red-300"
+              component="p"
+            />
+          </div>
+          <div className="sm:col-span-2">
+            <div className="flex justify-between">
+              <label
+                htmlFor="company"
+                className="block text-sm font-medium text-gray-300"
+              >
+                Company
+              </label>
+              <span id="company_description" className="text-sm text-gray-500">
+                Optional
+              </span>
+            </div>
+            <div className="mt-1">
+              <Field
+                type="text"
+                name="company"
+                id="company"
+                aria-describedby="company_description"
+                className={cx(
+                  "block w-full shadow-sm sm:text-sm focus:ring-pink-500 focus:border-pink-500 bg-gray-500 border-gray-600 rounded-md",
+                  errors.company &&
+                    touched.company &&
+                    "border-red-500 text-red-300 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500"
+                )}
+              />
+              <ErrorMessage name="company">
+                {() => (
+                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                    <ExclamationCircleIcon className="h-5 w-5 text-red-300" />
+                  </div>
+                )}
+              </ErrorMessage>
+            </div>
+            <ErrorMessage
+              name="company"
+              className="mt-2 text-sm text-red-300"
+              component="p"
+            />
+          </div>
+          <div className="sm:col-span-2">
+            <div className="flex justify-between">
+              <label
+                htmlFor="phoneNumber"
+                className="block text-sm font-medium text-gray-300"
+              >
+                Phone
+              </label>
+              <span id="phone_description" className="text-sm text-gray-500">
+                Optional
+              </span>
+            </div>
+            <div className="mt-1">
+              <Field
+                type="text"
+                name="phoneNumber"
+                id="phoneNumber"
+                autoComplete="tel"
+                aria-describedby="phone_description"
+                className={cx(
+                  "block w-full shadow-sm sm:text-sm focus:ring-pink-500 focus:border-pink-500 bg-gray-500 border-gray-600 rounded-md",
+                  errors.phoneNumber &&
+                    touched.phoneNumber &&
+                    "border-red-500 text-red-300 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500"
+                )}
+              />
+              <ErrorMessage name="phoneNumber">
+                {() => (
+                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                    <ExclamationCircleIcon className="h-5 w-5 text-red-300" />
+                  </div>
+                )}
+              </ErrorMessage>
+            </div>
+            <ErrorMessage
+              name="phoneNumber"
+              className="mt-2 text-sm text-red-300"
+              component="p"
+            />
+          </div>
+          <div className="sm:col-span-2">
+            <div className="flex justify-between">
+              <label
+                htmlFor="body"
+                className="block text-sm font-medium text-gray-300"
+              >
+                How can we help you?
+              </label>
+              <span id="body_description" className="text-sm text-gray-500">
+                Max. 500 characters
+              </span>
+            </div>
+            <div className="mt-1">
+              <Field
+                as="textarea"
+                id="body"
+                name="body"
+                aria-describedby="body_description"
+                rows={4}
+                className={cx(
+                  "block w-full shadow-sm sm:text-sm focus:ring-pink-500 focus:border-pink-500 bg-gray-500 border-gray-600 rounded-md",
+                  errors.body &&
+                    touched.body &&
+                    "border-red-500 text-red-300 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500"
+                )}
+              />
+            </div>
+            <ErrorMessage
+              name="body"
+              className="mt-2 text-sm text-red-300"
+              component="p"
+            />
+          </div>
+          <div className="sm:col-span-2">
+            <label
+              htmlFor="discovery"
+              className="block text-sm font-medium text-gray-300"
+            >
+              How did you hear about us?
+            </label>
+            <div className="mt-1">
+              <input
+                type="text"
+                name="discovery"
+                id="discovery"
+                className={cx(
+                  "shadow-sm focus:ring-pink-500 focus:border-pink-500 block w-full sm:text-sm bg-gray-500 border-gray-600 rounded-md",
+                  errors.discovery &&
+                    touched.discovery &&
+                    "border-red-500 text-red-300 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500"
+                )}
+              />
+              <ErrorMessage name="discovery">
+                {() => (
+                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                    <ExclamationCircleIcon className="h-5 w-5 text-red-300" />
+                  </div>
+                )}
+              </ErrorMessage>
+            </div>
+            <ErrorMessage
+              name="discovery"
+              className="mt-2 text-sm text-red-300"
+              component="p"
+            />
+          </div>
+          <div className="text-right sm:col-span-2">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              aria-disabled={isSubmitting}
+              className="disabled:opacity-60 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
+            >
+              Submit
+            </button>
+          </div>
+        </Form>
+      )}
+    </Formik>
   );
 }
