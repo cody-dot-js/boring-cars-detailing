@@ -9,6 +9,7 @@ import { copyrightDate } from "utils/copyrightDate";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { ExclamationCircleIcon } from "components/icons/ExclamationCircleIcon";
 import cx from "classnames";
+import { CheckCircleIcon } from "components/icons/CheckCircleIcon";
 interface Props {
   meta: LayoutMeta;
 }
@@ -26,6 +27,10 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function Contact({ meta }: Props) {
+  const [
+    formSuccessfullySent,
+    setFormSuccessfullySent,
+  ] = React.useState<boolean>(false);
   return (
     <Layout
       meta={meta}
@@ -95,24 +100,56 @@ export default function Contact({ meta }: Props) {
               <h2 className="text-3xl text-cyan-300 font-extrabold tracking-tight sm:text-4xl">
                 We're here to help
               </h2>
-              <p className="mt-4 text-lg text-gray-300 sm:mt-3">
-                Have questions or need to report an issue with any Boring Cars
-                Detailing service? We've got you covered! Get in touch and let
-                us know how we can help.
-              </p>
-              <ContactForm
-                onError={(e) => {
-                  console.log("ContactForm.onError", e.message);
-                }}
-                onSuccess={() => {
-                  console.log("ContactForm.onSuccess!");
-                }}
-              />
+              {formSuccessfullySent ? (
+                <div className="mt-16">
+                  <Success />
+                  <div className="hidden lg:block lg:h-96 lg:py-96" />
+                </div>
+              ) : (
+                <>
+                  <p className="mt-4 text-lg text-gray-300 sm:mt-3">
+                    Have questions or need to report an issue with any Boring
+                    Cars Detailing service? We've got you covered! Get in touch
+                    and let us know how we can help.
+                  </p>
+                  <ContactForm
+                    onSuccess={() => {
+                      setFormSuccessfullySent(true);
+                    }}
+                    onError={(e) => {
+                      setFormSuccessfullySent(false);
+                      // TODO(cody): notification/error handling
+                      // console.log("ContactForm.onError", e.message);
+                    }}
+                  />
+                </>
+              )}
             </div>
           </div>
         </div>
       </section>
     </Layout>
+  );
+}
+
+function Success() {
+  return (
+    <div className="rounded-md bg-green-50 p-4">
+      <div className="flex">
+        <div className="flex-shrink-0">
+          <CheckCircleIcon className="h-5 w-5 text-green-400" />
+        </div>
+        <div className="ml-3">
+          <h3 className="text-sm font-medium text-green-800">Form Submitted</h3>
+          <div className="mt-2 text-sm text-green-700">
+            <p>
+              Thank you for reaching out to us! We'll get back to you as soon as
+              we can.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
