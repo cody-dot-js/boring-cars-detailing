@@ -124,6 +124,16 @@ export const Footer = ({ copyrightDate }: Props) => (
                     </a>
                   </Link>
                 </li>
+                <li>
+                  <Link href="/contact">
+                    <a
+                      href="/contact"
+                      className="text-base text-gray-400 hover:text-gray-300"
+                    >
+                      Contact
+                    </a>
+                  </Link>
+                </li>
               </ul>
             </div>
             <div className="mt-12 md:mt-0">
