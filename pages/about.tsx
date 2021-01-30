@@ -1,21 +1,19 @@
 import { ExternalLink } from "components/ExternalLink";
 import { FacebookIcon } from "components/icons/FacebookIcon";
 import { InstagramIcon } from "components/icons/InstagramIcon";
-import { Layout, LayoutMeta } from "components/Layout";
+import { Layout } from "components/Layout";
 import { urls } from "config";
 import { GetStaticProps } from "next";
 import Image from "next/image";
-import { copyrightDate } from "utils/copyrightDate";
+import { pageMeta, PageMeta } from "utils/pageMeta";
 
 interface Props {
-  meta: LayoutMeta;
+  meta: PageMeta;
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const props: Props = {
-    meta: {
-      copyrightDate: copyrightDate(),
-    },
+    meta: pageMeta(),
   };
 
   return {
@@ -26,7 +24,7 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function About({ meta }: Props) {
   return (
     <Layout
-      meta={meta}
+      pageMeta={meta}
       title="About"
       description="About Boring Cars Detailing."
     >

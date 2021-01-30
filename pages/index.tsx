@@ -1,21 +1,19 @@
 import * as React from "react";
 import { CTALaunch } from "components/CTALaunch";
 import { GlitchHero } from "components/GlitchHero";
-import { Layout, LayoutMeta } from "components/Layout";
+import { Layout } from "components/Layout";
 import { GetStaticProps } from "next";
 import Image from "next/image";
-import { copyrightDate } from "utils/copyrightDate";
 import { Testimonials } from "components/Testimonials";
+import { pageMeta, PageMeta } from "utils/pageMeta";
 
 interface Props {
-  meta: LayoutMeta;
+  meta: PageMeta;
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const props: Props = {
-    meta: {
-      copyrightDate: copyrightDate(),
-    },
+    meta: pageMeta(),
   };
 
   return {
@@ -27,7 +25,7 @@ export default function Home({ meta }: Props) {
   const launchRef = React.useRef<HTMLHeadingElement>(null);
 
   return (
-    <Layout meta={meta}>
+    <Layout pageMeta={meta}>
       <section className="relative z-0 h-screen w-full">
         <Image
           alt="Photo by Jason Leung on Unsplash"
