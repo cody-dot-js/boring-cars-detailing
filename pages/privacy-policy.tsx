@@ -1,9 +1,10 @@
 import { EmDash } from "components/EmDash";
 import { ExternalLink } from "components/ExternalLink";
 import { Layout } from "components/Layout";
-import { urls } from "config";
+import { emails, urls } from "config";
 import { GetStaticProps } from "next";
 import Link from "next/link";
+import { mailto } from "utils/mailto";
 import { pageMeta, PageMeta } from "utils/pageMeta";
 
 interface Props {
@@ -152,15 +153,15 @@ export default function PrivacyPolicy({ meta }: Props) {
               describes how we collect, use, and disclose data. If you have any
               questions or concerns about this Policy, or our practices with
               regards to your personal information, please contact us at{" "}
-              <ExternalLink href="mailto:privacy@boringcarsdetailing.com">
-                privacy@boringcarsdetailing.com
+              <ExternalLink href={mailto(emails.privacyPolicy)}>
+                {emails.privacyPolicy}
               </ExternalLink>
               .
             </p>
             <p>
               This Policy applies to your use of Boring Cars Detailing's
               products, services, and Website located at{" "}
-              <a href={urls.bcd}>www.boringcarsdetailing.com</a> on all
+              <a href={urls.site}>www.boringcarsdetailing.com</a> on all
               platforms (collectively, our "Services"), as well as any related
               services, sales, marketing, or events. We are committed to
               protecting your information through our compliance with this
@@ -411,8 +412,8 @@ export default function PrivacyPolicy({ meta }: Props) {
                   posting a testimonial, we will obtain your consent to use your
                   name and the content of the testimonial. If you wish to
                   update, or delete your testimonial, please contact us at{" "}
-                  <ExternalLink href="mailto:policy@boringcarsdetailing.com">
-                    policy@boringcarsdetailing.com
+                  <ExternalLink href={mailto(emails.privacyPolicy)}>
+                    {emails.privacyPolicy}
                   </ExternalLink>{" "}
                   and be sure to include your name, testimonial location, and
                   contact information.
@@ -704,8 +705,8 @@ export default function PrivacyPolicy({ meta }: Props) {
                 account and take reasonable measures to promptly delete such
                 data from our records. If you become aware of any data we may
                 have collected from children under age 18, please contact us at{" "}
-                <ExternalLink href="mailto:policy@boringcarsdetailing.com">
-                  policy@boringcarsdetailing.com
+                <ExternalLink href={mailto(emails.privacyPolicy)}>
+                  {emails.privacyPolicy}
                 </ExternalLink>
                 .
               </p>
@@ -954,11 +955,11 @@ export default function PrivacyPolicy({ meta }: Props) {
                 </p>
                 <p>
                   You may contact us by email at{" "}
-                  <ExternalLink href="mailto:policy@boringcarsdetailing.com">
-                    policy@boringcarsdetailing.com
+                  <ExternalLink href={mailto(emails.privacyPolicy)}>
+                    {emails.privacyPolicy}
                   </ExternalLink>
                   , by visiting{" "}
-                  <Link href="/contact">{`${urls.bcd}/contact`}</Link>, or by
+                  <Link href="/contact">{`${urls.site}/contact`}</Link>, or by
                   referring to the contact details at the bottom of this
                   document.
                 </p>
@@ -1133,11 +1134,11 @@ export default function PrivacyPolicy({ meta }: Props) {
                 </ul>
                 <p>
                   To exercise these rights, you can contact us by email at{" "}
-                  <ExternalLink href="mailto:privacy@boringcarsdetailing.com">
-                    privacy@boringcarsdetailing.com
+                  <ExternalLink href={mailto(emails.privacyPolicy)}>
+                    {emails.privacyPolicy}
                   </ExternalLink>
                   , by visiting{" "}
-                  <Link href="/contact">{`${urls.bcd}/contact`}</Link>, or by
+                  <Link href="/contact">{`${urls.site}/contact`}</Link>, or by
                   referring to the contact details at the bottom of this
                   document. If you have a complaint about how we handle your
                   data, we would like to hear from you.
@@ -1176,8 +1177,8 @@ export default function PrivacyPolicy({ meta }: Props) {
               <p>
                 If you have questions or comments about this Policy, you may
                 email us at{" "}
-                <ExternalLink href="mailto:policy@boringcarsdetailing.com">
-                  policy@boringcarsdetailing.com
+                <ExternalLink href={mailto(emails.privacyPolicy)}>
+                  {emails.privacyPolicy}
                 </ExternalLink>{" "}
                 or by post to:
               </p>

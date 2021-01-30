@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { FormValues, subscribe, validationSchema } from "apis/convertKit";
 import { ExclamationCircleIcon } from "./icons/ExclamationCircleIcon";
 import cx from "classnames";
+import { emails } from "config";
 
 export function CTALaunch() {
   const [didSubscribe, setDidSubscribe] = React.useState<boolean>(false);
@@ -89,7 +90,7 @@ export function CTALaunch() {
                 <p className="mt-6 mx-auto max-w-2xl text-xs sm:text-lg text-white">
                   Please check your email for a subscription confirmation from{" "}
                   <code className="text-gray-200 font-bold">
-                    support@boringcarsdetailing.com
+                    {emails.support}
                   </code>
                 </p>
                 <p className="text-9xl text-center mt-6">🥳</p>
