@@ -3,22 +3,20 @@ import { validationSchema, FormValues, contact } from "apis/contact";
 import { ExternalLink } from "components/ExternalLink";
 import { EmailIcon } from "components/icons/EmailIcon";
 import { PhoneIcon } from "components/icons/PhoneIcon";
-import { Layout, LayoutMeta } from "components/Layout";
+import { Layout } from "components/Layout";
 import { GetStaticProps } from "next";
-import { copyrightDate } from "utils/copyrightDate";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { ExclamationCircleIcon } from "components/icons/ExclamationCircleIcon";
 import cx from "classnames";
 import { CheckCircleIcon } from "components/icons/CheckCircleIcon";
+import { pageMeta, PageMeta } from "utils/pageMeta";
 interface Props {
-  meta: LayoutMeta;
+  meta: PageMeta;
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const props: Props = {
-    meta: {
-      copyrightDate: copyrightDate(),
-    },
+    meta: pageMeta(),
   };
 
   return {
@@ -33,7 +31,7 @@ export default function Contact({ meta }: Props) {
   ] = React.useState<boolean>(false);
   return (
     <Layout
-      meta={meta}
+      pageMeta={meta}
       title="Contact"
       description="Contact Boring Cars Detailing."
     >

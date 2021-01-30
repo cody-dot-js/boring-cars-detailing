@@ -1,20 +1,18 @@
 import { EmDash } from "components/EmDash";
 import { ExternalLink } from "components/ExternalLink";
-import { Layout, LayoutMeta } from "components/Layout";
+import { Layout } from "components/Layout";
 import { urls } from "config";
 import { GetStaticProps } from "next";
 import Link from "next/link";
-import { copyrightDate } from "utils/copyrightDate";
+import { pageMeta, PageMeta } from "utils/pageMeta";
 
 interface Props {
-  meta: LayoutMeta;
+  meta: PageMeta;
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const props: Props = {
-    meta: {
-      copyrightDate: copyrightDate(),
-    },
+    meta: pageMeta(),
   };
 
   return {
@@ -25,7 +23,7 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function PrivacyPolicy({ meta }: Props) {
   return (
     <Layout
-      meta={meta}
+      pageMeta={meta}
       title="Privacy Policy"
       description="Boring Cars Detailing Privacy Policy."
     >
