@@ -151,6 +151,16 @@ export const Footer = ({ copyrightDate }: Props) => (
                     </a>
                   </Link>
                 </li>
+                <li>
+                  <Link href="/tos">
+                    <a
+                      href="/tos"
+                      className="text-base text-gray-400 hover:text-gray-300"
+                    >
+                      Terms of Service
+                    </a>
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

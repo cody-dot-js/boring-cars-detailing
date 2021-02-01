@@ -1,3 +1,4 @@
+import { defaultDescription, defaultTitle, socialIds } from "config";
 import Head from "next/head";
 
 export interface SEOProps {
@@ -6,8 +7,6 @@ export interface SEOProps {
   robots?: string;
 }
 
-const defaultTitle = "Boring Cars Detailing";
-const defaultDescription = "Website for Boring Cars Detailing";
 const defaultRobots = "index,follow";
 
 export function SEO(props: SEOProps) {
@@ -41,7 +40,7 @@ export function SEO(props: SEOProps) {
       <meta name="og:type" content="website" />
       <meta property="og:image" content="/og-image.png" />
       <meta property="twitter:image" content="/og-image.png" />
-      <meta name="twitter:site" content="@boringcarsdeta1" />
+      <meta name="twitter:site" content={`@${socialIds.twitter}`} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:card" content="summary_large_image" />
       <link

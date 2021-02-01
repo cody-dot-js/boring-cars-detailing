@@ -72,7 +72,7 @@ export default function About({ meta }: Props) {
                       <ul className="flex space-x-5">
                         <li>
                           <ExternalLink
-                            href={urls.cem.facebook}
+                            href={urls.personal.facebook}
                             className="text-gray-400 hover:text-gray-300"
                           >
                             <span className="sr-only">Facebook</span>
@@ -81,7 +81,7 @@ export default function About({ meta }: Props) {
                         </li>
                         <li>
                           <ExternalLink
-                            href={urls.cem.instagram}
+                            href={urls.personal.instagram}
                             className="text-gray-400 hover:text-gray-300"
                           >
                             <span className="sr-only">Instagram</span>

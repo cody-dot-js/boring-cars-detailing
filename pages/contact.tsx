@@ -10,6 +10,8 @@ import { ExclamationCircleIcon } from "components/icons/ExclamationCircleIcon";
 import cx from "classnames";
 import { CheckCircleIcon } from "components/icons/CheckCircleIcon";
 import { pageMeta, PageMeta } from "utils/pageMeta";
+import { mailto } from "utils/mailto";
+import { emails } from "config";
 interface Props {
   meta: PageMeta;
 }
@@ -71,9 +73,9 @@ export default function Contact({ meta }: Props) {
                   <EmailIcon className="flex-shrink-0 h-6 w-6 text-gray-400" />
                   <ExternalLink
                     className="ml-3 text-cyan-200"
-                    href="mailto:hello@boringcarsdetailing.com"
+                    href={mailto(emails.contact)}
                   >
-                    hello@boringcarsdetailing.com
+                    {emails.contact}
                   </ExternalLink>
                 </dd>
               </div>
