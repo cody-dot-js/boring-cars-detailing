@@ -3,12 +3,13 @@ import cx from "classnames";
 import { GitHubIcon } from "../icons/GithubIcon";
 import { ExternalLink } from "../ExternalLink";
 import { TwitterIcon } from "../icons/TwitterIcon";
-import Link from "next/link";
+import { Link } from "../Link";
 import { BugIcon } from "../icons/BugIcon";
 import { FacebookIcon } from "../icons/FacebookIcon";
 import { InstagramIcon } from "../icons/InstagramIcon";
 import styles from "./styles.module.css";
 import { urls } from "config";
+import { Heart20 } from "components/icons/HeartIcon";
 
 interface Props {
   children?: React.ReactNode;
@@ -82,13 +83,6 @@ export const Footer = ({ copyrightDate }: Props) => (
                     Schedule
                   </ComingSoonLink>
                 </li>
-              </ul>
-            </div>
-            <div className="mt-12 md:mt-0">
-              <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-                Support
-              </h3>
-              <ul className="mt-4 space-y-4">
                 <li>
                   <ComingSoonLink
                     tooltip="Pricing coming soon!"
@@ -99,9 +93,7 @@ export const Footer = ({ copyrightDate }: Props) => (
                 </li>
               </ul>
             </div>
-          </div>
-          <div className="md:grid md:grid-cols-2 md:gap-8">
-            <div>
+            <div className="mt-12 md:mt-0">
               <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
                 Company
               </h3>
@@ -115,50 +107,44 @@ export const Footer = ({ copyrightDate }: Props) => (
                   </ComingSoonLink>
                 </li>
                 <li>
-                  <Link href="/about">
-                    <a
-                      href="/about"
-                      className="text-base text-gray-400 hover:text-gray-300"
-                    >
-                      About
-                    </a>
+                  <Link
+                    href="/about"
+                    className="text-base text-gray-400 hover:text-gray-300"
+                  >
+                    About
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact">
-                    <a
-                      href="/contact"
-                      className="text-base text-gray-400 hover:text-gray-300"
-                    >
-                      Contact
-                    </a>
+                  <Link
+                    href="/contact"
+                    className="text-base text-gray-400 hover:text-gray-300"
+                  >
+                    Contact
                   </Link>
                 </li>
               </ul>
             </div>
-            <div className="mt-12 md:mt-0">
+          </div>
+          <div className="md:grid md:grid-cols-2 md:gap-8">
+            <div>
               <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
                 Legal
               </h3>
               <ul className="mt-4 space-y-4">
                 <li>
-                  <Link href="/privacy-policy">
-                    <a
-                      href="/privacy-policy"
-                      className="text-base text-gray-400 hover:text-gray-300"
-                    >
-                      Privacy
-                    </a>
+                  <Link
+                    href="/privacy-policy"
+                    className="text-base text-gray-400 hover:text-gray-300"
+                  >
+                    Privacy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/tos">
-                    <a
-                      href="/tos"
-                      className="text-base text-gray-400 hover:text-gray-300"
-                    >
-                      Terms of Service
-                    </a>
+                  <Link
+                    href="/tos"
+                    className="text-base text-gray-400 hover:text-gray-300"
+                  >
+                    Terms of Service
                   </Link>
                 </li>
               </ul>
@@ -267,19 +253,7 @@ export const Footer = ({ copyrightDate }: Props) => (
         </p>
       </div>
       <p className="mt-8 text-center text-base text-gray-400 opacity-80">
-        Made with{" "}
-        <svg
-          className="inline-block h-4 w-4 -mt-1"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fillRule="evenodd"
-            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-            clipRule="evenodd"
-          />
-        </svg>{" "}
-        by{" "}
+        Made with <Heart20 className="inline-block h-4 w-4 -mt-1" /> by{" "}
         <ExternalLink className="font-bold" href="https://codyaprice.com">
           Cody A. Price
         </ExternalLink>

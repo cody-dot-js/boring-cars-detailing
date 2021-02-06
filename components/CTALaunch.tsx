@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { FormValues, subscribe, validationSchema } from "apis/convertKit";
-import { ExclamationCircleIcon } from "./icons/ExclamationCircleIcon";
+import { ExclamationCircle20 } from "./icons/ExclamationCircleIcon";
 import cx from "classnames";
 import { emails } from "config";
 
@@ -159,7 +159,7 @@ function SubscribeForm({
                   <ErrorMessage name="name">
                     {() => (
                       <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                        <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
+                        <ExclamationCircle20 className="h-5 w-5 text-red-500" />
                       </div>
                     )}
                   </ErrorMessage>
@@ -191,7 +191,7 @@ function SubscribeForm({
                   <ErrorMessage name="email">
                     {() => (
                       <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                        <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
+                        <ExclamationCircle20 className="h-5 w-5 text-red-500" />
                       </div>
                     )}
                   </ErrorMessage>

@@ -1,10 +1,10 @@
 import { ExternalLink } from "components/ExternalLink";
 import { Layout } from "components/Layout";
 import { GetStaticProps } from "next";
-import Link from "next/link";
+import { Link } from "components/Link";
 import { PageMeta, pageMeta } from "utils/pageMeta";
 import { emails, name, shortName } from "config";
-import { mailto } from "utils/mailto";
+import { mailToLink } from "utils/mailToLink";
 
 interface Props {
   meta: PageMeta;
@@ -846,7 +846,7 @@ export default function TermsOfService({ meta }: Props) {
               </a>
               <p>
                 Questions about the Terms of Service should be sent to us at{" "}
-                <ExternalLink href={mailto(emails.tos)}>
+                <ExternalLink href={mailToLink(emails.tos)}>
                   {emails.tos}
                 </ExternalLink>
                 .

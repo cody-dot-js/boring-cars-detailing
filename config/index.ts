@@ -6,6 +6,8 @@ export const defaultTitle = "Boring Cars Detailing";
 
 export const defaultDescription = "Website for Boring Cars Detailing";
 
+export const telephoneNumber = "+1 (916) 385-7257";
+
 export const emails = {
   tos: "tos@boringcarsdetailing.com",
   contact: "hello@boringcarsdetailing.com",
@@ -44,6 +46,7 @@ const config = {
   emails,
   urls,
   socialIds,
+  telephoneNumber,
 };
 
 export default config;
