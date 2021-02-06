@@ -1,17 +1,18 @@
 import * as React from "react";
 import { validationSchema, FormValues, contact } from "apis/contact";
 import { ExternalLink } from "components/ExternalLink";
-import { EmailIcon } from "components/icons/EmailIcon";
-import { PhoneIcon } from "components/icons/PhoneIcon";
+import { Email24 } from "components/icons/EmailIcon";
+import { Phone24 } from "components/icons/PhoneIcon";
 import { Layout } from "components/Layout";
 import { GetStaticProps } from "next";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { ExclamationCircleIcon } from "components/icons/ExclamationCircleIcon";
+import { ExclamationCircle20 } from "components/icons/ExclamationCircleIcon";
 import cx from "classnames";
-import { CheckCircleIcon } from "components/icons/CheckCircleIcon";
+import { CheckCircle20 } from "components/icons/CheckCircleIcon";
 import { pageMeta, PageMeta } from "utils/pageMeta";
-import { mailto } from "utils/mailto";
-import { emails } from "config";
+import { mailToLink } from "utils/mailToLink";
+import { emails, telephoneNumber } from "config";
+import { telLink } from "utils/telLink";
 interface Props {
   meta: PageMeta;
 }
@@ -58,22 +59,22 @@ export default function Contact({ meta }: Props) {
               <div className="mt-6">
                 <dt className="sr-only">Phone number</dt>
                 <dd className="flex">
-                  <PhoneIcon className="flex-shrink-0 h-6 w-6 text-gray-400" />
+                  <Phone24 className="flex-shrink-0 h-6 w-6 text-gray-400" />
                   <ExternalLink
                     className="ml-3 text-cyan-200"
-                    href="tel:+1(916)385-7257"
+                    href={telLink(telephoneNumber)}
                   >
-                    +1 (916) 385-7257
+                    {telephoneNumber}
                   </ExternalLink>
                 </dd>
               </div>
               <div className="mt-3">
                 <dt className="sr-only">Email</dt>
                 <dd className="flex">
-                  <EmailIcon className="flex-shrink-0 h-6 w-6 text-gray-400" />
+                  <Email24 className="flex-shrink-0 h-6 w-6 text-gray-400" />
                   <ExternalLink
                     className="ml-3 text-cyan-200"
-                    href={mailto(emails.contact)}
+                    href={mailToLink(emails.contact)}
                   >
                     {emails.contact}
                   </ExternalLink>
@@ -137,7 +138,7 @@ function Success() {
     <div className="rounded-md bg-green-50 p-4">
       <div className="flex">
         <div className="flex-shrink-0">
-          <CheckCircleIcon className="h-5 w-5 text-green-400" />
+          <CheckCircle20 className="h-5 w-5 text-green-400" />
         </div>
         <div className="ml-3">
           <h3 className="text-sm font-medium text-green-800">Form Submitted</h3>
@@ -198,7 +199,7 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
               <ErrorMessage name="firstName">
                 {() => (
                   <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                    <ExclamationCircleIcon className="h-5 w-5 text-red-300" />
+                    <ExclamationCircle20 className="h-5 w-5 text-red-300" />
                   </div>
                 )}
               </ErrorMessage>
@@ -232,7 +233,7 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
               <ErrorMessage name="lastName">
                 {() => (
                   <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                    <ExclamationCircleIcon className="h-5 w-5 text-red-300" />
+                    <ExclamationCircle20 className="h-5 w-5 text-red-300" />
                   </div>
                 )}
               </ErrorMessage>
@@ -266,7 +267,7 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
               <ErrorMessage name="email">
                 {() => (
                   <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                    <ExclamationCircleIcon className="h-5 w-5 text-red-300" />
+                    <ExclamationCircle20 className="h-5 w-5 text-red-300" />
                   </div>
                 )}
               </ErrorMessage>
@@ -305,7 +306,7 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
               <ErrorMessage name="company">
                 {() => (
                   <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                    <ExclamationCircleIcon className="h-5 w-5 text-red-300" />
+                    <ExclamationCircle20 className="h-5 w-5 text-red-300" />
                   </div>
                 )}
               </ErrorMessage>
@@ -345,7 +346,7 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
               <ErrorMessage name="phoneNumber">
                 {() => (
                   <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                    <ExclamationCircleIcon className="h-5 w-5 text-red-300" />
+                    <ExclamationCircle20 className="h-5 w-5 text-red-300" />
                   </div>
                 )}
               </ErrorMessage>
@@ -411,7 +412,7 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
               <ErrorMessage name="discovery">
                 {() => (
                   <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                    <ExclamationCircleIcon className="h-5 w-5 text-red-300" />
+                    <ExclamationCircle20 className="h-5 w-5 text-red-300" />
                   </div>
                 )}
               </ErrorMessage>

@@ -3,8 +3,8 @@ import { ExternalLink } from "components/ExternalLink";
 import { Layout } from "components/Layout";
 import { emails, urls } from "config";
 import { GetStaticProps } from "next";
-import Link from "next/link";
-import { mailto } from "utils/mailto";
+import { Link } from "components/Link";
+import { mailToLink } from "utils/mailToLink";
 import { pageMeta, PageMeta } from "utils/pageMeta";
 
 interface Props {
@@ -153,7 +153,7 @@ export default function PrivacyPolicy({ meta }: Props) {
               describes how we collect, use, and disclose data. If you have any
               questions or concerns about this Policy, or our practices with
               regards to your personal information, please contact us at{" "}
-              <ExternalLink href={mailto(emails.privacyPolicy)}>
+              <ExternalLink href={mailToLink(emails.privacyPolicy)}>
                 {emails.privacyPolicy}
               </ExternalLink>
               .
@@ -412,7 +412,7 @@ export default function PrivacyPolicy({ meta }: Props) {
                   posting a testimonial, we will obtain your consent to use your
                   name and the content of the testimonial. If you wish to
                   update, or delete your testimonial, please contact us at{" "}
-                  <ExternalLink href={mailto(emails.privacyPolicy)}>
+                  <ExternalLink href={mailToLink(emails.privacyPolicy)}>
                     {emails.privacyPolicy}
                   </ExternalLink>{" "}
                   and be sure to include your name, testimonial location, and
@@ -705,7 +705,7 @@ export default function PrivacyPolicy({ meta }: Props) {
                 account and take reasonable measures to promptly delete such
                 data from our records. If you become aware of any data we may
                 have collected from children under age 18, please contact us at{" "}
-                <ExternalLink href={mailto(emails.privacyPolicy)}>
+                <ExternalLink href={mailToLink(emails.privacyPolicy)}>
                   {emails.privacyPolicy}
                 </ExternalLink>
                 .
@@ -955,7 +955,7 @@ export default function PrivacyPolicy({ meta }: Props) {
                 </p>
                 <p>
                   You may contact us by email at{" "}
-                  <ExternalLink href={mailto(emails.privacyPolicy)}>
+                  <ExternalLink href={mailToLink(emails.privacyPolicy)}>
                     {emails.privacyPolicy}
                   </ExternalLink>
                   , by visiting{" "}
@@ -1134,7 +1134,7 @@ export default function PrivacyPolicy({ meta }: Props) {
                 </ul>
                 <p>
                   To exercise these rights, you can contact us by email at{" "}
-                  <ExternalLink href={mailto(emails.privacyPolicy)}>
+                  <ExternalLink href={mailToLink(emails.privacyPolicy)}>
                     {emails.privacyPolicy}
                   </ExternalLink>
                   , by visiting{" "}
@@ -1177,7 +1177,7 @@ export default function PrivacyPolicy({ meta }: Props) {
               <p>
                 If you have questions or comments about this Policy, you may
                 email us at{" "}
-                <ExternalLink href={mailto(emails.privacyPolicy)}>
+                <ExternalLink href={mailToLink(emails.privacyPolicy)}>
                   {emails.privacyPolicy}
                 </ExternalLink>{" "}
                 or by post to:
