@@ -1,18 +1,23 @@
 import { ExternalLink } from "components/ExternalLink";
-import { Layout } from "components/Layout";
+import { getPageLayout } from "components/Layout";
 import { GetStaticProps } from "next";
 import { Link } from "components/Link";
 import { PageMeta, pageMeta } from "utils/pageMeta";
 import { emails, name, shortName } from "config";
 import { mailToLink } from "utils/mailToLink";
+import type { BasePageProps } from "types/BasePageProps";
 
-interface Props {
+interface Props extends BasePageProps {
   meta: PageMeta;
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const props: Props = {
     meta: pageMeta(),
+    seo: {
+      title: "Terms of Service",
+      description: `${shortName} Terms of Service`,
+    },
   };
 
   return {
@@ -20,13 +25,11 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
+TermsOfService.pageLayout = getPageLayout;
+
 export default function TermsOfService({ meta }: Props) {
   return (
-    <Layout
-      pageMeta={meta}
-      title="Terms of Service"
-      description={`${shortName} Terms of Service`}
-    >
+    <>
       <div className="relative py-16 overflow-hidden">
         <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
           <div
@@ -855,6 +858,6 @@ export default function TermsOfService({ meta }: Props) {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 }

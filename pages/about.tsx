@@ -1,19 +1,24 @@
 import { ExternalLink } from "components/ExternalLink";
 import { FacebookIcon } from "components/icons/FacebookIcon";
 import { InstagramIcon } from "components/icons/InstagramIcon";
-import { Layout } from "components/Layout";
-import { urls } from "config";
+import { getPageLayout } from "components/Layout";
+import { shortName, urls } from "config";
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import { pageMeta, PageMeta } from "utils/pageMeta";
+import type { BasePageProps } from "types/BasePageProps";
 
-interface Props {
+interface Props extends BasePageProps {
   meta: PageMeta;
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const props: Props = {
     meta: pageMeta(),
+    seo: {
+      title: "About",
+      description: `About ${shortName}`,
+    },
   };
 
   return {
@@ -21,13 +26,11 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default function About({ meta }: Props) {
+About.pageLayout = getPageLayout;
+
+export default function About() {
   return (
-    <Layout
-      pageMeta={meta}
-      title="About"
-      description="About Boring Cars Detailing."
-    >
+    <>
       <section className="mx-auto py-16 sm:py-24 px-4 max-w-7xl sm:px-6 lg:px-8">
         <div className="space-y-12 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
           <div className="space-y-5 sm:space-y-4">
@@ -174,6 +177,6 @@ export default function About({ meta }: Props) {
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }

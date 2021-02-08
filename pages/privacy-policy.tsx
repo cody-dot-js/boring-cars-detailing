@@ -1,19 +1,24 @@
 import { EmDash } from "components/EmDash";
 import { ExternalLink } from "components/ExternalLink";
-import { Layout } from "components/Layout";
-import { emails, urls } from "config";
+import { getPageLayout } from "components/Layout";
+import { emails, shortName, urls } from "config";
 import { GetStaticProps } from "next";
 import { Link } from "components/Link";
 import { mailToLink } from "utils/mailToLink";
 import { pageMeta, PageMeta } from "utils/pageMeta";
+import type { BasePageProps } from "types/BasePageProps";
 
-interface Props {
+interface Props extends BasePageProps {
   meta: PageMeta;
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const props: Props = {
     meta: pageMeta(),
+    seo: {
+      title: "Privacy Policy",
+      description: `${shortName} Privacy Policy`,
+    },
   };
 
   return {
@@ -21,13 +26,11 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default function PrivacyPolicy({ meta }: Props) {
+PrivacyPolicy.pageLayout = getPageLayout;
+
+export default function PrivacyPolicy() {
   return (
-    <Layout
-      pageMeta={meta}
-      title="Privacy Policy"
-      description="Boring Cars Detailing Privacy Policy."
-    >
+    <>
       <div className="relative py-16 overflow-hidden">
         <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
           <div
@@ -1213,6 +1216,6 @@ export default function PrivacyPolicy({ meta }: Props) {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 }

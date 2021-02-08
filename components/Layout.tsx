@@ -2,27 +2,20 @@ import { SkipNavLink, SkipNavContent } from "@reach/skip-nav";
 import { TopNavigation } from "./TopNavigation";
 import { Footer } from "./footer/Footer";
 import { Analytics } from "./Analytics";
-import { SEO, SEOProps } from "./SEO";
+import { SEO } from "./SEO";
 import "@reach/skip-nav/styles.css";
 import styles from "./layout.module.css";
-import { EnvProvider } from "hooks/useEnv";
-import { PageMeta } from "utils/pageMeta";
+import { GetPageLayout } from "types/PageLayout";
+import { BasePageProps } from "types/BasePageProps";
 
-interface Props extends SEOProps {
+interface Props extends BasePageProps {
   children: React.ReactNode;
-  pageMeta: PageMeta;
 }
 
-export function Layout({
-  children,
-  pageMeta,
-  title,
-  description,
-  robots,
-}: Props) {
+export function Layout({ children, seo }: Props) {
   return (
-    <EnvProvider env={pageMeta.env}>
-      <SEO title={title} description={description} robots={robots} />
+    <>
+      <SEO {...seo} />
       <Analytics />
       <SkipNavLink className={styles.skipNav} />
       <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-branded">
@@ -30,11 +23,12 @@ export function Layout({
         <SkipNavContent className="flex-auto">
           <main>{children}</main>
         </SkipNavContent>
-        <Footer
-          copyrightDate={pageMeta.copyrightDate}
-          className="flex-shrink-0"
-        />
+        <Footer className="flex-shrink-0" />
       </div>
-    </EnvProvider>
+    </>
   );
 }
+
+export const getPageLayout: GetPageLayout = (layoutProps) => (page) => (
+  <Layout {...layoutProps}>{page}</Layout>
+);
