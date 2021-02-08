@@ -11,7 +11,7 @@ import styles from "./styles.module.css";
 import { emails, routes, urls } from "config";
 import { Heart20 } from "components/icons/HeartIcon";
 import { copyrightDate } from "utils/copyrightDate";
-import { SubscribeForm } from "components/CTALaunch";
+import { SubscribeForm } from "components/SubscribeForm";
 
 interface Props {
   children?: React.ReactNode;
