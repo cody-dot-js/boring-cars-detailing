@@ -3,7 +3,7 @@ import { getPageLayout } from "components/Layout";
 import { GetStaticProps } from "next";
 import { Link } from "components/Link";
 import { PageMeta, pageMeta } from "utils/pageMeta";
-import { emails, name, shortName } from "config";
+import { emails, name, routes, shortName } from "config";
 import { mailToLink } from "utils/mailToLink";
 import type { BasePageProps } from "types/BasePageProps";
 
@@ -610,7 +610,7 @@ export default function TermsOfService({ meta }: Props) {
               <p>
                 Your submission of personal information through the store is
                 governed by our Privacy Policy. To view our Privacy Policy,
-                click <Link href="/privacy">here</Link>.
+                click <Link href={routes.privacyPolicy}>here</Link>.
               </p>
             </section>
 

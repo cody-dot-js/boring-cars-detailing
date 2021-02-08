@@ -36,7 +36,33 @@ export const urls = {
     facebook: "https://www.facebook.com/cem.barandir.3",
     instagram: "https://www.instagram.com/cemb35/",
   },
+  stripe: {
+    privacyPolicy: "https://stripe.com/privacy",
+  },
 };
+
+export const routes = {
+  about: "/about",
+  contact: "/contact",
+  gallery: "/gallery",
+  home: "/",
+  pricing: "/pricing",
+  privacyPolicy: "/privacy-policy",
+  schedule: "/schedule",
+  services: "/services", // TODO(cody): necessary?
+  termsOfService: "/tos",
+};
+
+function removeTrailingSlashes(path: string) {
+  return path.replace(/\/+/g, "");
+}
+
+export function fullRoutePath(route: keyof typeof routes) {
+  const { site } = urls;
+  const path = routes[route];
+
+  return removeTrailingSlashes(`${site}${path}`);
+}
 
 const config = {
   name,
@@ -47,6 +73,7 @@ const config = {
   urls,
   socialIds,
   telephoneNumber,
+  routes,
 };
 
 export default config;

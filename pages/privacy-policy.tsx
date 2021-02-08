@@ -1,7 +1,7 @@
 import { EmDash } from "components/EmDash";
 import { ExternalLink } from "components/ExternalLink";
 import { getPageLayout } from "components/Layout";
-import { emails, shortName, urls } from "config";
+import { emails, fullRoutePath, routes, shortName, urls } from "config";
 import { GetStaticProps } from "next";
 import { Link } from "components/Link";
 import { mailToLink } from "utils/mailToLink";
@@ -300,8 +300,8 @@ export default function PrivacyPolicy() {
                   the security code associated with your payment instrument. All
                   payment data is stored by Stripe. You may find their privacy
                   policy here:{" "}
-                  <ExternalLink href="https://stripe.com/privacy">
-                    https://stripe.com/privacy
+                  <ExternalLink href={urls.stripe.privacyPolicy}>
+                    {urls.stripe.privacyPolicy}
                   </ExternalLink>
                 </p>
                 <p>
@@ -962,8 +962,8 @@ export default function PrivacyPolicy() {
                     {emails.privacyPolicy}
                   </ExternalLink>
                   , by visiting{" "}
-                  <Link href="/contact">{`${urls.site}/contact`}</Link>, or by
-                  referring to the contact details at the bottom of this
+                  <Link href={routes.contact}>{fullRoutePath("contact")}</Link>,
+                  or by referring to the contact details at the bottom of this
                   document.
                 </p>
                 <p>
@@ -1141,8 +1141,8 @@ export default function PrivacyPolicy() {
                     {emails.privacyPolicy}
                   </ExternalLink>
                   , by visiting{" "}
-                  <Link href="/contact">{`${urls.site}/contact`}</Link>, or by
-                  referring to the contact details at the bottom of this
+                  <Link href={routes.contact}>{fullRoutePath("contact")}</Link>,
+                  or by referring to the contact details at the bottom of this
                   document. If you have a complaint about how we handle your
                   data, we would like to hear from you.
                 </p>
@@ -1209,7 +1209,7 @@ export default function PrivacyPolicy() {
                 from you, change that information, or delete it in some
                 circumstances. To request to review, update, or delete your
                 personal information, please submit a request form by clicking{" "}
-                <Link href="/contact">here</Link>. We will respond to your
+                <Link href={routes.contact}>here</Link>. We will respond to your
                 request within 30 days.
               </p>
             </section>
