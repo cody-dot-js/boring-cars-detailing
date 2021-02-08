@@ -1,17 +1,21 @@
 import * as React from "react";
-import { Layout, LayoutMeta } from "components/Layout";
+import { getPageLayout } from "components/Layout";
 import { GetStaticProps } from "next";
-import { copyrightDate } from "utils/copyrightDate";
 import { Pricing } from "components/Pricing";
+import type { BasePageProps } from "types/BasePageProps";
+import { pageMeta, PageMeta } from "utils/pageMeta";
+import { shortName } from "config";
 
-interface Props {
-  meta: LayoutMeta;
+interface Props extends BasePageProps {
+  meta: PageMeta;
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const props: Props = {
-    meta: {
-      copyrightDate: copyrightDate(),
+    meta: pageMeta(),
+    seo: {
+      title: "Pricing",
+      description: `${shortName} Services Pricing`,
     },
   };
 
@@ -20,10 +24,12 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default function Home({ meta }: Props) {
+PricingPage.pageLayout = getPageLayout;
+
+export default function PricingPage({ meta }: Props) {
   return (
-    <Layout meta={meta}>
+    <>
       <Pricing />
-    </Layout>
+    </>
   );
 }

@@ -89,13 +89,11 @@ export function Footer({ className }: Props) {
                     </ComingSoonLink>
                   </li>
                   <li>
-                    <Link href="/pricing">
-                      <a
-                        href="/pricing"
-                        className="text-base text-gray-400 hover:text-gray-300"
-                      >
-                        Pricing
-                      </a>
+                    <Link
+                      href={routes.pricing}
+                      className="text-base text-gray-400 hover:text-gray-300"
+                    >
+                      Pricing
                     </Link>
                   </li>
                 </ul>

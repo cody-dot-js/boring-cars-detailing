@@ -1,8 +1,10 @@
 import * as React from "react";
-import { CheckIcon } from "./icons/CheckIcon";
+import { Check24 } from "./icons/CheckIcon";
 import { Badge } from "./Badge";
 import Image from "next/image";
+import { Link } from "./Link";
 import cx from "classnames";
+import { routes } from "../config";
 
 export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
   return (
@@ -119,7 +121,7 @@ export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
                       <div className="mt-8">
                         <div className="rounded-lg shadow-md">
                           {/* <a
-                            href="/"
+                            href={routes.schedule}
                             className="block w-full text-center rounded-lg border border-transparent px-6 py-3 text-base font-medium bg-gray-700 text-pink-300 hover:bg-gray-800"
                             aria-describedby="tier-regular"
                             aria-disabled="true"
@@ -186,7 +188,7 @@ export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
                     <div className="mt-10">
                       <div className="rounded-lg shadow-md">
                         {/* <a
-                          href="/"
+                          href={routes.schedule}
                           className="block shadow-primary-md w-full text-center rounded-lg border border-transparent bg-pink-600 px-6 py-4 text-xl leading-6 font-medium text-white hover:bg-pink-700"
                           aria-describedby="tier-plus"
                         >
@@ -242,7 +244,7 @@ export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
                       <div className="mt-8">
                         <div className="rounded-lg shadow-md">
                           {/* <a
-                            href="/"
+                            href={routes.schedule}
                             className="block w-full text-center rounded-lg border border-transparent px-6 py-3 text-base font-medium bg-gray-700 text-pink-300 hover:bg-gray-800"
                             aria-describedby="tier-premium"
                           >
@@ -285,21 +287,12 @@ export const Pricing = React.forwardRef<HTMLHeadingElement>((_, ref) => {
               </div>
               <div className="mt-6 rounded-md shadow lg:mt-0 lg:ml-10 lg:flex-shrink-0">
                 <div className="rounded-lg shadow-md">
-                  {/* <a
-                            href="/"
-                            className="block w-full text-center rounded-lg border border-transparent px-6 py-3 text-base font-medium bg-gray-700 text-pink-300 hover:bg-gray-800"
-                            aria-describedby="tier-premium"
-                          >
-                            Schedule
-                            </a> */}
-                  <button
-                    className="block cursor-not-allowed disabled:opacity-60 w-full text-center rounded-lg border border-transparent px-6 py-3 text-base font-medium bg-gray-700 text-pink-300"
-                    aria-describedby="tier-premium"
-                    aria-disabled="true"
-                    disabled
+                  <Link
+                    href={routes.contact}
+                    className="block w-full text-center rounded-lg border border-transparent px-6 py-3 text-base font-medium bg-gray-700 text-pink-300"
                   >
                     Contact Us
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -319,7 +312,7 @@ function ListItem({
 }) {
   return (
     <li className={cx("py-4 flex", className)}>
-      <CheckIcon className="flex-shrink-0 text-cyan-300" />
+      <Check24 className="flex-shrink-0 text-cyan-300" />
       <span className="ml-3 text-base text-gray-100">{children}</span>
     </li>
   );
