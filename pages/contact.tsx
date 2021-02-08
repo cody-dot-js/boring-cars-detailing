@@ -3,7 +3,7 @@ import { validationSchema, FormValues, contact } from "apis/contact";
 import { ExternalLink } from "components/ExternalLink";
 import { Email24 } from "components/icons/EmailIcon";
 import { Phone24 } from "components/icons/PhoneIcon";
-import { Layout } from "components/Layout";
+import { getPageLayout } from "components/Layout";
 import { GetStaticProps } from "next";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { ExclamationCircle20 } from "components/icons/ExclamationCircleIcon";
@@ -11,15 +11,21 @@ import cx from "classnames";
 import { CheckCircle20 } from "components/icons/CheckCircleIcon";
 import { pageMeta, PageMeta } from "utils/pageMeta";
 import { mailToLink } from "utils/mailToLink";
-import { emails, telephoneNumber } from "config";
+import { emails, shortName, telephoneNumber } from "config";
 import { telLink } from "utils/telLink";
-interface Props {
+import type { BasePageProps } from "types/BasePageProps";
+
+interface Props extends BasePageProps {
   meta: PageMeta;
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const props: Props = {
     meta: pageMeta(),
+    seo: {
+      title: "Contact",
+      description: `Contact ${shortName}`,
+    },
   };
 
   return {
@@ -27,17 +33,16 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default function Contact({ meta }: Props) {
+Contact.pageLayout = getPageLayout;
+
+export default function Contact() {
   const [
     formSuccessfullySent,
     setFormSuccessfullySent,
   ] = React.useState<boolean>(false);
+
   return (
-    <Layout
-      pageMeta={meta}
-      title="Contact"
-      description="Contact Boring Cars Detailing."
-    >
+    <>
       <section className="relative max-w-7xl mx-auto">
         <div className="py-16 px-4 sm:px-6 lg:px-8 lg:py-24 xl:pr-12">
           <div className="max-w-lg mx-auto">
@@ -129,7 +134,7 @@ export default function Contact({ meta }: Props) {
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }
 

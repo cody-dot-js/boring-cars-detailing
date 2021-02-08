@@ -1,13 +1,14 @@
 import * as React from "react";
 import { CTALaunch } from "components/CTALaunch";
 import { GlitchHero } from "components/GlitchHero";
-import { Layout } from "components/Layout";
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import { Testimonials } from "components/Testimonials";
 import { pageMeta, PageMeta } from "utils/pageMeta";
+import { getPageLayout } from "components/Layout";
+import type { BasePageProps } from "types/BasePageProps";
 
-interface Props {
+interface Props extends BasePageProps {
   meta: PageMeta;
 }
 
@@ -21,11 +22,13 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default function Home({ meta }: Props) {
+Home.pageLayout = getPageLayout;
+
+export default function Home() {
   const launchRef = React.useRef<HTMLHeadingElement>(null);
 
   return (
-    <Layout pageMeta={meta}>
+    <>
       <section className="relative z-0 h-screen w-full">
         <Image
           alt="Photo by Jason Leung on Unsplash"
@@ -59,6 +62,6 @@ export default function Home({ meta }: Props) {
       </h2>
       <CTALaunch />
       <Testimonials />
-    </Layout>
+    </>
   );
 }

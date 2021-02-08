@@ -10,11 +10,11 @@ import { InstagramIcon } from "../icons/InstagramIcon";
 import styles from "./styles.module.css";
 import { urls } from "config";
 import { Heart20 } from "components/icons/HeartIcon";
+import { copyrightDate } from "utils/copyrightDate";
 
 interface Props {
   children?: React.ReactNode;
   className?: string;
-  copyrightDate: string;
 }
 
 interface ComingSoonProps
@@ -44,11 +44,12 @@ function ComingSoonLink({
   );
 }
 
-export const Footer = ({ copyrightDate }: Props) => (
+export const Footer = ({ className }: Props) => (
   <footer
     className={cx(
       "relative mt-24 bg-gray-900 sm:mt-12 overflow-hidden",
-      styles.footer
+      styles.footer,
+      className
     )}
     aria-labelledby="footerHeading"
   >
@@ -245,7 +246,7 @@ export const Footer = ({ copyrightDate }: Props) => (
           </ExternalLink>
         </div>
         <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
-          &copy; {copyrightDate}{" "}
+          &copy; {copyrightDate()}{" "}
           <span className="font-bold">
             Boring&nbsp;Cars&nbsp;Detailing &&nbsp;Wash&nbsp;Services&nbsp;LLC
           </span>
