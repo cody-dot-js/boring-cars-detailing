@@ -3,7 +3,7 @@ import { Link } from "./Link";
 import cx from "classnames";
 import { FlyoutAction, FlyoutItem, FlyoutLink, FlyoutMenu } from "./FlyoutMenu";
 import { useToggle } from "hooks/useToggle";
-import { telephoneNumber } from "config";
+import { routes, shortName, telephoneNumber } from "config";
 import { telLink } from "utils/telLink";
 import { Phone24 } from "./icons/PhoneIcon";
 import { Chat24 } from "./icons/ChatIcon";
@@ -170,17 +170,17 @@ export function TopNavigation() {
               </button>
             </div>
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/">
+              <Link href={routes.home}>
                 <div className="cursor-pointer">
                   <img
                     className="inline-block h-16 w-auto lg:mr-4"
                     src="/assets/imgs/nav-icon-128x128.png"
-                    alt="Boring Cars Detailing"
+                    alt={shortName}
                     width="64px"
                     height="64px"
                   />
                   <h1 className="hidden lg:inline-block text-white primary-text-glow text-xl cursor-pointer flex-initial sm:inline-block mr-4 font-bold leading-tight">
-                    Boring Cars Detailing
+                    {shortName}
                   </h1>
                 </div>
               </Link>
@@ -195,7 +195,7 @@ export function TopNavigation() {
               </a> */}
               <NavLink
                 comingSoon
-                href="/pricing"
+                href={routes.pricing}
                 aria-label="Pricing coming soon!"
                 data-microtip-position="bottom-left"
                 data-microtip-size="fit"
@@ -205,7 +205,7 @@ export function TopNavigation() {
               </NavLink>
               <NavLink
                 comingSoon
-                href="/gallery"
+                href={routes.gallery}
                 aria-label="Gallery coming soon!"
                 data-microtip-position="bottom-left"
                 data-microtip-size="fit"
@@ -223,12 +223,14 @@ export function TopNavigation() {
                       </h3>
                       <ul className="mt-4 space-y-4">
                         <li className="text-base truncate">
-                          <FlyoutLink href="/privacy-policy">
+                          <FlyoutLink href={routes.privacyPolicy}>
                             Privacy Policy
                           </FlyoutLink>
                         </li>
                         <li className="text-base truncate">
-                          <FlyoutLink href="/tos">Terms of Service</FlyoutLink>
+                          <FlyoutLink href={routes.termsOfService}>
+                            Terms of Service
+                          </FlyoutLink>
                         </li>
                       </ul>
                     </div>
@@ -240,14 +242,14 @@ export function TopNavigation() {
                           // className="-m-3 p-3 flex items-center rounded-md text-base font-medium text-white hover:bg-gray-900"
                         >
                           <Phone24 className="flex-shrink-0" />
-                          <span className="ml-3">Contact Sales</span>
+                          <span className="ml-3">Call us</span>
                         </a>
                       </FlyoutAction>
                     </div>
                   </>
                 }
               >
-                <FlyoutItem href="/about">
+                <FlyoutItem href={routes.about}>
                   <Heart24 className="flex-shrink-0 text-pink-300" />
                   <div className="ml-4">
                     <p className="text-base font-medium text-white">About Us</p>
@@ -256,7 +258,7 @@ export function TopNavigation() {
                     </p>
                   </div>
                 </FlyoutItem>
-                <FlyoutItem href="/contact">
+                <FlyoutItem href={routes.contact}>
                   <Chat24 className="flex-shrink-0 text-pink-300" />
                   <div className="ml-4">
                     <p className="text-base font-medium text-white">Contact</p>
@@ -314,14 +316,14 @@ export function TopNavigation() {
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-          <MobileNavLink comingSoon href="/pricing">
+          <MobileNavLink comingSoon href={routes.pricing}>
             Pricing
           </MobileNavLink>
-          <MobileNavLink comingSoon href="/gallery">
+          <MobileNavLink comingSoon href={routes.gallery}>
             Gallery
           </MobileNavLink>
-          <MobileNavLink href="/about">About</MobileNavLink>
-          <MobileNavLink href="/contact">Contact</MobileNavLink>
+          <MobileNavLink href={routes.about}>About</MobileNavLink>
+          <MobileNavLink href={routes.contact}>Contact</MobileNavLink>
         </div>
         <div className="pt-4 pb-3 border-t border-blueGray-700">
           <div className="space-y-1 px-5 py-5 bg-blueGray-800 space-y-6 sm:flex sm:flex-col sm:space-y-0 sm:px-8">
@@ -331,10 +333,10 @@ export function TopNavigation() {
               </h3>
               <ul className="mt-4 space-y-4">
                 <li className="text-base truncate">
-                  <Link href="/privacy-policy">Privacy Policy</Link>
+                  <Link href={routes.privacyPolicy}>Privacy Policy</Link>
                 </li>
                 <li className="text-base truncate">
-                  <Link href="/tos">Terms of Service</Link>
+                  <Link href={routes.termsOfService}>Terms of Service</Link>
                 </li>
               </ul>
             </div>
@@ -345,7 +347,7 @@ export function TopNavigation() {
                 // className="-m-3 p-3 flex items-center rounded-md text-base font-medium text-white hover:bg-gray-900"
               >
                 <Phone24 className="flex-shrink-0" />
-                <span className="ml-3">Contact Sales</span>
+                <span className="ml-3">Call us</span>
               </a>
             </div>
           </div>
