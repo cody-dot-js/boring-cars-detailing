@@ -7,6 +7,7 @@ import { Testimonials } from "components/Testimonials";
 import { pageMeta, PageMeta } from "utils/pageMeta";
 import { getPageLayout } from "components/Layout";
 import type { BasePageProps } from "types/BasePageProps";
+import { Page } from "types/PageLayout";
 
 interface Props extends BasePageProps {
   meta: PageMeta;
@@ -22,9 +23,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-Home.pageLayout = getPageLayout;
-
-export default function Home() {
+const Home: Page = () => {
   const launchRef = React.useRef<HTMLHeadingElement>(null);
 
   return (
@@ -64,4 +63,8 @@ export default function Home() {
       <Testimonials />
     </>
   );
-}
+};
+
+Home.pageLayout = getPageLayout;
+
+export default Home;

@@ -7,6 +7,7 @@ import { Link } from "components/Link";
 import { mailToLink } from "utils/mailToLink";
 import { pageMeta, PageMeta } from "utils/pageMeta";
 import type { BasePageProps } from "types/BasePageProps";
+import { Page } from "types/PageLayout";
 
 interface Props extends BasePageProps {
   meta: PageMeta;
@@ -26,9 +27,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-PrivacyPolicy.pageLayout = getPageLayout;
-
-export default function PrivacyPolicy() {
+const PrivacyPolicy: Page = () => {
   return (
     <>
       <div className="relative py-16 overflow-hidden">
@@ -1218,4 +1217,8 @@ export default function PrivacyPolicy() {
       </div>
     </>
   );
-}
+};
+
+PrivacyPolicy.pageLayout = getPageLayout;
+
+export default PrivacyPolicy;

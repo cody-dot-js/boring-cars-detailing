@@ -1,3 +1,4 @@
+import { getEnvAsDataset } from "utils/getEnv";
 import Document, {
   DocumentContext,
   Html,
@@ -5,8 +6,9 @@ import Document, {
   Main,
   NextScript,
 } from "next/document";
+import { Analytics } from "components/Analytics";
 
-class MyDocument extends Document {
+class CustomDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
 
@@ -14,6 +16,8 @@ class MyDocument extends Document {
   }
 
   render() {
+    const dataset = getEnvAsDataset();
+
     return (
       <Html lang="en-US" dir="ltr" className="h-full">
         <Head>
@@ -21,7 +25,8 @@ class MyDocument extends Document {
           <link rel="stylesheet" href="assets/fonts/flash-back.css" />
           <link rel="stylesheet" href="assets/fonts/outrun-future.css" />
         </Head>
-        <body className="bg-background h-full text-gray-50">
+        <Analytics />
+        <body className="bg-background h-full text-gray-50" {...dataset}>
           <Main />
           <NextScript />
         </body>
@@ -30,4 +35,4 @@ class MyDocument extends Document {
   }
 }
 
-export default MyDocument;
+export default CustomDocument;
