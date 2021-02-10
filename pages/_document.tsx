@@ -1,4 +1,4 @@
-import { Env, getEnvAsDataset } from "utils/getEnv";
+import { Env } from "utils/getEnv";
 import Document, {
   DocumentContext,
   Html,
@@ -15,8 +15,6 @@ class CustomDocument extends Document {
   }
 
   render() {
-    const dataset = getEnvAsDataset();
-
     return (
       <Html lang="en-US" dir="ltr" className="h-full">
         <Head>
@@ -25,7 +23,7 @@ class CustomDocument extends Document {
           <link rel="stylesheet" href="assets/fonts/outrun-future.css" />
           <Analytics {...process.env} />
         </Head>
-        <body className="bg-background h-full text-gray-50" {...dataset}>
+        <body className="bg-background h-full text-gray-50">
           <Main />
           <NextScript />
         </body>
@@ -37,25 +35,22 @@ class CustomDocument extends Document {
 export default CustomDocument;
 
 function Analytics({ VERCEL_ENV, GA_MEASUREMENT_ID }: Partial<Env>) {
-  const isAnalyticsDisabled = VERCEL_ENV !== "production" || !GA_MEASUREMENT_ID;
+  const isAnalyticsEnabled =
+    VERCEL_ENV === "production" && Boolean(GA_MEASUREMENT_ID);
   const gtagScriptSrc = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-
-  if (isAnalyticsDisabled) {
-    return null;
-  }
 
   return (
     <>
-      <script async src={gtagScriptSrc} />
+      {isAnalyticsEnabled && <script async src={gtagScriptSrc} />}
       <script
         dangerouslySetInnerHTML={{
           __html: `
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
+        gtag.id = "${GA_MEASUREMENT_ID}";
+        gtag.enabled = ${isAnalyticsEnabled};
         gtag("js", new Date());
-        gtag("config", "${GA_MEASUREMENT_ID}", {
-          page_path: window.location.pathname,
-        });
+        gtag("config", "${GA_MEASUREMENT_ID}");
         `,
         }}
       />
