@@ -1,7 +1,13 @@
 declare global {
   interface Window {
     dataLayer: any[];
-    gtag: typeof gtag & { id: string; enabled: boolean };
+    gtag: typeof gtag;
+    __NEXT_DATA_CAP_: {
+      ga: {
+        id: string;
+        enabled: boolean;
+      };
+    };
   }
 }
 
@@ -10,7 +16,7 @@ export function gtag() {
 }
 
 export function pageView(url: URL | string) {
-  window.gtag("config", window.gtag.id, {
+  window.gtag("config", window.__NEXT_DATA_CAP_.ga.id, {
     page_path: url,
   });
 }
