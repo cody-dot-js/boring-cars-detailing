@@ -1,4 +1,4 @@
-import { getEnvAsDataset } from "utils/getEnv";
+import { Env, getEnvAsDataset } from "utils/getEnv";
 import Document, {
   DocumentContext,
   Html,
@@ -6,7 +6,6 @@ import Document, {
   Main,
   NextScript,
 } from "next/document";
-import { Analytics } from "components/Analytics";
 
 class CustomDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -25,7 +24,7 @@ class CustomDocument extends Document {
           <link rel="stylesheet" href="assets/fonts/flash-back.css" />
           <link rel="stylesheet" href="assets/fonts/outrun-future.css" />
         </Head>
-        <Analytics />
+        <Analytics {...process.env} />
         <body className="bg-background h-full text-gray-50" {...dataset}>
           <Main />
           <NextScript />
@@ -36,3 +35,30 @@ class CustomDocument extends Document {
 }
 
 export default CustomDocument;
+
+function Analytics({ VERCEL_ENV, GA_MEASUREMENT_ID }: Partial<Env>) {
+  const isAnalyticsDisabled = VERCEL_ENV !== "production" || !GA_MEASUREMENT_ID;
+  const gtagScriptSrc = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+
+  if (isAnalyticsDisabled) {
+    return null;
+  }
+
+  return (
+    <Head>
+      <script async src={gtagScriptSrc} />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag("js", new Date());
+        gtag("config", "${GA_MEASUREMENT_ID}", {
+          page_path: window.location.pathname,
+        });
+        `,
+        }}
+      />
+    </Head>
+  );
+}
