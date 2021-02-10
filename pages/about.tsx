@@ -7,6 +7,7 @@ import { GetStaticProps } from "next";
 import Image from "next/image";
 import { pageMeta, PageMeta } from "utils/pageMeta";
 import type { BasePageProps } from "types/BasePageProps";
+import { Page } from "types/PageLayout";
 
 interface Props extends BasePageProps {
   meta: PageMeta;
@@ -26,9 +27,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-About.pageLayout = getPageLayout;
-
-export default function About() {
+const About: Page = () => {
   return (
     <>
       <section className="mx-auto py-16 sm:py-24 px-4 max-w-7xl sm:px-6 lg:px-8">
@@ -179,4 +178,8 @@ export default function About() {
       </section>
     </>
   );
-}
+};
+
+About.pageLayout = getPageLayout;
+
+export default About;

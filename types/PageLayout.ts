@@ -5,3 +5,7 @@ export type GetPageLayout = (
 export type MaybeHasPageLayout = React.ReactNode & {
   pageLayout?: GetPageLayout;
 };
+
+export interface Page extends Function {
+  pageLayout?: GetPageLayout;
+}

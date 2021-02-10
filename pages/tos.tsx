@@ -6,6 +6,7 @@ import { PageMeta, pageMeta } from "utils/pageMeta";
 import { emails, name, routes, shortName } from "config";
 import { mailToLink } from "utils/mailToLink";
 import type { BasePageProps } from "types/BasePageProps";
+import { Page } from "types/PageLayout";
 
 interface Props extends BasePageProps {
   meta: PageMeta;
@@ -25,9 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-TermsOfService.pageLayout = getPageLayout;
-
-export default function TermsOfService({ meta }: Props) {
+const TermsOfService: Page = () => {
   return (
     <>
       <div className="relative py-16 overflow-hidden">
@@ -860,4 +859,8 @@ export default function TermsOfService({ meta }: Props) {
       </div>
     </>
   );
-}
+};
+
+TermsOfService.pageLayout = getPageLayout;
+
+export default TermsOfService;

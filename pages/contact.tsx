@@ -14,6 +14,7 @@ import { mailToLink } from "utils/mailToLink";
 import { emails, shortName, telephoneNumber } from "config";
 import { telLink } from "utils/telLink";
 import type { BasePageProps } from "types/BasePageProps";
+import { Page } from "types/PageLayout";
 
 interface Props extends BasePageProps {
   meta: PageMeta;
@@ -33,9 +34,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-Contact.pageLayout = getPageLayout;
-
-export default function Contact() {
+const Contact: Page = () => {
   const [
     formSuccessfullySent,
     setFormSuccessfullySent,
@@ -136,7 +135,11 @@ export default function Contact() {
       </section>
     </>
   );
-}
+};
+
+Contact.pageLayout = getPageLayout;
+
+export default Contact;
 
 function Success() {
   return (
