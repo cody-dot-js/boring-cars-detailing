@@ -23,8 +23,8 @@ class CustomDocument extends Document {
           <link rel="stylesheet" href="assets/fonts/inter.css" />
           <link rel="stylesheet" href="assets/fonts/flash-back.css" />
           <link rel="stylesheet" href="assets/fonts/outrun-future.css" />
+          <Analytics {...process.env} />
         </Head>
-        <Analytics {...process.env} />
         <body className="bg-background h-full text-gray-50" {...dataset}>
           <Main />
           <NextScript />
@@ -45,7 +45,7 @@ function Analytics({ VERCEL_ENV, GA_MEASUREMENT_ID }: Partial<Env>) {
   }
 
   return (
-    <Head>
+    <>
       <script async src={gtagScriptSrc} />
       <script
         dangerouslySetInnerHTML={{
@@ -59,6 +59,6 @@ function Analytics({ VERCEL_ENV, GA_MEASUREMENT_ID }: Partial<Env>) {
         `,
         }}
       />
-    </Head>
+    </>
   );
 }
