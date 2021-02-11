@@ -21,17 +21,17 @@ class CustomDocument extends Document {
           <link
             href="assets/fonts/inter.css"
             rel="stylesheet preload"
-            as="font"
+            as="style"
           />
           <link
             href="assets/fonts/flash-back.css"
             rel="stylesheet preload"
-            as="font"
+            as="style"
           />
           <link
             href="assets/fonts/outrun-future.css"
             rel="stylesheet preload"
-            as="font"
+            as="style"
           />
           <Analytics {...process.env} />
         </Head>
