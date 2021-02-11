@@ -39,11 +39,21 @@ export function event({ action, category, label, value }: GTagEvent) {
   });
 }
 
+type MetricName = Pick<Metric, "name">["name"];
+
+const metricLabel: Record<MetricName, string> = {
+  CLS: "Cumulative Layout Shift",
+  FCP: "First Contentful Paint",
+  FID: "First Input Delay",
+  LCP: "Largest Contentful Paint",
+  TTFB: "Time to First Byte",
+};
+
 function reportHandler(metric: Metric) {
   event({
     action: metric.name,
-    category: "performance",
-    label: metric.name,
+    category: "Performance",
+    label: metricLabel[metric.name],
     value: metric.value,
   });
 }
