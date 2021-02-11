@@ -1,7 +1,6 @@
 import { SkipNavLink, SkipNavContent } from "@reach/skip-nav";
 import { TopNavigation } from "./TopNavigation";
 import { Footer } from "./footer/Footer";
-import { Analytics } from "./Analytics";
 import { SEO } from "./SEO";
 import "@reach/skip-nav/styles.css";
 import styles from "./layout.module.css";
@@ -16,7 +15,6 @@ export function Layout({ children, seo }: Props) {
   return (
     <>
       <SEO {...seo} />
-      <Analytics />
       <SkipNavLink className={styles.skipNav} />
       <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-branded">
         <TopNavigation />

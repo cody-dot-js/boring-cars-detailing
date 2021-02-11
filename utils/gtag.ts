@@ -1,15 +1,14 @@
 import { getCLS, getFID, getLCP, getTTFB, getFCP, Metric } from "web-vitals";
 
+interface GTagMeta {
+  id: string;
+  enabled: boolean;
+}
+
 declare global {
   interface Window {
     dataLayer: any[];
-    gtag: typeof gtag;
-    __NEXT_DATA_CAP_: {
-      ga: {
-        id: string;
-        enabled: boolean;
-      };
-    };
+    gtag: typeof gtag & Partial<GTagMeta>;
   }
 }
 
@@ -17,9 +16,12 @@ export function gtag() {
   window.dataLayer.push(arguments);
 }
 
+// https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export function pageView(url: URL | string) {
-  window.gtag("config", window.__NEXT_DATA_CAP_.ga.id, {
+  window.gtag("event", "page_view", {
+    page_title: document.title,
     page_path: url,
+    send_to: window.gtag.id,
   });
 }
 

@@ -46,10 +46,11 @@ function Analytics({ VERCEL_ENV, GA_MEASUREMENT_ID }: Partial<Env>) {
         dangerouslySetInnerHTML={{
           __html: `
         window.dataLayer = window.dataLayer || [];
-        window.__NEXT_DATA_CAP_ = { ga: { id: "${GA_MEASUREMENT_ID}", enabled: ${isAnalyticsEnabled} } };
         function gtag(){dataLayer.push(arguments);}
+        gtag.id = "${GA_MEASUREMENT_ID}";
+        gtag.enabled = ${isAnalyticsEnabled};
         gtag("js", new Date());
-        gtag("config", "${GA_MEASUREMENT_ID}", { "transport_type": "beacon" });
+        gtag("config", "${GA_MEASUREMENT_ID}", { "transport_type": "beacon", send_page_view: false });
         `.trim(),
         }}
       />
