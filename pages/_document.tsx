@@ -18,9 +18,21 @@ class CustomDocument extends Document {
     return (
       <Html lang="en-US" dir="ltr" className="h-full">
         <Head>
-          <link rel="stylesheet" href="assets/fonts/inter.css" />
-          <link rel="stylesheet" href="assets/fonts/flash-back.css" />
-          <link rel="stylesheet" href="assets/fonts/outrun-future.css" />
+          <link
+            href="assets/fonts/inter.css"
+            ref="stylesheet preload"
+            as="font"
+          />
+          <link
+            href="assets/fonts/flash-back.css"
+            rel="stylesheet preload"
+            as="font"
+          />
+          <link
+            href="assets/fonts/outrun-future.css"
+            rel="stylesheet preload"
+            as="font"
+          />
           <Analytics {...process.env} />
         </Head>
         <body className="bg-background h-full text-gray-50">
