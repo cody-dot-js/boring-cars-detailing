@@ -4,7 +4,7 @@ import "styles/index.css";
 import type { MaybeHasPageLayout } from "types/PageLayout";
 import { measureWebVitals, pageView } from "utils/gtag";
 
-function handleRouteChange(url: URL | string) {
+function handleRouteChange(url: string) {
   pageView(url);
   measureWebVitals();
 }

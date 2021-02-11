@@ -50,7 +50,7 @@ function Analytics({ VERCEL_ENV, GA_MEASUREMENT_ID }: Partial<Env>) {
         gtag.id = "${GA_MEASUREMENT_ID}";
         gtag.enabled = ${isAnalyticsEnabled};
         gtag("js", new Date());
-        gtag("config", "${GA_MEASUREMENT_ID}", { "transport_type": "beacon", send_page_view: false });
+        gtag("config", "${GA_MEASUREMENT_ID}", { "transport_type": "beacon" });
         `.trim(),
         }}
       />

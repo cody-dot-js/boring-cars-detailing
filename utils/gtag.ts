@@ -17,11 +17,9 @@ export function gtag() {
 }
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
-export function pageView(url: URL | string) {
-  window.gtag("event", "page_view", {
-    page_title: document.title,
-    page_path: url,
-    send_to: window.gtag.id,
+export function pageView(path: string) {
+  window.gtag("config", window.gtag.id, {
+    page_path: path,
   });
 }
 
