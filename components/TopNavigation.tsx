@@ -2,13 +2,15 @@ import * as React from "react";
 import { Link } from "./Link";
 import cx from "classnames";
 import { FlyoutAction, FlyoutItem, FlyoutLink, FlyoutMenu } from "./FlyoutMenu";
-import { useToggle } from "hooks/useToggle";
 import { routes, shortName, telephoneNumber } from "config";
 import { telLink } from "utils/telLink";
 import { Phone24 } from "./icons/PhoneIcon";
 import { Chat24 } from "./icons/ChatIcon";
 import { Heart24 } from "./icons/HeartIcon";
 import { useIsActive } from "hooks/useIsActive";
+import { useRouter } from "next/router";
+import { X24 } from "./icons/XIcon";
+import { Menu24 } from "./icons/MenuIcon";
 
 interface NavLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
@@ -100,7 +102,20 @@ function MobileNavLink({
 }
 
 export function TopNavigation() {
-  const [showMenu, toggleShowMenu] = useToggle(false);
+  const router = useRouter();
+  const [showMenu, setShowMenu] = React.useState(false);
+  const toggleShowMenu = () => setShowMenu((s) => !s);
+
+  React.useEffect(() => {
+    function handleRouteChange() {
+      setShowMenu(false);
+    }
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events, setShowMenu]);
 
   return (
     <nav
@@ -116,57 +131,15 @@ export function TopNavigation() {
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                 aria-expanded="false"
               >
-                <span className="sr-only">Open main menu</span>
-                {/* <!-- Icon when menu is closed. -->
-            <!--
-              Heroicon name: outline/menu
-
-              Menu open: "hidden", Menu closed: "block"
-            --> */}
-                <svg
-                  className={cx(
-                    "h-6 w-6",
-                    showMenu && "hidden",
-                    !showMenu && "block"
-                  )}
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-                {/* <!-- Icon when menu is open. -->
-            <!--
-              Heroicon name: outline/x
-
-              Menu open: "block", Menu closed: "hidden"
-            --> */}
-                <svg
-                  className={cx(
-                    "h-6 w-6",
-                    showMenu && "block",
-                    !showMenu && "hidden"
-                  )}
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <span className="sr-only">
+                  {showMenu ? "Close" : "Open"} main menu
+                </span>
+                <Menu24
+                  className={cx(showMenu && "hidden", !showMenu && "block")}
+                />
+                <X24
+                  className={cx(showMenu && "block", !showMenu && "hidden")}
+                />
               </button>
             </div>
             <div className="flex-shrink-0 flex items-center">
@@ -306,11 +279,7 @@ export function TopNavigation() {
         </div>
       </div>
 
-      {/* <!--
-    Mobile menu, toggle classes based on menu state.
-
-    Menu open: "block", Menu closed: "hidden"
-  --> */}
+      {/* <!-- Mobile menu --> */}
       <div
         className={cx("lg:hidden", showMenu && "block", !showMenu && "hidden")}
       >
