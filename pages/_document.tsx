@@ -20,7 +20,7 @@ class CustomDocument extends Document {
         <Head>
           <link
             href="assets/fonts/inter.css"
-            ref="stylesheet preload"
+            rel="stylesheet preload"
             as="font"
           />
           <link
