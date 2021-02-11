@@ -2,15 +2,24 @@ import * as React from "react";
 import type { AppProps } from "next/app";
 import "styles/index.css";
 import type { MaybeHasPageLayout } from "types/PageLayout";
-import { pageView } from "utils/gtag";
+import { measureWebVitals, pageView } from "utils/gtag";
+
+function handleRouteChange(url: URL | string) {
+  pageView(url);
+  measureWebVitals();
+}
 
 function App({ Component, pageProps, router }: AppProps) {
   const { pageLayout = () => (page) => page } = Component as MaybeHasPageLayout;
 
   React.useEffect(() => {
-    router.events.on("routeChangeComplete", pageView);
+    measureWebVitals();
+  }, []);
+
+  React.useEffect(() => {
+    router.events.on("routeChangeComplete", handleRouteChange);
     return () => {
-      router.events.off("routeChangeComplete", pageView);
+      router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
 

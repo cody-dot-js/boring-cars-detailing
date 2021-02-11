@@ -49,7 +49,7 @@ function Analytics({ VERCEL_ENV, GA_MEASUREMENT_ID }: Partial<Env>) {
         window.__NEXT_DATA_CAP_ = { ga: { id: "${GA_MEASUREMENT_ID}", enabled: ${isAnalyticsEnabled} } };
         function gtag(){dataLayer.push(arguments);}
         gtag("js", new Date());
-        gtag("config", "${GA_MEASUREMENT_ID}");
+        gtag("config", "${GA_MEASUREMENT_ID}", { "transport_type": "beacon" });
         `.trim(),
         }}
       />
