@@ -15,6 +15,7 @@ import { emails, shortName, telephoneNumber } from "config";
 import { telLink } from "utils/telLink";
 import type { BasePageProps } from "types/BasePageProps";
 import { Page } from "types/PageLayout";
+import { FormErrorIcon } from "components/FormErrorIcon";
 
 interface Props extends BasePageProps {
   meta: PageMeta;
@@ -191,7 +192,7 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
             >
               First name
             </label>
-            <div className="mt-1">
+            <div className="mt-1 relative">
               <Field
                 id="firstName"
                 name="firstName"
@@ -204,13 +205,7 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
                     "border-red-500 text-red-300 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500"
                 )}
               />
-              <ErrorMessage name="firstName">
-                {() => (
-                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                    <ExclamationCircle20 className="h-5 w-5 text-red-300" />
-                  </div>
-                )}
-              </ErrorMessage>
+              <FormErrorIcon name="firstName" />
             </div>
             <ErrorMessage
               name="firstName"

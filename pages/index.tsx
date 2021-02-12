@@ -8,6 +8,7 @@ import { pageMeta, PageMeta } from "utils/pageMeta";
 import { getPageLayout } from "components/Layout";
 import type { BasePageProps } from "types/BasePageProps";
 import { Page } from "types/PageLayout";
+import { PricingSection } from "components/Pricing";
 
 interface Props extends BasePageProps {
   meta: PageMeta;
@@ -24,6 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Home: Page = () => {
+  const pricingRef = React.useRef<HTMLHeadingElement>(null);
   const launchRef = React.useRef<HTMLHeadingElement>(null);
 
   return (
@@ -39,19 +41,35 @@ const Home: Page = () => {
         />
         <div className="absolute z-0 top-0 right-0 left-0 bottom-0 bg-gray-950 opacity-70" />
         <GlitchHero>
-          <div className="relative z-30 max-w-md mx-auto sm:flex sm:justify-center -mt-28">
-            <button
-              type="button"
-              onClick={() =>
-                launchRef.current?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="rounded-md shadow-primary-md w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium text-white bg-pink-600 hover:bg-pink-700 md:py-4 md:text-lg md:px-10"
-            >
-              Get Started
-            </button>
+          <div className="relative z-30 w-full mx-auto max-w-7xl px-4">
+            <div className="text-center max-w-sm mx-auto sm:flex sm:justify-center">
+              <div className="rounded-md shadow">
+                <button
+                  type="button"
+                  onClick={() =>
+                    pricingRef.current?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 md:py-4 md:text-lg md:px-10"
+                >
+                  Get started
+                </button>
+              </div>
+              <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+                <button
+                  type="button"
+                  onClick={() =>
+                    launchRef.current?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="w-full flex items-center justify-center border border-transparent text-base font-medium rounded-md shadow-sm text-pink-200 bg-gray-600 bg-opacity-60 hover:bg-opacity-70 px-8 py-3 md:py-4 md:text-lg md:px-10"
+                >
+                  Subscribe
+                </button>
+              </div>
+            </div>
           </div>
         </GlitchHero>
       </section>
+      <PricingSection ref={pricingRef} />
       <h2
         id="launch"
         ref={launchRef}

@@ -92,6 +92,8 @@ module.exports = {
       opacity: ["disabled"],
       visibility: ["hover", "focus"],
       borderRadius: ["hover", "focus"],
+      zIndex: ["hover", "active"],
+      cursor: ["hover", "focus", "disabled"],
     },
   },
 };

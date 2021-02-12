@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "yarn run eslint --fix & yarn run stylelint --fix && yarn run prettier",
-    "prettier": "prettier --write .",
+    "lint-fast": "yarn run eslint --fix & yarn run stylelint --fix && yarn run prettier-fast",
+    "prettier": "prettier --write . --ignore-path=./.prettierignore --no-config",
+    "prettier-fast": "prettier --write . --ignore-path=./.prettierignore-fast --no-config",
     "eslint": "eslint .",
     "stylelint": "stylelint ./**/*.css"
   },
