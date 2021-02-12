@@ -128,11 +128,10 @@ function PricingCard({
     <div
       className={cx(
         "transform-gpu transition-all z-0 mt-10 max-w-lg mx-auto lg:mt-0 lg:max-w-none",
-        asField && "cursor-pointer",
         selected && "scale-105 sm:scale-110 z-10"
       )}
     >
-      <label className="block">
+      <label className={cx("block", asField && "cursor-pointer")}>
         <div className="relative rounded-lg shadow-xl">
           {selected && (
             <SelectedTierDecoration>
