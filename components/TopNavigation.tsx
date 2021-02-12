@@ -11,6 +11,7 @@ import { useIsActive } from "hooks/useIsActive";
 import { useRouter } from "next/router";
 import { X24 } from "./icons/XIcon";
 import { Menu24 } from "./icons/MenuIcon";
+import { Calendar20 } from "./icons/CalendarIcon";
 
 interface NavLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
@@ -119,7 +120,11 @@ export function TopNavigation() {
 
   return (
     <nav
-      className={cx(!showMenu && "bg-gray-800", showMenu && "bg-blueGray-800")}
+      className={cx(
+        "relative z-50",
+        !showMenu && "bg-gray-800",
+        showMenu && "bg-blueGray-800"
+      )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
@@ -166,16 +171,7 @@ export function TopNavigation() {
               >
                 Dashboard
               </a> */}
-              <NavLink
-                comingSoon
-                href={routes.pricing}
-                aria-label="Pricing coming soon!"
-                data-microtip-position="bottom-left"
-                data-microtip-size="fit"
-                role="tooltip"
-              >
-                Pricing
-              </NavLink>
+              <NavLink href={routes.pricing}>Pricing</NavLink>
               <NavLink
                 comingSoon
                 href={routes.gallery}
@@ -247,33 +243,18 @@ export function TopNavigation() {
           <div className="flex items-center">
             <div
               className="flex-shrink-0"
-              aria-label="Scheduling coming soon!"
+              aria-label="Schedule an Appointment"
               data-microtip-position="bottom-left"
               data-microtip-size="fit"
               role="tooltip"
             >
-              <button
-                type="button"
-                className="cursor-not-allowed disabled:opacity-50 shadow-primary-md relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white shadow-primary-md w-full text-center bg-pink-600 hover:bg-pink-700 leading-6 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
-                aria-disabled="true"
-                disabled
-                // className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              <Link
+                href={routes.schedule}
+                className="shadow-primary-md relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white shadow-primary-md w-full text-center bg-pink-600 hover:bg-pink-700 leading-6 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="-ml-1 mr-2 h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <Calendar20 className="-ml-1 mr-2 h-5 w-5" />
                 <span>Schedule</span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
