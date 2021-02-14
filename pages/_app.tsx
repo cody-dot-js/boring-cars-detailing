@@ -3,25 +3,21 @@ import type { AppProps } from "next/app";
 import "styles/index.css";
 import type { MaybeHasPageLayout } from "types/PageLayout";
 import { measureWebVitals, pageView } from "utils/gtag";
+import { useRouteChanged } from "hooks/useRouteChanged";
 
 function handleRouteChange(url: string) {
   pageView(url);
   measureWebVitals();
 }
 
-function App({ Component, pageProps, router }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   const { pageLayout = () => (page) => page } = Component as MaybeHasPageLayout;
 
   React.useEffect(() => {
     measureWebVitals();
   }, []);
 
-  React.useEffect(() => {
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
+  useRouteChanged(handleRouteChange);
 
   return pageLayout(pageProps)(<Component {...pageProps} />);
 }

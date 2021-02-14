@@ -84,3 +84,61 @@ a.headingLink {
     text-shadow: none;
   }
 }
+
+@variants responsive, active, focus, hover {
+  .glow-pink {
+    --glow-direct-color-from: rgba(190, 24, 93, 0.2);
+    --glow-ambient-color-from: rgba(190, 24, 93, 0.06);
+    --glow-direct-color-to: rgba(244, 114, 182, 0.6);
+    --glow-ambient-color-to: rgba(244, 114, 182, 0.4);
+
+    animation: glow 800ms ease-out infinite alternate;
+    box-shadow: 0 0 5px var(--glow-direct-color-from),
+      inset 0 0 5px var(--glow-ambient-color-from), 0 2px 0 #000;
+  }
+
+  .glow-cyan {
+    --glow-direct-color-from: rgba(14, 116, 144, 0.2);
+    --glow-ambient-color-from: rgba(14, 116, 144, 0.06);
+    --glow-direct-color-to: rgba(34, 211, 238, 0.6);
+    --glow-ambient-color-to: rgba(34, 211, 238, 0.4);
+
+    animation: glow 800ms ease-out infinite alternate;
+    box-shadow: 0 0 5px var(--glow-direct-color-from),
+      inset 0 0 5px var(--glow-ambient-color-from), 0 2px 0 #000;
+  }
+
+  .glow-yellow {
+    --glow-direct-color-from: rgba(161, 98, 7, 0.2);
+    --glow-ambient-color-from: rgba(161, 98, 7, 0.06);
+    --glow-direct-color-to: rgba(250, 204, 21, 0.6);
+    --glow-ambient-color-to: rgba(250, 204, 21, 0.4);
+
+    animation: glow 800ms ease-out infinite alternate;
+    box-shadow: 0 0 5px var(--glow-direct-color-from),
+      inset 0 0 5px var(--glow-ambient-color-from), 0 2px 0 #000;
+  }
+
+  .glow-amber {
+    --glow-direct-color-from: rgba(180, 83, 9, 0.2);
+    --glow-ambient-color-from: rgba(180, 83, 9, 0.06);
+    --glow-direct-color-to: rgba(251, 191, 36, 0.6);
+    --glow-ambient-color-to: rgba(251, 191, 36, 0.4);
+
+    animation: glow 800ms ease-out infinite alternate;
+    box-shadow: 0 0 5px var(--glow-direct-color-from),
+      inset 0 0 5px var(--glow-ambient-color-from), 0 2px 0 #000;
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px var(--glow-direct-color-from),
+      inset 0 0 5px var(--glow-ambient-color-from), 0 2px 0 #000;
+  }
+
+  100% {
+    box-shadow: 0 0 20px var(--glow-direct-color-to),
+      inset 0 0 10px var(--glow-ambient-color-to), 0 2px 0 #000;
+  }
+}

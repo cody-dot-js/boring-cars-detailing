@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PricingForm } from "./Pricing";
+import { DetailingAddonsPricingForm, WashPackagePricingForm } from "./Pricing";
 import { Form, Formik } from "formik";
 import { FormValues, getInitialValues, validationSchema } from "apis/schedule";
 import { PricingTier } from "apis/pricing";
@@ -187,22 +187,43 @@ export function ScheduleForm({
 
           {/* Package and Addons Section */}
           <section>
-            <div className="max-w-7xl mx-auto lg:px-8 pb-4">
-              <div className="space-y-6">
-                <section className="bg-gray-800 shadow px-4 py-5 sm:rounded-lg sm:p-6">
-                  <div className="md:text-center">
-                    <h3 className="text-2xl font-medium leading-6 text-pink-200">
-                      Package and Addons
-                    </h3>
-                    <p className="text-sm text-gray-100 mt-4">
-                      Decide which detailing package and additional services
-                      works best for you.
-                    </p>
-                  </div>
-                </section>
+            <div className="max-w-7xl mx-auto lg:px-8 pb-4 space-y-6">
+              <div className="px-4 py-5 sm:rounded-lg sm:p-6 md:text-center">
+                <h3 className="text-2xl font-medium leading-6 text-pink-200">
+                  Wash Package and Detailing Addons
+                </h3>
+                <p className="text-sm text-gray-100 mt-4">
+                  Decide which vehicle wash package and additional detailing
+                  services works best for you.
+                </p>
               </div>
             </div>
-            <PricingForm values={values} />
+            <div>
+              <div className="max-w-7xl mx-auto px-4 lg:px-2">
+                <div className="py-5 sm:rounded-lg sm:p-6 space-y-4">
+                  <h3 className="text-3xl font-bold uppercase leading-6 text-cyan-200">
+                    Wash Package
+                  </h3>
+                  <p className="text-gray-400">
+                    Choose the wash package that fits your vehicle size.
+                  </p>
+                </div>
+              </div>
+              <WashPackagePricingForm values={values} />
+            </div>
+            <div>
+              <div className="max-w-7xl mx-auto px-4 lg:px-2">
+                <div className="py-5 sm:rounded-lg sm:p-6 space-y-4">
+                  <h3 className="text-3xl font-bold uppercase leading-6 text-cyan-200">
+                    Detailing Addons
+                  </h3>
+                  <p className="text-gray-400">
+                    Choose any additional detailing options.
+                  </p>
+                </div>
+              </div>
+              <DetailingAddonsPricingForm values={values} />
+            </div>
           </section>
 
           {/* Submit Button */}
