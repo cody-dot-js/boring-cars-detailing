@@ -5,6 +5,7 @@ import { FormValues, getInitialValues, validationSchema } from "apis/schedule";
 import { PricingTier } from "apis/pricing";
 import { Field } from "./Field";
 import { Button } from "./Button";
+import { scrollToTop } from "utils/scrollToTop";
 
 interface Props {
   className?: string;
@@ -241,10 +242,7 @@ export function ScheduleForm({
                 aria-disabled={isSubmitting}
                 onClick={() => {
                   if (Object.values(errors).some((e) => e)) {
-                    personalInfoHeading.current?.scrollTo({
-                      top: 0,
-                      behavior: "smooth",
-                    });
+                    scrollToTop(personalInfoHeading.current.clientTop);
                   }
                 }}
               >
