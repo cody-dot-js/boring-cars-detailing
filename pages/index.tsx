@@ -71,6 +71,7 @@ const Home: Page = () => {
         </GlitchHero>
       </section>
       <PricingSection ref={pricingRef} />
+      <div className="my-8 border-cyan-300 glow-cyan border-b-2 mx-16" />
       <h2
         id="launch"
         ref={launchRef}

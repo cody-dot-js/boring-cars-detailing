@@ -299,7 +299,6 @@ export function TopNavigation() {
               <a
                 href={telLink(telephoneNumber)}
                 className="flex"
-                // className="-m-3 p-3 flex items-center rounded-md text-base font-medium text-white hover:bg-gray-900"
               >
                 <Phone24 className="flex-shrink-0" />
                 <span className="ml-3">Call us</span>
@@ -308,7 +307,7 @@ export function TopNavigation() {
           </div>
         </div>
       </div>
-      <div className="border-t mx-16 border-cyan-300" />
+      <div className="border-t mx-16 border-cyan-300 glow-cyan" />
     </nav>
   );
 }

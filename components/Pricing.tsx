@@ -10,9 +10,9 @@ import {
   tierCategory,
 } from "apis/pricing";
 import cx from "classnames";
-import { Link } from "./Link";
 import { routes } from "config";
 import { Ellipsis } from "./Ellipsis";
+import { LinkButton } from "./Button";
 
 interface PricingFormProps {
   className?: string;
@@ -227,19 +227,13 @@ function PricingCard({
                   {category}
                 </h4>
                 {!asField && (
-                  <div className="relative z-10 mt-10">
-                    <div className="rounded-lg shadow-md">
-                      <Link
-                        href={scheduleRoute}
-                        className={cx(
-                          "block shadow hover:shadow-lg w-full text-center rounded-lg border border-transparent px-6 py-4 text-xl leading-6 font-medium",
-                          "text-white hover:text-gray-700 bg-cyan-600 hover:bg-cyan-400 active:bg-cyan-700 active:text-white"
-                        )}
-                      >
-                        Schedule
-                      </Link>
-                    </div>
-                  </div>
+                  <LinkButton
+                    href={scheduleRoute}
+                    variant="secondary"
+                    className="relative z-10 mt-10"
+                  >
+                    Schedule
+                  </LinkButton>
                 )}
               </div>
             </div>
