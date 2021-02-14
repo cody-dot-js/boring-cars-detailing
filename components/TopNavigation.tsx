@@ -1,17 +1,18 @@
 import * as React from "react";
 import { Link } from "./Link";
 import cx from "classnames";
-import { FlyoutAction, FlyoutItem, FlyoutLink, FlyoutMenu } from "./FlyoutMenu";
+import { FlyoutAction, FlyoutLink, FlyoutMenu } from "./FlyoutMenu";
 import { routes, shortName, telephoneNumber } from "config";
 import { telLink } from "utils/telLink";
 import { Phone24 } from "./icons/PhoneIcon";
 import { Chat24 } from "./icons/ChatIcon";
 import { Heart24 } from "./icons/HeartIcon";
 import { useIsActive } from "hooks/useIsActive";
-import { useRouter } from "next/router";
 import { X24 } from "./icons/XIcon";
 import { Menu24 } from "./icons/MenuIcon";
 import { Calendar20 } from "./icons/CalendarIcon";
+import { useRouteChanged } from "hooks/useRouteChanged";
+import { LinkButton } from "./Button";
 
 interface NavLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
@@ -25,7 +26,7 @@ function NavLink({
   comingSoon,
   ...rest
 }: NavLinkProps) {
-  const isActive = useIsActive(href);
+  const [isActive] = useIsActive(href);
 
   if (comingSoon) {
     return (
@@ -46,11 +47,13 @@ function NavLink({
   return (
     <Link
       href={href}
+      active={isActive}
       className={cx(
-        "px-3 py-2 text-sm font-medium",
-        isActive && "text-pink-300 border-pink-300 border-b-2",
-        !isActive &&
-          "text-gray-300 hover:bg-pink-300 hover:rounded-md hover:text-gray-800",
+        "text-gray-300 px-3 py-2 text-sm font-medium border-b-2 border-transparent",
+        "focus:text-gray-800 focus:bg-pink-300 focus:rounded-md",
+        "hover:text-gray-800 hover:bg-pink-300 hover:rounded-md",
+        "active:text-gray-800 active:bg-fuchsia-300 active:border-fuchsia-300 active:rounded-md",
+        isActive && "text-pink-300 border-pink-300 hover:border-0",
         className
       )}
       {...rest}
@@ -67,7 +70,7 @@ function MobileNavLink({
   comingSoon,
   ...rest
 }: NavLinkProps) {
-  const isActive = useIsActive(href);
+  const [isActive] = useIsActive(href);
 
   if (comingSoon) {
     return (
@@ -103,20 +106,10 @@ function MobileNavLink({
 }
 
 export function TopNavigation() {
-  const router = useRouter();
   const [showMenu, setShowMenu] = React.useState(false);
   const toggleShowMenu = () => setShowMenu((s) => !s);
-
-  React.useEffect(() => {
-    function handleRouteChange() {
-      setShowMenu(false);
-    }
-
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events, setShowMenu]);
+  const handleRouteChange = React.useCallback(() => setShowMenu(false), []);
+  useRouteChanged(handleRouteChange);
 
   return (
     <nav
@@ -184,6 +177,41 @@ export function TopNavigation() {
               </NavLink>
               <FlyoutMenu
                 title="Company"
+                items={[
+                  {
+                    href: routes.about,
+                    children: (
+                      <>
+                        <Heart24 className="flex-shrink-0 text-pink-300" />
+                        <div className="ml-4">
+                          <p className="text-base font-medium text-white">
+                            About Us
+                          </p>
+                          <p className="mt-1 text-sm text-gray-300">
+                            Get to know us! We're a family!
+                          </p>
+                        </div>
+                      </>
+                    ),
+                  },
+                  {
+                    href: routes.contact,
+                    children: (
+                      <>
+                        <Chat24 className="flex-shrink-0 text-pink-300" />
+                        <div className="ml-4">
+                          <p className="text-base font-medium text-white">
+                            Contact
+                          </p>
+                          <p className="mt-1 text-sm text-gray-300">
+                            We’d love to hear from you! Send us a message, give
+                            us a call, or email us.
+                          </p>
+                        </div>
+                      </>
+                    ),
+                  },
+                ]}
                 footer={
                   <>
                     <div>
@@ -217,27 +245,7 @@ export function TopNavigation() {
                     </div>
                   </>
                 }
-              >
-                <FlyoutItem href={routes.about}>
-                  <Heart24 className="flex-shrink-0 text-pink-300" />
-                  <div className="ml-4">
-                    <p className="text-base font-medium text-white">About Us</p>
-                    <p className="mt-1 text-sm text-gray-300">
-                      Get to know us! We're a family!
-                    </p>
-                  </div>
-                </FlyoutItem>
-                <FlyoutItem href={routes.contact}>
-                  <Chat24 className="flex-shrink-0 text-pink-300" />
-                  <div className="ml-4">
-                    <p className="text-base font-medium text-white">Contact</p>
-                    <p className="mt-1 text-sm text-gray-300">
-                      We’d love to hear from you! Send us a message, give us a
-                      call, or email us.
-                    </p>
-                  </div>
-                </FlyoutItem>
-              </FlyoutMenu>
+              />
             </div>
           </div>
           <div className="flex items-center">
@@ -248,13 +256,10 @@ export function TopNavigation() {
               data-microtip-size="fit"
               role="tooltip"
             >
-              <Link
-                href={routes.schedule}
-                className="shadow-primary-md relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white shadow-primary-md w-full text-center bg-pink-600 hover:bg-pink-700 leading-6 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
-              >
+              <LinkButton variant="primary" href={routes.schedule}>
                 <Calendar20 className="-ml-1 mr-2 h-5 w-5" />
                 <span>Schedule</span>
-              </Link>
+              </LinkButton>
             </div>
           </div>
         </div>
@@ -294,7 +299,6 @@ export function TopNavigation() {
               <a
                 href={telLink(telephoneNumber)}
                 className="flex"
-                // className="-m-3 p-3 flex items-center rounded-md text-base font-medium text-white hover:bg-gray-900"
               >
                 <Phone24 className="flex-shrink-0" />
                 <span className="ml-3">Call us</span>
@@ -303,7 +307,7 @@ export function TopNavigation() {
           </div>
         </div>
       </div>
-      <div className="border-t mx-16 border-cyan-300" />
+      <div className="border-t mx-16 border-cyan-300 glow-cyan" />
     </nav>
   );
 }

@@ -10,19 +10,23 @@ import {
   tierCategory,
 } from "apis/pricing";
 import cx from "classnames";
-import { Link } from "./Link";
 import { routes } from "config";
+import { Ellipsis } from "./Ellipsis";
+import { LinkButton } from "./Button";
 
 interface PricingFormProps {
   className?: string;
   values?: FormValues;
 }
 
-export const PricingForm = ({ className, values }: PricingFormProps) => {
+export const WashPackagePricingForm = ({
+  className,
+  values,
+}: PricingFormProps) => {
   const { tier = "Plus" } = values || {};
 
   return (
-    <div role="group" className={cx("mt-16 pb-12 lg:pb-20", className)}>
+    <div role="group" className={cx("mt-8 pb-12 lg:pb-20", className)}>
       <div className="relative z-0">
         <div className="absolute inset-0 top-8 lg:top-24 h-5/6 lg:h-2/3 bg-gradient-to-r from-teal-500 to-cyan-600" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,6 +46,17 @@ export const PricingForm = ({ className, values }: PricingFormProps) => {
   );
 };
 
+export const DetailingAddonsPricingForm = ({
+  className,
+  values,
+}: PricingFormProps) => {
+  return (
+    <div className="max-w-7xl mx-auto px-4 lg:px-2">
+      <p className="text-gray-400 opacity-75 sm:px-6">Coming soon...</p>
+    </div>
+  );
+};
+
 interface PricingSectionProps {
   className?: string;
 }
@@ -52,25 +67,28 @@ export const PricingSection = React.forwardRef<
 >(({ className }, ref) => {
   return (
     <section className={className}>
-      <div className="pt-12 px-4 sm:px-6 lg:px-8 lg:pt-20">
-        <div className="text-center">
-          <h2
-            ref={ref}
-            className="text-lg leading-6 font-semibold text-gray-300 uppercase tracking-wider"
-          >
-            Pricing
-          </h2>
-          <p className="mt- text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
-            The right price for you, whoever you are
-          </p>
+      <div className="pt-12 px-4 sm:px-6 lg:px-8 lg:pt-20 text-center space-y-3">
+        <h2
+          ref={ref}
+          className="text-lg leading-6 font-semibold text-gray-300 uppercase tracking-wider"
+        >
+          Pricing
+        </h2>
+        <p className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
+          The right price for you, whoever you are
+        </p>
+      </div>
+      <section>
+        <div className="pt-12 px-4 sm:px-6 lg:px-8 lg:pt-20 text-center space-y-3">
+          <h3 className="text-3xl font-bold uppercase leading-6 text-cyan-200">
+            Wash Package
+          </h3>
           <p className="mt-3 max-w-4xl mx-auto text-xl text-gray-300 sm:mt-5 sm:text-2xl">
             Our Eco-Friendly car wash uses less water and chemicals than a
             typical car wash.
           </p>
         </div>
-      </div>
-      <div className="mt-16 pb-12 lg:pb-20">
-        <div className="relative z-0">
+        <div className="mt-16 pb-12 lg:pb-20 relative z-0">
           <div className="absolute inset-0 top-8 lg:top-24 h-5/6 lg:h-2/3 bg-gradient-to-r from-teal-500 to-cyan-600" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="relative space-y-16 lg:space-y-0 lg:flex">
@@ -85,7 +103,21 @@ export const PricingSection = React.forwardRef<
             </div>
           </div>
         </div>
-      </div>
+        <p className="text-gray-400 text-center">
+          Choose the wash package that fits your vehicle size.
+        </p>
+      </section>
+      <section>
+        <div className="px-4 sm:px-6 lg:px-8 pt-8 text-center space-y-3">
+          <h3 className="text-3xl font-bold uppercase leading-6 text-cyan-200">
+            Detailing Addons
+          </h3>
+          <p className="mt-3 max-w-4xl mx-auto text-xl text-gray-300 sm:mt-5 sm:text-2xl opacity-75">
+            Coming soon
+            <Ellipsis />
+          </p>
+        </div>
+      </section>
     </section>
   );
 });
@@ -132,7 +164,13 @@ function PricingCard({
       )}
     >
       <label className={cx("block", asField && "cursor-pointer")}>
-        <div className="relative rounded-lg shadow-xl">
+        <div
+          className={cx(
+            "relative rounded-lg shadow-xl hover:glow-pink",
+            selected &&
+              "glow-amber hover:glow-amber lg:glow-cyan lg:hover:glow-cyan"
+          )}
+        >
           {selected && (
             <SelectedTierDecoration>
               {asField ? <Check24 /> : "Most Popular"}
@@ -189,16 +227,13 @@ function PricingCard({
                   {category}
                 </h4>
                 {!asField && (
-                  <div className="relative z-10 mt-10">
-                    <div className="rounded-lg shadow-md">
-                      <Link
-                        href={scheduleRoute}
-                        className="block shadow hover:shadow-lg w-full text-center rounded-lg border border-transparent bg-pink-600 px-6 py-4 text-xl leading-6 font-medium text-white hover:bg-pink-700"
-                      >
-                        Schedule
-                      </Link>
-                    </div>
-                  </div>
+                  <LinkButton
+                    href={scheduleRoute}
+                    variant="secondary"
+                    className="relative z-10 mt-10"
+                  >
+                    Schedule
+                  </LinkButton>
                 )}
               </div>
             </div>

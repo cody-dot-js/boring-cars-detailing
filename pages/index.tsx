@@ -9,6 +9,7 @@ import { getPageLayout } from "components/Layout";
 import type { BasePageProps } from "types/BasePageProps";
 import { Page } from "types/PageLayout";
 import { PricingSection } from "components/Pricing";
+import { Button } from "components/Button";
 
 interface Props extends BasePageProps {
   meta: PageMeta;
@@ -44,15 +45,15 @@ const Home: Page = () => {
           <div className="relative z-30 w-full mx-auto max-w-7xl px-4">
             <div className="text-center max-w-sm mx-auto sm:flex sm:justify-center">
               <div className="rounded-md shadow">
-                <button
-                  type="button"
+                <Button
+                  variant="primary"
+                  className="w-full justify-center text-base px-8 py-3 md:py-4 md:text-lg md:px-10"
                   onClick={() =>
                     pricingRef.current?.scrollIntoView({ behavior: "smooth" })
                   }
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 md:py-4 md:text-lg md:px-10"
                 >
                   Get started
-                </button>
+                </Button>
               </div>
               <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
                 <button
@@ -70,6 +71,7 @@ const Home: Page = () => {
         </GlitchHero>
       </section>
       <PricingSection ref={pricingRef} />
+      <div className="my-8 border-cyan-300 glow-cyan border-b-2 mx-16" />
       <h2
         id="launch"
         ref={launchRef}

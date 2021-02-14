@@ -172,15 +172,8 @@ const Schedule: Page = () => {
                         you!
                       </p>
                       <p>
-                        {" "}
                         Click{" "}
-                        <Link
-                          href={routes.schedule}
-                          onClick={() => {
-                            dispatch({ type: "reset form" });
-                            scrollToTop();
-                          }}
-                        >
+                        <Link href={routes.schedule} onClick={router.reload}>
                           here
                         </Link>{" "}
                         if you would like to schedule another appointment.

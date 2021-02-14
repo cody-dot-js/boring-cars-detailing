@@ -1,14 +1,6 @@
 import * as React from "react";
 
-export function useDebouncedState<T>(
-  initialValue: T,
-  delay: number = 500
-): [
-  debouncedState: T,
-  setState: (value: T) => void,
-  rawState: T,
-  forceSetState: (value: T) => void
-] {
+export function useDebouncedState<T>(initialValue: T, delay: number = 500) {
   const [debouncedState, setDebouncedState] = React.useState(initialValue);
   const [rawState, setRawState] = React.useState(initialValue);
   const timeout = React.useRef<number>();
@@ -30,5 +22,5 @@ export function useDebouncedState<T>(
     setDebouncedState(newValue);
   }, []);
 
-  return [debouncedState, setState, rawState, forceSetState];
+  return [debouncedState, setState, rawState, forceSetState] as const;
 }

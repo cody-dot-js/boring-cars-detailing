@@ -94,6 +94,9 @@ module.exports = {
       borderRadius: ["hover", "focus"],
       zIndex: ["hover", "active"],
       cursor: ["hover", "focus", "disabled"],
+      backgroundColor: ["active"],
+      borderColor: ["active"],
+      textColor: ["active"],
     },
   },
 };

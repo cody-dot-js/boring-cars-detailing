@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { FormValues, subscribe, validationSchema } from "apis/convertKit";
 import { ExclamationCircle20 } from "./icons/ExclamationCircleIcon";
 import cx from "classnames";
+import { Button } from "./Button";
 
 interface Props {
   onSubscribeSuccess?: () => void;
@@ -97,14 +98,15 @@ export function SubscribeForm({
             </div>
           </div>
           <div className="flex justify-end mt-4 w-full">
-            <button
+            <Button
               type="submit"
+              variant="secondary"
               disabled={isSubmitting}
               aria-disabled={isSubmitting}
-              className="block disabled:opacity-60 w-full sm:w-auto sm:inline-block rounded-md border border-transparent px-5 py-3 bg-cyan-700 text-base font-medium text-white shadow hover:bg-cyan-900 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-pink-500 sm:px-10"
+              className="w-full sm:w-auto sm:inline-block"
             >
               {submitButtonText}
-            </button>
+            </Button>
           </div>
         </Form>
       )}
