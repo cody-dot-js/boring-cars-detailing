@@ -5,6 +5,7 @@ import { FormValues, getInitialValues, validationSchema } from "apis/schedule";
 import { PricingTier } from "apis/pricing";
 import { Field } from "./Field";
 import { Button } from "./Button";
+import { scrollToTop } from "utils/scrollToTop";
 
 interface Props {
   className?: string;
@@ -44,17 +45,11 @@ function ScheduleFormInstance({ className }: { className?: string }) {
     validateForm,
     submitForm,
   } = useFormikContext<FormValues>();
-  const ref = React.useRef<HTMLHeadingElement>();
 
   const handleSubmit = () =>
     validateForm()
       .then(submitForm)
-      .catch(() => {
-        ref.current?.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      });
+      .catch(() => scrollToTop());
 
   return (
     <Form className={className}>
@@ -64,7 +59,7 @@ function ScheduleFormInstance({ className }: { className?: string }) {
           <section className="bg-gray-800 shadow px-4 py-5 sm:rounded-lg sm:p-6">
             <div className="md:grid md:grid-cols-3 md:gap-6">
               <div className="md:col-span-1">
-                <h3 ref={ref} className="text-lg font-medium leading-6 text-pink-200">
+                <h3 className="text-lg font-medium leading-6 text-pink-200">
                   Personal Information
                 </h3>
                 <p className="my-4 font-bold text-cyan-200">
