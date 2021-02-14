@@ -4,7 +4,6 @@ import { Form, Formik } from "formik";
 import { FormValues, getInitialValues, validationSchema } from "apis/schedule";
 import { PricingTier } from "apis/pricing";
 import { Field } from "./Field";
-import { scrollToTop } from "utils/scrollToTop";
 import { Button } from "./Button";
 
 interface Props {
@@ -25,6 +24,8 @@ export function ScheduleForm({
     ...rest.initialValues,
   };
 
+  const formRef = React.useRef<HTMLFormElement>();
+
   return (
     <Formik<FormValues>
       initialValues={initialValues}
@@ -32,7 +33,7 @@ export function ScheduleForm({
       validationSchema={validationSchema}
     >
       {({ isSubmitting, errors, touched, values }) => (
-        <Form className={className}>
+        <Form className={className} ref={formRef}>
           <div className="max-w-7xl mx-auto pb-10 lg:py-12 lg:px-8">
             <div className="space-y-6">
               {/* Personal Information */}
@@ -237,7 +238,7 @@ export function ScheduleForm({
                 aria-disabled={isSubmitting}
                 onClick={() => {
                   if (Object.values(errors).some((e) => e)) {
-                    scrollToTop();
+                    formRef.current?.scrollTo({ behavior: "smooth" });
                   }
                 }}
               >
