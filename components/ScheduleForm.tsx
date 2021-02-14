@@ -5,6 +5,7 @@ import { FormValues, getInitialValues, validationSchema } from "apis/schedule";
 import { PricingTier } from "apis/pricing";
 import { Field } from "./Field";
 import { scrollToTop } from "utils/scrollToTop";
+import { Button } from "./Button";
 
 interface Props {
   className?: string;
@@ -229,8 +230,9 @@ export function ScheduleForm({
           {/* Submit Button */}
           <div className="max-w-7xl mx-auto pb-10 lg:px-8">
             <div className="flex justify-end mx-4 lg:mx-0">
-              <button
+              <Button
                 type="submit"
+                variant="primary"
                 disabled={isSubmitting}
                 aria-disabled={isSubmitting}
                 onClick={() => {
@@ -238,10 +240,9 @@ export function ScheduleForm({
                     scrollToTop();
                   }
                 }}
-                className="disabled:opacity-60 disabled:cursor-not-allowed ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
               >
                 Next
-              </button>
+              </Button>
             </div>
           </div>
         </Form>

@@ -1,6 +1,6 @@
 import NextLink, { LinkProps } from "next/link";
 
-interface Props extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface Props extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
   active?: boolean;
   nextProps?: Omit<LinkProps, "href">;

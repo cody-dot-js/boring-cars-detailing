@@ -9,7 +9,7 @@ import { getPageLayout } from "components/Layout";
 import type { BasePageProps } from "types/BasePageProps";
 import { Page } from "types/PageLayout";
 import { PricingSection } from "components/Pricing";
-import cx from "classnames";
+import { Button } from "components/Button";
 
 interface Props extends BasePageProps {
   meta: PageMeta;
@@ -45,23 +45,15 @@ const Home: Page = () => {
           <div className="relative z-30 w-full mx-auto max-w-7xl px-4">
             <div className="text-center max-w-sm mx-auto sm:flex sm:justify-center">
               <div className="rounded-md shadow">
-                <button
-                  type="button"
+                <Button
+                  variant="primary"
+                  className="w-full justify-center text-base px-8 py-3 md:py-4 md:text-lg md:px-10"
                   onClick={() =>
                     pricingRef.current?.scrollIntoView({ behavior: "smooth" })
                   }
-                  // "shadow-primary-md relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white shadow w-full text-center leading-6 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500",
-                  // "bg-pink-500 hover:bg-pink-600 active:bg-fuchsia-500",
-                  // "focus:glow-pink hover:glow-pink"
-                  className={cx(
-                    "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-pink-500 md:py-4 md:text-lg md:px-10",
-                    "hover:bg-pink-600 hover:glow-pink",
-                    "focus:glow-pink",
-                    "active:bg-fuchsia-500"
-                  )}
                 >
                   Get started
-                </button>
+                </Button>
               </div>
               <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
                 <button

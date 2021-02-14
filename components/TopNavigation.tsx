@@ -12,6 +12,7 @@ import { X24 } from "./icons/XIcon";
 import { Menu24 } from "./icons/MenuIcon";
 import { Calendar20 } from "./icons/CalendarIcon";
 import { useRouteChanged } from "hooks/useRouteChanged";
+import { LinkButton } from "./Button";
 
 interface NavLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
@@ -255,17 +256,10 @@ export function TopNavigation() {
               data-microtip-size="fit"
               role="tooltip"
             >
-              <Link
-                href={routes.schedule}
-                className={cx(
-                  "shadow-primary-md relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white shadow w-full text-center leading-6 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500",
-                  "bg-pink-500 hover:bg-pink-600 active:bg-fuchsia-500",
-                  "focus:glow-pink hover:glow-pink"
-                )}
-              >
+              <LinkButton variant="primary" href={routes.schedule}>
                 <Calendar20 className="-ml-1 mr-2 h-5 w-5" />
                 <span>Schedule</span>
-              </Link>
+              </LinkButton>
             </div>
           </div>
         </div>
