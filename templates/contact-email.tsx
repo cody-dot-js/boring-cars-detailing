@@ -137,9 +137,8 @@ export function contactEmailHtml(props: FormValues) {
 }
 
 export function contactEmailText({
-  firstName,
-  lastName,
-  email,
+  name,
+  emailAddress,
   body,
   phoneNumber,
   company,
@@ -152,8 +151,8 @@ ${body}
 
 ---
 Personal Information:
-name: ${firstName} ${lastName}
-email: ${email}
+name: ${name}
+email: ${emailAddress}
 company: ${company || "(not supplied)"}
 phoneNumber: ${phoneNumber || "(not supplied)"} 
 
