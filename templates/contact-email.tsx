@@ -1,9 +1,8 @@
 import { FormValues } from "apis/contact";
 
 const generateTemplate = ({
-  firstName,
-  lastName,
-  email,
+  name,
+  emailAddress,
   body,
   phoneNumber,
   company,
@@ -88,13 +87,13 @@ const generateTemplate = ({
             <div class="sm-py-5 sm-grid sm-grid-cols-3 sm-gap-4 sm-px-6" style="padding-top: 4px; padding-bottom: 4px;">
               <dt style="font-weight: 500; font-size: 14px; color: #6b7280;">Full name</dt>
               <dd class="sm-mt-0 sm-col-span-2" style="font-size: 14px; margin-top: 0.25rem; color: #111827;">
-                ${firstName} ${lastName}
+                ${name}
               </dd>
             </div>
             <div class="sm-py-5 sm-grid sm-grid-cols-3 sm-gap-4 sm-px-6" style="padding-top: 4px; padding-bottom: 4px;">
               <dt style="font-weight: 500; font-size: 14px; color: #6b7280;">Email address</dt>
               <dd class="sm-mt-0 sm-col-span-2" style="font-size: 14px; margin-top: 0.25rem; color: #111827;">
-                ${email}
+                ${emailAddress}
               </dd>
             </div>
             <div class="sm-py-5 sm-grid sm-grid-cols-3 sm-gap-4 sm-px-6" style="padding-top: 4px; padding-bottom: 4px;">
