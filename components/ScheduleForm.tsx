@@ -242,6 +242,7 @@ export function ScheduleForm({
                 onClick={() => {
                   if (Object.values(errors).some((e) => e)) {
                     personalInfoHeading.current?.scrollTo({
+                      top: 0,
                       behavior: "smooth",
                     });
                   }
