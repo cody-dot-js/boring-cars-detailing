@@ -26,8 +26,10 @@ export function GlitchHero({ className, children }: Props) {
           quality="100"
         />
       </figure>
-      <div className="relative h-full w-full flex flex-col items-center justify-center">
-        <BoringCarsDetailing className="text-12vw mt-16 pb-32" />
+      <div className="absolute inset-0 z-0 text-center">
+        <BoringCarsDetailing className="text-12vw h-full flex justify-center" />
+      </div>
+      <div className="absolute z-10 h-1/2 w-full top-1/2 flex flex-col justify-center items-center">
         {children}
       </div>
     </div>

@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
     meta: pageMeta(),
     seo: {
       title: "Schedule",
-      description: `Schedule a detailing appointment with ${shortName}`,
+      description: `Schedule a wash and detailing appointment with ${shortName}`,
     },
   };
 
@@ -114,7 +114,7 @@ const Schedule: Page = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="font-bold text-white lg:text-3xl">Schedule</h1>
             <h2 className="text-3xl mt-4 uppercase font-bold text-maximumBlue lg:text-5xl">
-              Mobile Detailing Appointment
+              Mobile Wash and Detailing Appointment
             </h2>
           </div>
         </header>

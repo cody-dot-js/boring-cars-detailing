@@ -296,10 +296,7 @@ export function TopNavigation() {
               </ul>
             </div>
             <div className="flex justify-end">
-              <a
-                href={telLink(telephoneNumber)}
-                className="flex"
-              >
+              <a href={telLink(telephoneNumber)} className="flex">
                 <Phone24 className="flex-shrink-0" />
                 <span className="ml-3">Call us</span>
               </a>

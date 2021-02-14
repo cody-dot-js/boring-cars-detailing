@@ -7,7 +7,9 @@ interface Props {
 
 export function BoringCarsDetailing({ className }: Props) {
   return (
-    <div className={cx("flex flex-col items-end leading-none", className)}>
+    <div
+      className={cx("inline-flex flex-col items-end leading-none", className)}
+    >
       <Glitch
         className={cx(
           "relative",
