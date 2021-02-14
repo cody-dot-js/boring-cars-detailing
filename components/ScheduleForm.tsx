@@ -24,7 +24,7 @@ export function ScheduleForm({
     ...rest.initialValues,
   };
 
-  const formRef = React.useRef<HTMLFormElement>();
+  const personalInfoHeading = React.useRef<HTMLHeadingElement>();
 
   return (
     <Formik<FormValues>
@@ -33,14 +33,17 @@ export function ScheduleForm({
       validationSchema={validationSchema}
     >
       {({ isSubmitting, errors, touched, values }) => (
-        <Form className={className} ref={formRef}>
+        <Form className={className}>
           <div className="max-w-7xl mx-auto pb-10 lg:py-12 lg:px-8">
             <div className="space-y-6">
               {/* Personal Information */}
               <section className="bg-gray-800 shadow px-4 py-5 sm:rounded-lg sm:p-6">
                 <div className="md:grid md:grid-cols-3 md:gap-6">
                   <div className="md:col-span-1">
-                    <h3 className="text-lg font-medium leading-6 text-pink-200">
+                    <h3
+                      ref={personalInfoHeading}
+                      className="text-lg font-medium leading-6 text-pink-200"
+                    >
                       Personal Information
                     </h3>
                     <p className="my-4 font-bold text-cyan-200">
@@ -238,7 +241,9 @@ export function ScheduleForm({
                 aria-disabled={isSubmitting}
                 onClick={() => {
                   if (Object.values(errors).some((e) => e)) {
-                    formRef.current?.scrollTo({ behavior: "smooth" });
+                    personalInfoHeading.current?.scrollTo({
+                      behavior: "smooth",
+                    });
                   }
                 }}
               >
