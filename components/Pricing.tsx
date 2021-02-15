@@ -596,23 +596,6 @@ const A = () => (
   </div>
 );
 
-function DiscountedServices() {
-  return (
-    <div className="py-8 sm:py-10 lg:flex lg:items-center">
-      <div className="flex-1">
-        <div>
-          <h3>
-            <Badge className="py-1 rounded-full text-sm font-bold tracking-wide uppercase bg-cyan-200 text-cyan-600 glow-cyan-pulse">
-              Detailing
-            </Badge>
-          </h3>
-        </div>
-        <A />
-      </div>
-    </div>
-  );
-}
-
 interface SelectableCardProps {
   className?: string;
   children: React.ReactNode;
