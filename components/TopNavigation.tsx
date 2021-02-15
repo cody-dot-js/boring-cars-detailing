@@ -271,7 +271,7 @@ export function TopNavigation() {
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-          <MobileNavLink comingSoon href={routes.pricing}>
+          <MobileNavLink href={routes.pricing}>
             Pricing
           </MobileNavLink>
           <MobileNavLink comingSoon href={routes.gallery}>
