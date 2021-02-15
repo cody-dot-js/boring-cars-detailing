@@ -58,7 +58,6 @@ export function Calendly({ className, id, prefill, onSchedule }: Props) {
       if (isCalendlyEvent(e)) {
         const { data } = e;
         const message: CalendlyEvent = data.event;
-        console.log("CalendlyEvent", { message, payload: data.payload });
         switch (message) {
           case "calendly.event_type_viewed": {
             setIsLoading(false);

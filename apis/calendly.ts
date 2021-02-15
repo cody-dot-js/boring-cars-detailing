@@ -1,11 +1,42 @@
-import { PricingTier } from "./pricing";
+import { AddonService, WashPricingTier } from "./pricing";
 import { FormValues } from "./schedule";
 
-const tierToRadioValue: Record<PricingTier, string> = {
+const washTierToRadioValue: Record<WashPricingTier, string> = {
   Regular: "1",
   Plus: "2",
   Premium: "3",
 };
+
+function getAddonCalendlyValue(addon: AddonService) {
+  switch (addon) {
+    case AddonService.petHairRemoval:
+      return "1";
+    case AddonService.clayBarTreatment:
+      return "2";
+    case AddonService.fabricProtection:
+      return "3";
+    case AddonService.ozoneTreatment:
+      return "4";
+    case AddonService.headlightRestoration:
+      return "5";
+    case AddonService.odorRemoval:
+      return "6";
+    case AddonService.headlinerCleaning:
+      return "7";
+    case AddonService.washAndWax:
+      return "8";
+    case AddonService.interiorSanitization:
+      return "9";
+    case AddonService.oneStepPolish:
+      return "10";
+    default:
+      throw new Error(`Invalid service addon ${addon}`);
+  }
+}
+
+function transformAddons(addons: AddonService[]): string {
+  return Array.from(new Set(addons)).map(getAddonCalendlyValue).join(",");
+}
 
 export type CalendlyUTM = {
   utmCampaign?: string;
@@ -73,6 +104,7 @@ declare global {
   }
 }
 
+// For schema, see: https://calendly.com/event_types/50438080/edit > Invitee Questions
 export function makeAppointmentPrefill({
   name,
   emailAddress,
@@ -82,13 +114,22 @@ export function makeAppointmentPrefill({
     name,
     email: emailAddress,
     customAnswers: {
+      // Phone Number
       a1: `+1${customAnswers.phoneNumber}`,
+      // Street Address
       a2: customAnswers.streetAddress,
+      // City
       a3: customAnswers.city,
+      // Zip / Postal
       a4: customAnswers.zipPostal,
-      a5: tierToRadioValue[customAnswers.tier],
-      a6: customAnswers.addons ?? "",
-      a7: customAnswers.additionalInfo ?? "",
+      // Wash Package
+      a5: washTierToRadioValue[customAnswers.washTier],
+      // Add Detailing?
+      a6: customAnswers.addDetailing ? "1" : "2",
+      // Addons
+      a7: transformAddons(customAnswers.addons),
+      // Please share anything that will help us prepare for your appointment.
+      a8: customAnswers.additionalInfo ?? "",
     },
   };
 }

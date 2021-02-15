@@ -8,7 +8,7 @@ import { Page } from "types/PageLayout";
 import { Calendly, CalendlyScript } from "components/Calendly";
 import { ScheduleForm } from "components/ScheduleForm";
 import { useRouter } from "next/router";
-import { PricingTier } from "apis/pricing";
+import { WashPricingTier } from "apis/pricing";
 import { CalendlyPrefill, makeAppointmentPrefill } from "apis/calendly";
 import { FormValues } from "apis/schedule";
 import { ArrowLeft20 } from "components/icons/ArrowLeftIcon";
@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 interface QueryParams {
-  tier?: PricingTier;
+  tier?: WashPricingTier;
 }
 
 type State = {

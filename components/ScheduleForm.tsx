@@ -1,8 +1,12 @@
 import * as React from "react";
-import { DetailingAddonsPricingForm, WashPackagePricingForm } from "./Pricing";
+import {
+  AdditionalServices,
+  DetailingPackagePricing,
+  WashPackagePricingForm,
+} from "./Pricing";
 import { Form, Formik, useFormikContext } from "formik";
 import { FormValues, getInitialValues, validationSchema } from "apis/schedule";
-import { PricingTier } from "apis/pricing";
+import { WashPricingTier } from "apis/pricing";
 import { Field } from "./Field";
 import { Button } from "./Button";
 import { scrollToTop } from "utils/scrollToTop";
@@ -10,7 +14,7 @@ import { scrollToTop } from "utils/scrollToTop";
 interface Props {
   className?: string;
   initialValues?: FormValues;
-  initialTier?: PricingTier;
+  initialTier?: WashPricingTier;
   onSubmit?: (values: FormValues) => void;
 }
 
@@ -42,14 +46,7 @@ function ScheduleFormInstance({ className }: { className?: string }) {
     errors,
     touched,
     values,
-    validateForm,
-    submitForm,
   } = useFormikContext<FormValues>();
-
-  const handleSubmit = () =>
-    validateForm()
-      .then(submitForm)
-      .catch(() => scrollToTop());
 
   return (
     <Form className={className}>
@@ -227,28 +224,40 @@ function ScheduleFormInstance({ className }: { className?: string }) {
           <WashPackagePricingForm values={values} />
         </div>
         <div>
-          <div className="max-w-7xl mx-auto px-4 lg:px-2">
-            <div className="py-5 sm:rounded-lg sm:p-6 space-y-4">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8">
+            <div className="sm:rounded-lg space-y-4">
               <h3 className="text-3xl font-bold uppercase leading-6 text-cyan-200">
-                Detailing Addons
+                Detailing Package
               </h3>
-              <p className="text-gray-400">
-                Choose any additional detailing options.
-              </p>
             </div>
           </div>
-          <DetailingAddonsPricingForm values={values} />
+          <DetailingPackagePricing values={values} selectable />
+        </div>
+        <div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-6 sm:px-8">
+              <div className="sm:rounded-lg space-y-4">
+                <h3 className="text-3xl font-bold uppercase leading-6 text-cyan-200">
+                  Detailing Package
+                </h3>
+              </div>
+            </div>
+            <div className="mt-10">
+              <AdditionalServices selectable values={values} />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Submit Button */}
-      <div className="max-w-7xl mx-auto pb-10 lg:px-8">
+      <div className="max-w-7xl mx-auto pb-10 lg:px-8 mt-8">
         <div className="flex justify-end mx-4 lg:mx-0">
           <Button
+            type="submit"
             variant="primary"
             disabled={isSubmitting}
             aria-disabled={isSubmitting}
-            onClick={handleSubmit}
+            onClick={() => scrollToTop()}
           >
             Next
           </Button>

@@ -114,7 +114,7 @@ export function TopNavigation() {
   return (
     <nav
       className={cx(
-        "relative z-50",
+        "relative z-50 shadow",
         !showMenu && "bg-gray-800",
         showMenu && "bg-blueGray-800"
       )}
@@ -304,7 +304,7 @@ export function TopNavigation() {
           </div>
         </div>
       </div>
-      <div className="border-t mx-16 border-cyan-300 glow-cyan" />
+      <div className="relative z-50 flex-1 border-t-2 border-pink-300 glow-lg-pink-400 mx-16 mt-1 mb-3" />
     </nav>
   );
 }
