@@ -24,6 +24,19 @@ export const washTierPrice: Record<WashPricingTier, number> = {
 
 export const detailingBasePrice = 150;
 
+export function accumulatePrice(values: FormValues): number {
+  const { washTier, addons, addDetailing } = values;
+  const addonsCost = Array.from(new Set(addons)).reduce(
+    (acc, addon) => acc + addonServicePrices[addon],
+    0
+  );
+  const detailingCost = addDetailing ? detailingBasePrice : 0;
+
+  const totalCost = washTierPrice[washTier] + addonsCost + detailingCost;
+
+  return Math.max(0, totalCost);
+}
+
 export enum AddonService {
   petHairRemoval = "Pet Hair Removal",
   clayBarTreatment = "Clay Bar Treatment",
@@ -76,19 +89,6 @@ export const initialValues: FormValues = {
   addDetailing: false,
   addons: [],
 };
-
-// const addonsSchema: yup.SchemaOf<AddonServicesSelected> = yup.object({
-//   [AddonService.petHairRemoval]: yup.boolean(),
-//   [AddonService.clayBarTreatment]: yup.boolean(),
-//   [AddonService.fabricProtection]: yup.boolean(),
-//   [AddonService.ozoneTreatment]: yup.boolean(),
-//   [AddonService.headlightRestoration]: yup.boolean(),
-//   [AddonService.odorRemoval]: yup.boolean(),
-//   [AddonService.headlinerCleaning]: yup.boolean(),
-//   [AddonService.washAndWax]: yup.boolean(),
-//   [AddonService.interiorSanitization]: yup.boolean(),
-//   [AddonService.oneStepPolish]: yup.boolean(),
-// });
 
 export const washTierSchema = yup
   .mixed<WashPricingTier>()

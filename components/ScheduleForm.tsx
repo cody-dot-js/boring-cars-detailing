@@ -6,7 +6,7 @@ import {
 } from "./Pricing";
 import { Form, Formik, useFormikContext } from "formik";
 import { FormValues, getInitialValues, validationSchema } from "apis/schedule";
-import { WashPricingTier } from "apis/pricing";
+import { accumulatePrice, WashPricingTier } from "apis/pricing";
 import { Field } from "./Field";
 import { Button } from "./Button";
 import { scrollToTop } from "utils/scrollToTop";
@@ -47,6 +47,8 @@ function ScheduleFormInstance({ className }: { className?: string }) {
     touched,
     values,
   } = useFormikContext<FormValues>();
+
+  const anticipatedCost = accumulatePrice(values);
 
   return (
     <Form className={className}>
@@ -233,15 +235,16 @@ function ScheduleFormInstance({ className }: { className?: string }) {
           </div>
           <DetailingPackagePricing values={values} selectable />
         </div>
+
         <div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto px-6 sm:px-8">
-              <div className="sm:rounded-lg space-y-4">
-                <h3 className="text-3xl font-bold uppercase leading-6 text-cyan-200">
-                  Detailing Package
-                </h3>
-              </div>
+          <div className="max-w-7xl mx-auto px-6 sm:px-8">
+            <div className="sm:rounded-lg space-y-4">
+              <h3 className="text-3xl font-bold uppercase leading-6 text-cyan-200">
+                Additional Services
+              </h3>
             </div>
+            {/* <div className="max-w-7xl mx-auto px-6 sm:px-8">
+            </div> */}
             <div className="mt-10">
               <AdditionalServices selectable values={values} />
             </div>
@@ -251,7 +254,10 @@ function ScheduleFormInstance({ className }: { className?: string }) {
 
       {/* Submit Button */}
       <div className="max-w-7xl mx-auto pb-10 lg:px-8 mt-8">
-        <div className="flex justify-end mx-4 lg:mx-0">
+        <div className="flex justify-end items-center mx-4 lg:mx-0">
+          <p className="text-gray-400 text-2xl font-semibold mr-16">
+            Anticipated cost: ${anticipatedCost}
+          </p>
           <Button
             type="submit"
             variant="primary"
