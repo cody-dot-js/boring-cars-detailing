@@ -2,7 +2,7 @@ import * as React from "react";
 import { emails } from "config";
 import { SubscribeForm } from "./SubscribeForm";
 
-export function CTALaunch() {
+export function CTASubscribe() {
   const [didSubscribe, setDidSubscribe] = React.useState<boolean>(false);
 
   return (
@@ -71,12 +71,11 @@ export function CTALaunch() {
             <div className="relative">
               <div className="sm:text-center">
                 <h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
-                  Get notified when we launch.
+                  Subscribe to our newsletter
                 </h2>
                 <p className="mt-6 mx-auto max-w-2xl text-lg text-rose-100">
-                  Be among the first to know when you can schedule any of our
-                  phenomenal mobile cleaning and detailing services! We'll let
-                  you know on February 15th, 2021!
+                  The latest news, updates, and notifications sent to your
+                  inbox. We promise not to spam you!
                 </p>
               </div>
               <SubscribeForm

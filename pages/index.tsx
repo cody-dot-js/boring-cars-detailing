@@ -1,5 +1,5 @@
 import * as React from "react";
-import { CTALaunch } from "components/CTALaunch";
+import { CTASubscribe } from "components/CTASubscribe";
 import { GlitchHero } from "components/GlitchHero";
 import { GetStaticProps } from "next";
 import Image from "next/image";
@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Home: Page = () => {
   const pricingRef = React.useRef<HTMLHeadingElement>(null);
-  const launchRef = React.useRef<HTMLHeadingElement>(null);
+  const ctaRef = React.useRef<HTMLHeadingElement>(null);
 
   return (
     <>
@@ -59,7 +59,7 @@ const Home: Page = () => {
                 <button
                   type="button"
                   onClick={() =>
-                    launchRef.current?.scrollIntoView({ behavior: "smooth" })
+                    ctaRef.current?.scrollIntoView({ behavior: "smooth" })
                   }
                   className="w-full flex items-center justify-center border border-transparent text-base font-medium rounded-md shadow-sm text-pink-200 bg-gray-600 bg-opacity-60 hover:bg-opacity-70 px-8 py-3 md:py-4 md:text-lg md:px-10"
                 >
@@ -72,15 +72,15 @@ const Home: Page = () => {
       </section>
       <PricingSection ref={pricingRef} />
       <div className="my-8 border-cyan-300 glow-lg-cyan-400 border-b-2 mx-16" />
+      <Testimonials />
       <h2
-        id="launch"
-        ref={launchRef}
+        id="cta"
+        ref={ctaRef}
         className="relative z-40 text-center px-4 py-8 text-xl font-semibold tracking-wider text-cyan-300 uppercase"
       >
-        We're launching February 15th, 2021! 🚀
+        We're live! 🚀
       </h2>
-      <CTALaunch />
-      <Testimonials />
+      <CTASubscribe />
     </>
   );
 };
