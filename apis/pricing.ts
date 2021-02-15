@@ -98,7 +98,7 @@ export const washTierSchema = yup
 export const validationSchemaShape = {
   washTier: washTierSchema,
   addDetailing: yup.boolean(),
-  addons: yup.array().compact(),
+  addons: yup.array(yup.string()).compact(),
 };
 
 export const validationSchema = yup.object(validationSchemaShape);

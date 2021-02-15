@@ -36,7 +36,7 @@ export const getInitialValues = (
   washTier,
 });
 
-export const validationSchema: yup.SchemaOf<FormValues> = yup.object({
+export const validationSchema = yup.object({
   name: yup.string().required("Your name is required."),
   emailAddress: yup
     .string()
