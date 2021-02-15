@@ -36,6 +36,15 @@
   text-decoration: none;
 }
 
+.headingLink::before {
+  display: block;
+  content: "&nbsp;";
+  margin-top: -2rem;
+  height: 2rem;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .headingLink:hover {
   text-decoration: none;
 }
