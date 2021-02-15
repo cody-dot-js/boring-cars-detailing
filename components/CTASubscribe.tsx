@@ -86,7 +86,6 @@ export function CTASubscribe() {
                   setDidSubscribe(false);
                   // TODO(cody): error handling/notifications
                 }}
-                submitButtonText="Notify me"
                 className="mt-12 sm:mx-auto sm:max-w-lg"
               />
             </div>

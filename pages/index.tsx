@@ -9,7 +9,8 @@ import { getPageLayout } from "components/Layout";
 import type { BasePageProps } from "types/BasePageProps";
 import { Page } from "types/PageLayout";
 import { PricingSection } from "components/Pricing";
-import { Button } from "components/Button";
+import { LinkButton } from "components/Button";
+import { Link } from "components/Link";
 
 interface Props extends BasePageProps {
   meta: PageMeta;
@@ -26,9 +27,6 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Home: Page = () => {
-  const pricingRef = React.useRef<HTMLHeadingElement>(null);
-  const ctaRef = React.useRef<HTMLHeadingElement>(null);
-
   return (
     <>
       <section className="relative z-0 h-screen w-full">
@@ -45,41 +43,35 @@ const Home: Page = () => {
           <div className="relative z-30 w-full mx-auto max-w-7xl px-4">
             <div className="text-center max-w-sm mx-auto sm:flex sm:justify-center">
               <div className="rounded-md shadow">
-                <Button
+                <LinkButton
+                  href="#pricing"
                   variant="primary"
                   className="w-full justify-center text-base px-8 py-3 md:py-4 md:text-lg md:px-10"
-                  onClick={() =>
-                    pricingRef.current?.scrollIntoView({ behavior: "smooth" })
-                  }
                 >
                   Get started
-                </Button>
+                </LinkButton>
               </div>
               <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                <button
-                  type="button"
-                  onClick={() =>
-                    ctaRef.current?.scrollIntoView({ behavior: "smooth" })
-                  }
-                  className="w-full flex items-center justify-center border border-transparent text-base font-medium rounded-md shadow-sm text-pink-200 bg-gray-600 bg-opacity-60 hover:bg-opacity-70 px-8 py-3 md:py-4 md:text-lg md:px-10"
+                <LinkButton
+                  variant="default"
+                  href="#cta"
+                  className="w-full border border-transparent text-base font-medium rounded-md shadow-sm text-pink-200 bg-gray-600 bg-opacity-60 hover:bg-opacity-70 px-8 py-3 md:py-4 md:text-lg md:px-10"
                 >
                   Subscribe
-                </button>
+                </LinkButton>
               </div>
             </div>
           </div>
         </GlitchHero>
       </section>
-      <PricingSection ref={pricingRef} />
+      <PricingSection />
       <div className="my-8 border-cyan-300 glow-lg-cyan-400 border-b-2 mx-16" />
       <Testimonials />
-      <h2
-        id="cta"
-        ref={ctaRef}
-        className="relative z-40 text-center px-4 py-8 text-xl font-semibold tracking-wider text-cyan-300 uppercase"
-      >
-        We're live! 🚀
-      </h2>
+      <Link href="#cta" className="headingLink" id="cta">
+        <h2 className="relative z-40 text-center px-4 py-8 text-xl font-semibold tracking-wider text-cyan-300 uppercase">
+          We're live! 🚀
+        </h2>
+      </Link>
       <CTASubscribe />
     </>
   );

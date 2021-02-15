@@ -194,12 +194,14 @@ export const PricingSection = React.forwardRef<
   return (
     <section className={className}>
       <div className="pt-12 px-4 sm:px-6 lg:px-8 lg:pt-20 text-center space-y-3">
-        <h2
-          ref={ref}
-          className="text-lg leading-6 font-semibold text-gray-300 uppercase tracking-wider"
-        >
-          Pricing
-        </h2>
+        <Link id="pricing" href="#pricing" className="headingLink">
+          <h2
+            ref={ref}
+            className="text-lg leading-6 font-semibold text-gray-300 uppercase tracking-wider"
+          >
+            Pricing
+          </h2>
+        </Link>
         <p className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
           The right price for you, whoever you are
         </p>
