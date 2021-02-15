@@ -129,7 +129,6 @@ const Contact: Page = () => {
                     onError={(e) => {
                       setFormSuccessfullySent(false);
                       // TODO(cody): notification/error handling
-                      // console.log("ContactForm.onError", e.message);
                     }}
                   />
                 </>

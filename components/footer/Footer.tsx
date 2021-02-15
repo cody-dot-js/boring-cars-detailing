@@ -73,12 +73,12 @@ export function Footer({ className }: Props) {
                 </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
-                    <ComingSoonLink
-                      tooltip="Services coming soon!"
-                      href={routes.services}
+                    <Link
+                      href={`${routes.pricing}#additional-services`}
+                      className="text-base text-gray-400 hover:text-gray-300"
                     >
                       Services
-                    </ComingSoonLink>
+                    </Link>
                   </li>
                   <li>
                     <Link

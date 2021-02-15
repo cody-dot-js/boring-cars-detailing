@@ -34,6 +34,9 @@ module.exports = {
         "0.75em": "0.75em",
         "0.87em": "0.87em",
       },
+      gap: {
+        "2-px": "2px",
+      },
       height: {
         128: "29rem",
       },
