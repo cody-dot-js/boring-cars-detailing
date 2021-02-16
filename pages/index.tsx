@@ -11,6 +11,8 @@ import { Page } from "types/PageLayout";
 import { PricingSection } from "components/Pricing";
 import { LinkButton } from "components/Button";
 import { Link } from "components/Link";
+import { Comments } from "components/Comments";
+import { Heart20 } from "components/icons/HeartIcon";
 
 interface Props extends BasePageProps {
   meta: PageMeta;
@@ -65,8 +67,20 @@ const Home: Page = () => {
         </GlitchHero>
       </section>
       <PricingSection />
-      <div className="my-8 border-cyan-300 glow-lg-cyan-400 border-b-2 mx-16" />
+      <Divider />
       <Testimonials />
+      <Divider />
+      <section className="relative px-4 space-y-4">
+        <h3 className="flex items-center justify-center text-3xl font-bold uppercase leading-6 text-cyan-200">
+          Share the Love&nbsp;
+          <Heart20 />
+        </h3>
+        <p className="text-center text-gray-400">
+          Share your story. Let us know how we're doing!
+        </p>
+        <Comments />
+      </section>
+      <Divider />
       <Link href="#cta" className="headingLink" id="cta">
         <h2 className="relative z-40 text-center px-4 py-8 text-xl font-semibold tracking-wider text-cyan-300 uppercase">
           We're live! 🚀
@@ -76,6 +90,10 @@ const Home: Page = () => {
     </>
   );
 };
+
+const Divider = () => (
+  <div className="my-8 border-cyan-300 glow-lg-cyan-400 border-b-2 mx-16" />
+);
 
 Home.pageLayout = getPageLayout;
 

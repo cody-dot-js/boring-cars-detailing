@@ -20,13 +20,16 @@ html:focus-within {
 }
 
 .shadow-primary-md {
-  box-shadow: rgba(235, 100, 185, 0.05) 0 0 0 0,
-    rgba(235, 100, 185, 0.05) 0 0 0 0, rgba(235, 100, 185, 0.54) 0 4px 6px -1px,
+  box-shadow:
+    rgba(235, 100, 185, 0.05) 0 0 0 0,
+    rgba(235, 100, 185, 0.05) 0 0 0 0,
+    rgba(235, 100, 185, 0.54) 0 4px 6px -1px,
     rgba(235, 100, 185, 0.21) 0 2px 4px -1px;
 }
 
 .shadow-primary-lg {
-  box-shadow: rgba(235, 100, 185, 0.05) 0 0 0 0,
+  box-shadow:
+    rgba(235, 100, 185, 0.05) 0 0 0 0,
     rgba(235, 100, 185, 0.05) 0 0 0 0,
     rgba(235, 100, 185, 0.54) 0 10px 15px -3px,
     rgba(235, 100, 185, 0.21) 0 4px 6px -2px;
@@ -114,144 +117,180 @@ a.headingLink {
     --glow-direct-color: rgba(34, 211, 238, 0.6);
     --glow-ambient-color: rgba(34, 211, 238, 0.4);
 
-    box-shadow: 0 0 5px var(--glow-direct-color),
-      inset 0 0 5px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 5px var(--glow-direct-color),
+      inset 0 0 5px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-lg-cyan-400 {
     --glow-direct-color: rgba(34, 211, 238, 0.6);
     --glow-ambient-color: rgba(34, 211, 238, 0.4);
 
-    box-shadow: 0 0 20px var(--glow-direct-color),
-      inset 0 0 10px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 20px var(--glow-direct-color),
+      inset 0 0 10px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-sm-fuchsia-400 {
     --glow-direct-color: rgba(232, 121, 249, 0.6);
     --glow-ambient-color: rgba(232, 121, 249, 0.4);
 
-    box-shadow: 0 0 5px var(--glow-direct-color),
-      inset 0 0 5px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 5px var(--glow-direct-color),
+      inset 0 0 5px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-lg-fuchsia-400 {
     --glow-direct-color: rgba(232, 121, 249, 0.6);
     --glow-ambient-color: rgba(232, 121, 249, 0.4);
 
-    box-shadow: 0 0 20px var(--glow-direct-color),
-      inset 0 0 10px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 20px var(--glow-direct-color),
+      inset 0 0 10px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-sm-rose-400 {
     --glow-direct-color: rgba(251, 113, 133, 0.6);
     --glow-ambient-color: rgba(251, 113, 133, 0.4);
 
-    box-shadow: 0 0 5px var(--glow-direct-color),
-      inset 0 0 5px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 5px var(--glow-direct-color),
+      inset 0 0 5px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-lg-rose-400 {
     --glow-direct-color: rgba(251, 113, 133, 0.6);
     --glow-ambient-color: rgba(251, 113, 133, 0.4);
 
-    box-shadow: 0 0 20px var(--glow-direct-color),
-      inset 0 0 10px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 20px var(--glow-direct-color),
+      inset 0 0 10px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-sm-pink-400 {
     --glow-direct-color: rgba(244, 114, 182, 0.6);
     --glow-ambient-color: rgba(244, 114, 182, 0.4);
 
-    box-shadow: 0 0 5px var(--glow-direct-color),
-      inset 0 0 5px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 5px var(--glow-direct-color),
+      inset 0 0 5px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-lg-pink-400 {
     --glow-direct-color: rgba(244, 114, 182, 0.6);
     --glow-ambient-color: rgba(244, 114, 182, 0.4);
 
-    box-shadow: 0 0 20px var(--glow-direct-color),
-      inset 0 0 10px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 20px var(--glow-direct-color),
+      inset 0 0 10px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-sm-indigo-400 {
     --glow-direct-color: rgba(129, 140, 248, 0.6);
     --glow-ambient-color: rgba(129, 140, 248, 0.4);
 
-    box-shadow: 0 0 5px var(--glow-direct-color),
-      inset 0 0 5px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 5px var(--glow-direct-color),
+      inset 0 0 5px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-lg-indigo-400 {
     --glow-direct-color: rgba(129, 140, 248, 0.6);
     --glow-ambient-color: rgba(129, 140, 248, 0.4);
 
-    box-shadow: 0 0 20px var(--glow-direct-color),
-      inset 0 0 10px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 20px var(--glow-direct-color),
+      inset 0 0 10px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-sm-blue-400 {
     --glow-direct-color: rgba(96, 165, 250, 0.6);
     --glow-ambient-color: rgba(96, 165, 250, 0.4);
 
-    box-shadow: 0 0 5px var(--glow-direct-color),
-      inset 0 0 5px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 5px var(--glow-direct-color),
+      inset 0 0 5px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-lg-blue-400 {
     --glow-direct-color: rgba(96, 165, 250, 0.6);
     --glow-ambient-color: rgba(96, 165, 250, 0.4);
 
-    box-shadow: 0 0 20px var(--glow-direct-color),
-      inset 0 0 10px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 20px var(--glow-direct-color),
+      inset 0 0 10px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-sm-lightBlue-400 {
     --glow-direct-color: rgba(34, 211, 238, 0.6);
     --glow-ambient-color: rgba(34, 211, 238, 0.4);
 
-    box-shadow: 0 0 5px var(--glow-direct-color),
-      inset 0 0 5px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 5px var(--glow-direct-color),
+      inset 0 0 5px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-lg-lightBlue-400 {
     --glow-direct-color: rgba(34, 211, 238, 0.6);
     --glow-ambient-color: rgba(34, 211, 238, 0.4);
 
-    box-shadow: 0 0 20px var(--glow-direct-color),
-      inset 0 0 10px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 20px var(--glow-direct-color),
+      inset 0 0 10px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-sm-emerald-400 {
     --glow-direct-color: rgba(52, 211, 153, 0.6);
     --glow-ambient-color: rgba(52, 211, 153, 0.4);
 
-    box-shadow: 0 0 5px var(--glow-direct-color),
-      inset 0 0 5px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 5px var(--glow-direct-color),
+      inset 0 0 5px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-lg-emerald-400 {
     --glow-direct-color: rgba(52, 211, 153, 0.6);
     --glow-ambient-color: rgba(52, 211, 153, 0.4);
 
-    box-shadow: 0 0 20px var(--glow-direct-color),
-      inset 0 0 10px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 20px var(--glow-direct-color),
+      inset 0 0 10px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-sm-yellow-400 {
     --glow-direct-color: rgba(250, 204, 21, 0.6);
     --glow-ambient-color: rgba(250, 204, 21, 0.4);
 
-    box-shadow: 0 0 5px var(--glow-direct-color),
-      inset 0 0 5px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 5px var(--glow-direct-color),
+      inset 0 0 5px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-lg-yellow-400 {
     --glow-direct-color: rgba(250, 204, 21, 0.6);
     --glow-ambient-color: rgba(250, 204, 21, 0.4);
 
-    box-shadow: 0 0 20px var(--glow-direct-color),
-      inset 0 0 10px var(--glow-ambient-color), 0 2px 0 #000;
+    box-shadow:
+      0 0 20px var(--glow-direct-color),
+      inset 0 0 10px var(--glow-ambient-color),
+      0 2px 0 #000;
   }
 
   .glow-pink-pulse {
@@ -261,8 +300,10 @@ a.headingLink {
     --glow-ambient-color-to: rgba(244, 114, 182, 0.4);
 
     animation: glow-pulse 800ms ease-out infinite alternate;
-    box-shadow: 0 0 5px var(--glow-direct-color-from),
-      inset 0 0 5px var(--glow-ambient-color-from), 0 2px 0 #000;
+    box-shadow:
+      0 0 5px var(--glow-direct-color-from),
+      inset 0 0 5px var(--glow-ambient-color-from),
+      0 2px 0 #000;
   }
 
   .glow-cyan-pulse {
@@ -272,8 +313,10 @@ a.headingLink {
     --glow-ambient-color-to: rgba(34, 211, 238, 0.4);
 
     animation: glow-pulse 800ms ease-out infinite alternate;
-    box-shadow: 0 0 5px var(--glow-direct-color-from),
-      inset 0 0 5px var(--glow-ambient-color-from), 0 2px 0 #000;
+    box-shadow:
+      0 0 5px var(--glow-direct-color-from),
+      inset 0 0 5px var(--glow-ambient-color-from),
+      0 2px 0 #000;
   }
 
   .glow-yellow-pulse {
@@ -283,8 +326,10 @@ a.headingLink {
     --glow-ambient-color-to: rgba(250, 204, 21, 0.4);
 
     animation: glow-pulse 800ms ease-out infinite alternate;
-    box-shadow: 0 0 5px var(--glow-direct-color-from),
-      inset 0 0 5px var(--glow-ambient-color-from), 0 2px 0 #000;
+    box-shadow:
+      0 0 5px var(--glow-direct-color-from),
+      inset 0 0 5px var(--glow-ambient-color-from),
+      0 2px 0 #000;
   }
 
   .glow-amber-pulse {
@@ -294,19 +339,25 @@ a.headingLink {
     --glow-ambient-color-to: rgba(251, 191, 36, 0.4);
 
     animation: glow-pulse 800ms ease-out infinite alternate;
-    box-shadow: 0 0 5px var(--glow-direct-color-from),
-      inset 0 0 5px var(--glow-ambient-color-from), 0 2px 0 #000;
+    box-shadow:
+      0 0 5px var(--glow-direct-color-from),
+      inset 0 0 5px var(--glow-ambient-color-from),
+      0 2px 0 #000;
   }
 }
 
 @keyframes glow-pulse {
   0% {
-    box-shadow: 0 0 5px var(--glow-direct-color-from),
-      inset 0 0 5px var(--glow-ambient-color-from), 0 2px 0 #000;
+    box-shadow:
+      0 0 5px var(--glow-direct-color-from),
+      inset 0 0 5px var(--glow-ambient-color-from),
+      0 2px 0 #000;
   }
 
   100% {
-    box-shadow: 0 0 20px var(--glow-direct-color-to),
-      inset 0 0 10px var(--glow-ambient-color-to), 0 2px 0 #000;
+    box-shadow:
+      0 0 20px var(--glow-direct-color-to),
+      inset 0 0 10px var(--glow-ambient-color-to),
+      0 2px 0 #000;
   }
 }
