@@ -78,7 +78,7 @@ const Home: Page = () => {
         <p className="text-center text-gray-400">
           Share your story. Let us know how we're doing!
         </p>
-        <Comments />
+        <Comments scriptId="landing-page" />
       </section>
       <Divider />
       <Link href="#cta" className="headingLink" id="cta">
