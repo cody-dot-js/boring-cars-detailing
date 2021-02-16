@@ -40,6 +40,10 @@ module.exports = {
       height: {
         128: "29rem",
       },
+      minHeight: {
+        320: "320px",
+        400: "400px",
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
