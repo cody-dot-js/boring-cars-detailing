@@ -71,10 +71,12 @@ const Home: Page = () => {
       <Testimonials />
       <Divider />
       <section className="relative px-4 space-y-4">
-        <h3 className="flex items-center justify-center text-3xl font-bold uppercase leading-6 text-cyan-200">
-          Share the Love&nbsp;
-          <Heart20 />
-        </h3>
+        <Link href="#comments" className="headingLink" id="comments">
+          <h3 className="flex items-center justify-center text-3xl font-bold uppercase leading-6 text-cyan-200">
+            Share the Love&nbsp;
+            <Heart20 />
+          </h3>
+        </Link>
         <p className="text-center text-gray-400">
           Share your story. Let us know how we're doing!
         </p>
