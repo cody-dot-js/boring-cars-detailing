@@ -1,4 +1,5 @@
 import { FormValues } from "apis/contact";
+import { shortName } from "config";
 
 const generateTemplate = ({
   name,
@@ -21,7 +22,7 @@ const generateTemplate = ({
       td,th,div,p,a,h1,h2,h3,h4,h5,h6 {font-family: "Segoe UI", sans-serif; mso-line-height-rule: exactly;}
     </style>
   <![endif]-->
-    <title>Boring Cars Detailing Contact Request Form</title>
+    <title>${shortName} Request Form</title>
     <style>
 @media (max-width: 600px) {
   .sm-divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -65,18 +66,18 @@ const generateTemplate = ({
 </style>
 </head>
 <body style="margin: 0; padding: 0; width: 100%; word-break: break-word; -webkit-font-smoothing: antialiased; background-color: #f3f4f6;">
-    <div style="display: none;">👀 Boring Cars Detailing Contact Request&#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &zwnj;
+    <div style="display: none;">👀 ${shortName} Request&#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &zwnj;
       &#160;&#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &zwnj;
       &#160;&#847; &#847; &#847; &#847; &#847; </div>
-  <div role="article" aria-roledescription="email" aria-label="Boring Cars Detailing Contact Request Form" lang="en">
+  <div role="article" aria-roledescription="email" aria-label="${shortName} Request Form" lang="en">
     <article>
       <h1 style="font-size: 18px; text-align: center; color: #374151; text-transform: uppercase;">
-        Boring Cars Detailing Contact Request Form
+        ${shortName} Request Form
       </h1>
       <div class="sm-rounded-lg" style="background-color: #ffffff; overflow: hidden; box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);">
         <div class="sm-px-6" style="padding-left: 4px; padding-right: 4px; padding-top: 5px; padding-bottom: 5px;">
           <h3 style="font-weight: 500; font-size: 18px; line-height: 6px; color: #111827;">
-            Boring Cars Detailing Contact Request
+            ${shortName} Request
           </h3>
           <p style="font-size: 14px; margin-top: 0.25rem; max-width: 42rem; color: #6b7280;">
             Personal details and inquiry
@@ -144,7 +145,7 @@ export function contactEmailText({
   company,
   discovery,
 }: FormValues) {
-  return `Boring Cars Detailing Contact Request Form
+  return `${shortName} Request Form
 
 Request:
 ${body}

@@ -4,15 +4,19 @@ export const shortName = "Boring Cars Detailing";
 
 export const defaultTitle = "Boring Cars Detailing";
 
-export const defaultDescription = "Website for Boring Cars Detailing";
+export const defaultDescription = `Website for ${shortName}`;
 
 export const telephoneNumber = "+1 (916) 385-7257";
 
+export const siteDomain = "boringcarsdetailing.com";
+
+export const repoName = "boring-cars-detailing";
+
 export const emails = {
-  tos: "tos@boringcarsdetailing.com",
-  contact: "hello@boringcarsdetailing.com",
-  privacyPolicy: "policy@boringcarsdetailing.com",
-  support: "support@boringcarsdetailing.com",
+  tos: `tos@${siteDomain}`,
+  contact: `hello@${siteDomain}`,
+  privacyPolicy: `policy@${siteDomain}`,
+  support: `support@${siteDomain}`,
 };
 
 export const socialIds = {
@@ -26,15 +30,15 @@ export const socialIds = {
 };
 
 export const urls = {
-  site: "https://www.boringcarsdetailing.com",
-  facebook: "https://www.facebook.com/boringcarsdetailing/",
-  instagram: "https://www.instagram.com/boringcarsdetailing/",
-  twitter: "https://twitter.com/boringcarsdeta1",
-  github: "https://github.com/dev-cprice/boring-cars-detailing",
-  bugReport: "https://github.com/dev-cprice/boring-cars-detailing/issues/new",
+  site: `https://www.${siteDomain}`,
+  facebook: `https://www.facebook.com/${socialIds.facebook}/`,
+  instagram: `https://www.instagram.com/${socialIds.instagram}/`,
+  twitter: `https://twitter.com/${socialIds.twitter}`,
+  github: `https://github.com/dev-cprice/${repoName}`,
+  bugReport: `https://github.com/dev-cprice/${repoName}/issues/new`,
   personal: {
-    facebook: "https://www.facebook.com/cem.barandir.3",
-    instagram: "https://www.instagram.com/cemb35/",
+    facebook: `https://www.facebook.com/${socialIds.personal.facebook}`,
+    instagram: `https://www.instagram.com/${socialIds.personal.instagram}`,
   },
   stripe: {
     privacyPolicy: "https://stripe.com/privacy",
@@ -49,7 +53,6 @@ export const routes = {
   pricing: "/pricing",
   privacyPolicy: "/privacy-policy",
   schedule: "/schedule",
-  services: "/services", // TODO(cody): necessary?
   termsOfService: "/tos",
 };
 
@@ -65,15 +68,17 @@ export function fullRoutePath(route: keyof typeof routes) {
 }
 
 const config = {
-  name,
-  shortName,
-  defaultTitle,
   defaultDescription,
+  defaultTitle,
   emails,
-  urls,
+  name,
+  repoName,
+  routes,
+  shortName,
+  siteDomain,
   socialIds,
   telephoneNumber,
-  routes,
+  urls,
 };
 
 export default config;

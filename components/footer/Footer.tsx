@@ -8,7 +8,7 @@ import { BugIcon } from "../icons/BugIcon";
 import { FacebookIcon } from "../icons/FacebookIcon";
 import { InstagramIcon } from "../icons/InstagramIcon";
 import styles from "./styles.module.css";
-import { emails, routes, urls } from "config";
+import { emails, name, routes, urls } from "config";
 import { Heart20 } from "components/icons/HeartIcon";
 import { copyrightDate } from "utils/copyrightDate";
 import { SubscribeForm } from "components/SubscribeForm";
@@ -254,9 +254,12 @@ export function Footer({ className }: Props) {
           </div>
           <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
             &copy; {copyrightDate()}{" "}
-            <span className="font-bold">
-              Boring&nbsp;Cars&nbsp;Detailing &&nbsp;Wash&nbsp;Services&nbsp;LLC
-            </span>
+            <span
+              className="font-bold"
+              dangerouslySetInnerHTML={{
+                __html: name.split(" ").join("&nbsp;"),
+              }}
+            />
             . All rights reserved.
           </p>
         </div>

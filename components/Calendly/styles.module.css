@@ -1,3 +1,23 @@
+.calendly {
+  min-width: 320px;
+}
+
+.calendlyDateAndTime {
+  height: 1000px;
+
+  @media (min-width: 1280px) {
+    height: 800px;
+  }
+}
+
+.calendlySchedule {
+  height: 2050px;
+
+  @media (min-width: 1280px) {
+    height: 1650px;
+  }
+}
+
 .loadingPlaceholder {
   @apply shadow rounded-none bg-white mx-auto relative z-0 overflow-hidden sm:rounded-lg sm:max-w-full;
   height: 700px;

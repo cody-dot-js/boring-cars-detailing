@@ -35,23 +35,27 @@ export function CalendlyScript() {
 
 interface Props {
   className?: string;
-  id: string;
   prefill: CalendlyPrefill;
   onSchedule?: (scheduledEvent: CalendlyScheduledEvent) => void;
 }
 
-export function Calendly({ className, id, prefill, onSchedule }: Props) {
+export function Calendly({ className, prefill, onSchedule }: Props) {
   const [isLoading, setIsLoading] = React.useState(true);
+  const [onSubmitPage, setOnSubmitPage] = React.useState(false);
 
   React.useEffect(() => {
+    const calendly = document.getElementById("calendly");
+
     if (prefill != null && window.Calendly != null) {
       window.Calendly.initInlineWidget({
         url: "https://calendly.com/boringcarsdetailing/detailing-appointment",
-        parentElement: document.getElementById(id),
+        parentElement: calendly,
         prefill,
       });
     }
-  }, [id, prefill]);
+
+    calendly.scrollTo({ top: 0, behavior: "smooth" });
+  }, [prefill]);
 
   React.useEffect(() => {
     function handleMessage(e: MessageEvent) {
@@ -61,6 +65,10 @@ export function Calendly({ className, id, prefill, onSchedule }: Props) {
         switch (message) {
           case "calendly.event_type_viewed": {
             setIsLoading(false);
+            break;
+          }
+          case "calendly.date_and_time_selected": {
+            setOnSubmitPage(true);
             break;
           }
           case "calendly.event_scheduled": {
@@ -87,12 +95,13 @@ export function Calendly({ className, id, prefill, onSchedule }: Props) {
         </div>
       )}
       <div
-        id={id}
-        className="relative z-10"
-        style={{
-          minWidth: 320,
-          height: 1100,
-        }}
+        id="calendly"
+        className={cx(
+          "relative z-10",
+          styles.calendly,
+          onSubmitPage && styles.calendlySchedule,
+          !onSubmitPage && styles.calendlyDateAndTime
+        )}
       />
     </div>
   );

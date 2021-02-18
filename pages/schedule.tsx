@@ -190,7 +190,7 @@ const Schedule: Page = () => {
             </div>
           </div>
           <div className="mt-16 sm:mt-0">
-            <Calendly id="calendly" prefill={prefill} />
+            <Calendly prefill={prefill} />
           </div>
         </div>
       )}

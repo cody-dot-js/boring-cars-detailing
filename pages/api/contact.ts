@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { FormValues } from "apis/contact";
 import { sendEmail } from "utils/sendEmail";
 import { contactEmailHtml, contactEmailText } from "templates/contact-email";
+import { shortName } from "config";
 
 const { CONTACT_EMAIL_FROM, CONTACT_EMAIL_TO } = process.env;
 
@@ -17,7 +18,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       to: CONTACT_EMAIL_TO,
       from: CONTACT_EMAIL_FROM,
       replyTo: `${name} <${emailAddress}>`,
-      subject: "Contact Request | Boring Cars Detailing",
+      subject: `Contact Request | ${shortName}`,
       text,
       html,
     });
