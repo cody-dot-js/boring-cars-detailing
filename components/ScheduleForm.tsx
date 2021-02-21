@@ -1,6 +1,7 @@
 import * as React from "react";
 import {
   AdditionalServices,
+  CarWashWhatsIncluded,
   DetailingPackagePricing,
   WashPackagePricingForm,
 } from "./Pricing";
@@ -56,26 +57,23 @@ function ScheduleFormInstance({ className }: { className?: string }) {
     <Form className={className}>
       {/* Package and Addons Section */}
       <section>
-        <div className="max-w-7xl mx-auto lg:px-8 space-y-6 bg-gray-900 md:rounded-lg pb-36">
-          <div className="px-4 py-5 sm:rounded-lg sm:p-6 md:text-center">
-            <h3 className="text-2xl font-medium leading-6 text-pink-200">
-              Wash Package and Detailing Addons
-            </h3>
-            <p className="text-sm text-gray-100 mt-4">
-              Decide which vehicle wash package and additional detailing
-              services works best for you.
-            </p>
-          </div>
-          <div className="px-4 py-5 sm:rounded-lg sm:p-6 space-y-4">
-            <h3 className="text-3xl font-bold uppercase leading-6 text-cyan-200">
-              Wash Package
-            </h3>
-            <p className="text-gray-400">
-              Choose the wash package that fits your vehicle size.
-            </p>
-          </div>
+        <div className="max-w-7xl mx-auto lg:px-8 space-y-6 bg-gray-900 md:rounded-lg pb-32">
+          <CarWashWhatsIncluded
+            className="pt-8"
+            title={
+              <div className="px-4 sm:px-6 lg:px-8 text-center space-y-3">
+                <h3 className="text-3xl font-bold uppercase leading-6 text-cyan-200">
+                  Choose a Wash Package
+                </h3>
+                <p className="mt-3 max-w-5xl mx-auto text-xl text-gray-300 sm:mt-5 sm:text-2xl">
+                  Our Eco-Friendly car wash uses less water and chemicals than a
+                  typical car wash.
+                </p>
+              </div>
+            }
+          />
         </div>
-        <WashPackagePricingForm className="-mt-36" values={values} />
+        <WashPackagePricingForm className="-mt-32" values={values} />
         <div>
           <div className="max-w-7xl mx-auto px-6 sm:px-8">
             <div className="sm:rounded-lg space-y-4">
