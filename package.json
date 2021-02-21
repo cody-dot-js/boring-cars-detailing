@@ -17,6 +17,7 @@
   "dependencies": {
     "@headlessui/react": "^0.3.0",
     "@here/maps-api-for-javascript": "^1.22.1",
+    "@reach/combobox": "^0.13.0",
     "@reach/skip-nav": "^0.13.0",
     "@sendgrid/mail": "^7.4.2",
     "classnames": "^2.2.6",

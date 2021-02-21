@@ -1,16 +1,7 @@
 import wretch from "wretch";
-import { QueryClient, useQuery } from "react-query";
-import { queryKey } from "utils/queryKey";
-import { defaultQueryOptions } from "utils/reactQueryDefaults";
-import { number } from "yup/lib/locale";
+import { useQuery } from "react-query";
+import { DAY, MINUTE } from "utils/time";
 
-export interface FormValues {
-  q: string;
-}
-
-export const initialValues: FormValues = {
-  q: "",
-};
 
 export const baseUrl = "https://discover.search.hereapi.com/v1";
 
@@ -33,32 +24,48 @@ export interface HereEnv {
   HERE_API_SEARCH_CTX: string;
 }
 
-export const makeAutosuggestQuery = (env: any) => ({
-  q,
-  limit = 5,
-}: AutosuggestParams): Required<AutosuggestParams> => ({
-  q,
-  limit,
-  lang: "en-US",
-  at: (env as HereEnv).HERE_API_SEARCH_CTX,
-  apiKey: (env as HereEnv).HERE_API_KEY,
-  in: "countryCode:USA",
+export const serverSideAutosuggestParams = (
+  env: any,
+  { q, limit }: AutosuggestParams
+) =>
+  autosuggestParams({
+    q,
+    limit,
+    lang: "en-US",
+    in: "countryCode:USA",
+    at: (env as HereEnv).HERE_API_SEARCH_CTX,
+    apiKey: (env as HereEnv).HERE_API_KEY,
+  });
+
+const autosuggestParams = (params: AutosuggestParams) => ({
+  ...params,
+  q: params.q || "",
+  limit: params.limit || 5,
 });
 
 export const autosuggestAddressApi = wretch().url("/api/autosuggestAddress");
 
-export async function autosuggestAddress(values: AutosuggestParams) {
+export const autosuggestAddress = (
+  searchValue: string = "",
+  limit = 5
+) => async () => {
+  const values = autosuggestParams({ q: searchValue, limit });
   const response = await autosuggestAddressApi.post(values).res();
-  const { list = [] }: AutosuggestResponse = await response.json();
-  return list;
-}
+  const json: AutosuggestResponse = await response.json();
 
-export function useAutosuggestAddress(searchValue: string, limit = 5) {
+  return json.items.filter((i) => Boolean(i.address));
+};
+
+export function useAutosuggestAddress(searchValue: string = "", limit = 5) {
   return useQuery(
-    queryKey(searchValue, limit),
-    () => {},
-    // getImages(apiKey, searchValue, options),
-    defaultQueryOptions(searchValue)
+    searchValue,
+    autosuggestAddress(searchValue, limit),
+    {
+      cacheTime: 10 * MINUTE,
+      staleTime: 5 * MINUTE,
+      keepPreviousData: true,
+      enabled: Boolean(searchValue),
+    }
   );
 }
 
@@ -96,6 +103,6 @@ interface AutosuggestResponseListItem {
 }
 
 interface AutosuggestResponse {
-  list: AutosuggestResponseListItem[];
+  items: AutosuggestResponseListItem[];
   queryTerms: unknown[];
 }

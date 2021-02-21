@@ -5,12 +5,22 @@ import {
   DetailingPackagePricing,
   WashPackagePricingForm,
 } from "./Pricing";
-import { Form, Formik, useFormikContext } from "formik";
+import { Form, Formik, useFormikContext, FieldProps } from "formik";
 import { FormValues, getInitialValues, validationSchema } from "apis/schedule";
 import { accumulatePrice, WashPricingTier } from "apis/pricing";
 import { Field } from "./Field";
 import { Button } from "./Button";
 import { scrollToTop } from "utils/scrollToTop";
+import { useAutosuggestAddress } from "apis/here";
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxPopover,
+  ComboboxList,
+  ComboboxOption,
+  ComboboxOptionText,
+} from "@reach/combobox";
+import "@reach/combobox/styles.css";
 
 interface Props {
   className?: string;
@@ -174,6 +184,7 @@ function ScheduleFormInstance({ className }: { className?: string }) {
                       Street address
                     </span>
                     <Field
+                      component={AddressField}
                       id="streetAddress"
                       name="streetAddress"
                       type="text"
@@ -267,3 +278,48 @@ function ScheduleFormInstance({ className }: { className?: string }) {
     </Form>
   );
 }
+
+function AddressField({ field, form, ...rest }: FieldProps<FormValues>) {
+  const [search, setSearch] = React.useState("");
+  const { data, isLoading, error } = useAutosuggestAddress(search);
+  React.useEffect(() => {
+    console.log("search items", { data, streetAddress: field.value.streetAddress });
+  }, [data, field.value.streetAddress])
+
+  return (
+    <Combobox className="relative z-50" aria-label="street address" onSelect={v => console.log("selected", v)}>
+      <ComboboxInput
+        className="block w-full mt-1 bg-gray-500 text-white placeholder-gray-300 border border-transparent rounded-md px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-pink-500"
+        onChange={e => setSearch(e.target.value)}
+        name={field.name}
+      />
+      {data && (
+        <ComboboxPopover className="relative z-10 mt-2 w-full rounded-md bg-gray-700 shadow-lg">
+          {data.length > 0 ? (
+            <ComboboxList className="bg-gray-700">
+              {data.map((item) => {
+                // const str = `${city.city}, ${city.state}`;
+                const str = item.address.label;
+                return <ComboboxOption key={str} value={str} />;
+              })}
+            </ComboboxList>
+          ) : (
+            <span style={{ display: "block", margin: 8 }}>
+              No results found
+            </span>
+          )}
+        </ComboboxPopover>
+      )}
+    </Combobox>
+  );
+}
+
+// const AddressLookup = ({
+//   field,
+//   form,
+//   ...rest
+// }: FieldProps) => {
+//   return (
+
+//   );
+// }

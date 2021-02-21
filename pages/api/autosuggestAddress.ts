@@ -1,17 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { makeAutosuggestQuery, autosuggestUrl } from "apis/here";
+import { serverSideAutosuggestParams, autosuggestUrl } from "apis/here";
 import { WretcherError } from "wretch";
 import wretch from "utils/nodeWretch";
 
 const autosuggestApi = wretch.url(autosuggestUrl);
-const autosuggestQuery = makeAutosuggestQuery(process.env);
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const query = autosuggestQuery(req.body);
+  const query = serverSideAutosuggestParams(process.env, req.body);
 
   try {
-    // const response = await autosuggestApi.query(query).get().res();
-    const response = await autosuggestApi.query({ ...query, apiKey: "" }).get().res();
+    const response = await autosuggestApi.query(query).get().res();
     const json = await response.json();
 
     return res.status(response.status).json(json);
