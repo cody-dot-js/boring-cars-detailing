@@ -142,6 +142,22 @@ a.headingLink {
       inset 0 0 10px var(--glow-ambient-color), 0 2px 0 #000;
   }
 
+  .glow-sm-red-400 {
+    --glow-direct-color: rgba(248, 113, 113, 0.6);
+    --glow-ambient-color: rgba(248, 113, 113, 0.4);
+
+    box-shadow: 0 0 5px var(--glow-direct-color),
+      inset 0 0 5px var(--glow-ambient-color), 0 2px 0 #000;
+  }
+
+  .glow-lg-red-400 {
+    --glow-direct-color: rgba(248, 113, 113, 0.6);
+    --glow-ambient-color: rgba(248, 113, 113, 0.4);
+
+    box-shadow: 0 0 20px var(--glow-direct-color),
+      inset 0 0 10px var(--glow-ambient-color), 0 2px 0 #000;
+  }
+
   .glow-sm-rose-400 {
     --glow-direct-color: rgba(251, 113, 133, 0.6);
     --glow-ambient-color: rgba(251, 113, 133, 0.4);

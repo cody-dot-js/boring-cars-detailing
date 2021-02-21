@@ -72,10 +72,6 @@ export const WashPackagePricingForm = ({
           </div>
         </div>
       </div>
-      {/* What's Included */}
-      <section>
-        <WhatsIncluded />
-      </section>
     </div>
   );
 };
@@ -170,9 +166,13 @@ function AdditionalServicesSection() {
               Additional Services
             </h3>
           </Link>
-          <p className="mt-4 max-w-2xl text-xl text-gray-300 lg:mx-auto">
+          <p className="mt-4 max-w-5xl text-xl text-gray-300 lg:mx-auto">
             Select from our premium additional services. You'll love the results
-            and the price!
+            and the price*!
+          </p>
+          <p className="text-sm leading-normal text-gray-500 max-w-5xl">
+            * Pricing for each additional service may vary depending on the size
+            and condition of your vehicle
           </p>
         </div>
         <div className="mt-10">
@@ -211,12 +211,14 @@ export const PricingSection = React.forwardRef<
           <h3 className="text-3xl font-bold uppercase leading-6 text-cyan-200">
             Wash Package
           </h3>
-          <p className="mt-3 max-w-4xl mx-auto text-xl text-gray-300 sm:mt-5 sm:text-2xl">
+          <p className="mt-3 max-w-5xl mx-auto text-xl text-gray-300 sm:mt-5 sm:text-2xl">
             Our Eco-Friendly car wash uses less water and chemicals than a
             typical car wash.
           </p>
         </div>
-        <div className="mt-16 pb-12 lg:pb-20 relative z-0">
+        {/* What's Included */}
+        <CarWashWhatsIncluded className="max-w-7xl lg:px-8" />
+        <div className="mt-8 lg:mt-16 pb-12 lg:pb-20 relative z-0">
           <div className="absolute inset-0 top-8 lg:top-24 h-5/6 lg:h-2/3 bg-gradient-to-r from-teal-500 to-cyan-600" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="relative space-y-16 lg:space-y-0 lg:flex">
@@ -232,8 +234,6 @@ export const PricingSection = React.forwardRef<
           </div>
         </div>
         <OtherVehicles />
-        {/* What's Included */}
-        <WhatsIncluded />
       </section>
       <section>
         <div className="px-6 sm:px-8pt-8 text-center space-y-3">
@@ -254,6 +254,7 @@ interface AdditionalServiceCardProps {
   className?: string;
   icon: React.ReactNode;
   title: React.ReactNode;
+  price: number;
   description?: React.ReactNode;
   selectable?: boolean;
   name?: string;
@@ -265,6 +266,7 @@ function AdditionalServiceCard({
   className,
   icon,
   title,
+  price,
   description,
   selectable,
   name = "addons",
@@ -272,7 +274,7 @@ function AdditionalServiceCard({
   selected,
 }: AdditionalServiceCardProps) {
   return (
-    <div
+    <li
       className={cx(
         "transition-all relative bg-gray-800 p-6 ring-2 ring-inset",
         selected ? "ring-cyan-300" : "ring-transparent",
@@ -285,8 +287,11 @@ function AdditionalServiceCard({
         )}
         <div>{icon}</div>
         <div className="mt-8">
-          <h3 className="text-lg font-medium">{title}</h3>
-          <div className="mt-2 text-sm text-gray-300">{description}</div>
+          <h3 className="flex justify-between text-lg font-medium text-white">
+            <span>{title}</span>
+            <span className="font-bold text-2xl">${price}</span>
+          </h3>
+          <p className="mt-2 text-sm text-gray-300">{description}</p>
         </div>
         <span
           className={cx(
@@ -298,9 +303,92 @@ function AdditionalServiceCard({
           <Check24 />
         </span>
       </label>
-    </div>
+    </li>
   );
 }
+
+const additionalServices: {
+  className?: string;
+  service: AddonService;
+  icon: React.ReactNode;
+  iconClassname: string;
+  description: React.ReactNode;
+}[] = [
+  {
+    className: "rounded-tl-lg rounded-tr-lg sm:rounded-tr-none",
+    service: AddonService.petHairRemoval,
+    icon: <Pet24 />,
+    iconClassname: "bg-fuchsia-50 text-fuchsia-700 glow-sm-fuchsia-400",
+    description:
+      "Whether you’re dealing with long hair or short fur, our pet hair removal expertise will get the job done.",
+  },
+  {
+    className: "sm:rounded-tr-lg",
+    service: AddonService.clayBarTreatment,
+    icon: <Style24 />,
+    iconClassname: "bg-pink-50 text-pink-700 glow-sm-pink-400",
+    description:
+      "Safely remove contaminants and pollutants that penetrate your vehicle's paint, glass, and metal with clay that is less abrasive than polishing or buffing.",
+  },
+  {
+    service: AddonService.fabricProtection,
+    icon: <Fabric24 />,
+    iconClassname: "bg-blue-50 text-blue-700 glow-sm-blue-400",
+    description:
+      "Protect your interior fabrics with a clear and odorless coating so spills and messes are easier to clean up.",
+  },
+  {
+    service: AddonService.ozoneTreatment,
+    icon: <ShieldCheck24 />,
+    iconClassname: "bg-emerald-50 text-emerald-700 glow-sm-emerald-400",
+    description:
+      "The best way to remove stubborn odors, bacteria, and viruses. It can reach inside vents, far under and inside seats, and all the nooks and crannies that you can't.",
+  },
+  {
+    service: AddonService.headlightRestoration,
+    icon: <LightBulb24 />,
+    iconClassname: "bg-yellow-50 text-yellow-700 glow-sm-yellow-400",
+    description:
+      "Refinish discolored and dull headlight lenses for a beautiful shine and improved visibility at night!",
+  },
+  {
+    service: AddonService.odorRemoval,
+    icon: <Flower24 />,
+    iconClassname: "bg-rose-50 text-rose-700 glow-sm-rose-400",
+    description:
+      "Deodorize and eliminate any offensive and hard to remove odors for a perfectly clean, fresh smelling vehicle.",
+  },
+  {
+    service: AddonService.headlinerCleaning,
+    icon: <Opacity24 />,
+    iconClassname: "bg-indigo-50 text-indigo-700 glow-sm-indigo-400",
+    description:
+      "Let us give your vehicle headliner the care and attention that it needs to keep your interior looking as great as new.",
+  },
+  {
+    service: AddonService.washAndWax,
+    icon: <Soap24 />,
+    iconClassname: "bg-lightBlue-50 text-lightBlue-700 glow-sm-lightBlue-400",
+    description:
+      "Hand washed and hand applied wax for a beautiful, clear and thin water resistant coating.",
+  },
+  {
+    className: "sm:rounded-bl-lg",
+    service: AddonService.interiorSanitization,
+    icon: <CoronaVirus24 />,
+    iconClassname: "bg-red-50 text-red-700 glow-sm-red-400",
+    description:
+      "Keep you and your family safe with a full bacterial and viral disinfection of high-touch areas like the steering wheel, dash, consoles, and handles.",
+  },
+  {
+    className: "rounded-bl-lg rounded-br-lg sm:rounded-bl-none",
+    service: AddonService.oneStepPolish,
+    icon: <Sparkles24 />,
+    iconClassname: "bg-gray-50 text-gray-700 glow-sm-gray-400",
+    description:
+      "Safe on your vehicle's clear coat, this polishes to remove fine imperfections while adding protection and gloss.",
+  },
+];
 
 export function AdditionalServices({
   selectable,
@@ -312,191 +400,27 @@ export function AdditionalServices({
   const { addons = [] } = values || {};
 
   return (
-    <div className="rounded-lg bg-gray-900 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-2-px">
-      <AdditionalServiceCard
-        className="rounded-tl-lg rounded-tr-lg sm:rounded-tr-none"
-        title={AddonService.petHairRemoval}
-        value={AddonService.petHairRemoval}
-        selectable={selectable}
-        selected={addons.includes(AddonService.petHairRemoval)}
-        description={
-          <p className="text-2xl">
-            ${addonServicePrices[AddonService.petHairRemoval]}{" "}
-            <span className="text-sm text-gray-500">(pricing may vary)</span>
-          </p>
-        }
-        icon={
-          <span className="rounded-lg inline-flex p-3 bg-fuchsia-50 text-fuchsia-700 glow-sm-fuchsia-400">
-            <Pet24 />
-          </span>
-        }
-      />
-
-      <AdditionalServiceCard
-        className="sm:rounded-tr-lg"
-        title={AddonService.clayBarTreatment}
-        value={AddonService.clayBarTreatment}
-        selectable={selectable}
-        selected={addons.includes(AddonService.clayBarTreatment)}
-        description={
-          <p className="text-2xl">
-            ${addonServicePrices[AddonService.clayBarTreatment]}{" "}
-            <span className="text-sm text-gray-500">(pricing may vary)</span>
-          </p>
-        }
-        icon={
-          <span className="rounded-lg inline-flex p-3 bg-pink-50 text-pink-700 glow-sm-pink-400">
-            <Style24 />
-          </span>
-        }
-      />
-
-      <AdditionalServiceCard
-        title={AddonService.fabricProtection}
-        value={AddonService.fabricProtection}
-        selectable={selectable}
-        selected={addons.includes(AddonService.fabricProtection)}
-        description={
-          <p className="text-2xl">
-            ${addonServicePrices[AddonService.fabricProtection]}{" "}
-            <span className="text-sm text-gray-500">(pricing may vary)</span>
-          </p>
-        }
-        icon={
-          <span className="rounded-lg inline-flex p-3 bg-blue-50 text-blue-700 glow-sm-blue-400">
-            <Fabric24 />
-          </span>
-        }
-      />
-
-      <AdditionalServiceCard
-        title={AddonService.ozoneTreatment}
-        value={AddonService.ozoneTreatment}
-        selectable={selectable}
-        selected={addons.includes(AddonService.ozoneTreatment)}
-        description={
-          <p className="text-2xl">
-            ${addonServicePrices[AddonService.ozoneTreatment]}{" "}
-            <span className="text-sm text-gray-500">(pricing may vary)</span>
-          </p>
-        }
-        icon={
-          <span className="rounded-lg inline-flex p-3 bg-emerald-50 text-emerald-700 glow-sm-emerald-400">
-            <ShieldCheck24 />
-          </span>
-        }
-      />
-
-      <AdditionalServiceCard
-        title={AddonService.headlightRestoration}
-        value={AddonService.headlightRestoration}
-        selectable={selectable}
-        selected={addons.includes(AddonService.headlightRestoration)}
-        description={
-          <p className="text-2xl">
-            ${addonServicePrices[AddonService.headlightRestoration]}{" "}
-            <span className="text-sm text-gray-500">(pricing may vary)</span>
-          </p>
-        }
-        icon={
-          <span className="rounded-lg inline-flex p-3 bg-yellow-50 text-yellow-700 glow-sm-yellow-400">
-            <LightBulb24 />
-          </span>
-        }
-      />
-
-      <AdditionalServiceCard
-        title={AddonService.odorRemoval}
-        value={AddonService.odorRemoval}
-        selectable={selectable}
-        selected={addons.includes(AddonService.odorRemoval)}
-        description={
-          <p className="text-2xl">
-            ${addonServicePrices[AddonService.odorRemoval]}{" "}
-            <span className="text-sm text-gray-500">(pricing may vary)</span>
-          </p>
-        }
-        icon={
-          <span className="rounded-lg inline-flex p-3 bg-pink-50 text-pink-700 glow-sm-pink-400">
-            <Flower24 />
-          </span>
-        }
-      />
-
-      <AdditionalServiceCard
-        title={AddonService.headlinerCleaning}
-        value={AddonService.headlinerCleaning}
-        selectable={selectable}
-        selected={addons.includes(AddonService.headlinerCleaning)}
-        description={
-          <p className="text-2xl">
-            ${addonServicePrices[AddonService.headlinerCleaning]}{" "}
-            <span className="text-sm text-gray-500">(pricing may vary)</span>
-          </p>
-        }
-        icon={
-          <span className="rounded-lg inline-flex p-3 bg-indigo-50 text-indigo-700 glow-sm-indigo-400">
-            <Opacity24 />
-          </span>
-        }
-      />
-
-      <AdditionalServiceCard
-        title={AddonService.washAndWax}
-        value={AddonService.washAndWax}
-        selectable={selectable}
-        selected={addons.includes(AddonService.washAndWax)}
-        description={
-          <p className="text-2xl">
-            ${addonServicePrices[AddonService.washAndWax]}{" "}
-            <span className="text-sm text-gray-500">(pricing may vary)</span>
-          </p>
-        }
-        icon={
-          <span className="rounded-lg inline-flex p-3 bg-lightBlue-50 text-lightBlue-700 glow-sm-lightBlue-400">
-            <Soap24 />
-          </span>
-        }
-      />
-
-      <AdditionalServiceCard
-        className="sm:rounded-bl-lg"
-        title={AddonService.interiorSanitization}
-        value={AddonService.interiorSanitization}
-        selectable={selectable}
-        selected={addons.includes(AddonService.interiorSanitization)}
-        description={
-          <p className="text-2xl">
-            ${addonServicePrices[AddonService.interiorSanitization]}{" "}
-            <span className="text-sm text-gray-500">(pricing may vary)</span>
-          </p>
-        }
-        icon={
-          <span className="rounded-lg inline-flex p-3 bg-rose-50 text-rose-700 glow-sm-rose-400">
-            <CoronaVirus24 />
-          </span>
-        }
-      />
-
-      <AdditionalServiceCard
-        // className="rounded-bl-lg rounded-br-lg sm:rounded-bl-none"
-        title={AddonService.oneStepPolish}
-        value={AddonService.oneStepPolish}
-        selectable={selectable}
-        selected={addons.includes(AddonService.oneStepPolish)}
-        description={
-          <p className="text-2xl">
-            ${addonServicePrices[AddonService.oneStepPolish]}{" "}
-            <span className="text-sm text-gray-500">(pricing may vary)</span>
-          </p>
-        }
-        icon={
-          <span className="rounded-lg inline-flex p-3 bg-gray-50 text-gray-700 glow-sm-yellow-400">
-            <Sparkles24 />
-          </span>
-        }
-      />
-    </div>
+    <ul className="rounded-lg bg-gray-900 overflow-hidden shadow divide-y divide-gray-950 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-2-px">
+      {additionalServices.map(
+        ({ service, className, icon, iconClassname, description }) => (
+          <AdditionalServiceCard
+            key={service}
+            className={className}
+            title={service}
+            value={service}
+            selectable={selectable}
+            price={addonServicePrices[service]}
+            selected={addons.includes(service)}
+            description={description}
+            icon={
+              <span className={cx("rounded-lg inline-flex p-3", iconClassname)}>
+                {icon}
+              </span>
+            }
+          />
+        )
+      )}
+    </ul>
   );
 }
 
@@ -519,53 +443,58 @@ function OtherVehicles() {
   );
 }
 
-function WhatsIncluded() {
+export function CarWashWhatsIncluded({
+  className,
+  title,
+}: {
+  className?: string;
+  title?: React.ReactNode;
+}) {
   return (
-    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-      <div className="max-w-lg mx-auto rounded-lg shadow-lg overflow-hidden lg:max-w-none lg:flex">
-        <div className="flex-1 shadow bg-gray-800 px-6 py-8 lg:p-12">
-          <h3 className="text-2xl font-extrabold text-cyan-200 sm:text-3xl">
-            Choose a Wash Package
-          </h3>
-          <p className="mt-6 text-base text-gray-300">
-            No matter what size vehice you have, you're going to love the care
-            that we put into our services!
-          </p>
-          <div className="mt-8">
-            <div className="flex items-center">
-              <h4 className="flex-shrink-0 pr-4 bg-gray-800 text-sm tracking-wider font-semibold uppercase text-pink-300">
-                What's included
-              </h4>
-              <div className="flex-1 border-t-2 border-pink-300 glow-lg-pink-400" />
-            </div>
-            <ul className="mt-8 space-y-5 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:gap-y-5">
-              <li className="flex items-start lg:col-span-1">
-                <div className="flex-shrink-0">
-                  <CheckCircle20 className="h-5 w-5 text-cyan-300" />
-                </div>
-                <p className="ml-3 text-sm text-gray-100">Exterior hand wash</p>
-              </li>
-
-              <li className="flex items-start lg:col-span-1">
-                <div className="flex-shrink-0">
-                  <CheckCircle20 className="h-5 w-5 text-cyan-300" />
-                </div>
-                <p className="ml-3 text-sm text-gray-100">
-                  Interior vacuum cleaning
-                </p>
-              </li>
-
-              <li className="flex items-start lg:col-span-1">
-                <div className="flex-shrink-0">
-                  <CheckCircle20 className="h-5 w-5 text-cyan-300" />
-                </div>
-                <p className="ml-3 text-sm text-gray-100">
-                  Under-the-hood wipe down (engine cover)
-                </p>
-              </li>
-            </ul>
-          </div>
+    <div
+      className={cx(
+        "relative px-4 sm:px-6 lg:px-0 pb-8 mx-auto overflow-hidden",
+        className
+      )}
+    >
+      {title}
+      <p className="mt-6 text-base text-gray-300">
+        No matter what size vehice you have, you're going to love the care that
+        we put into our services!
+      </p>
+      <div className="mt-8">
+        <div className="flex items-center">
+          <h4 className="flex-shrink-0 pr-4 text-sm tracking-wider font-semibold uppercase text-pink-300">
+            What's included
+          </h4>
+          <div className="flex-1 border-t-2 border-pink-300 glow-lg-pink-400" />
         </div>
+        <ul className="mt-8 space-y-5 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:gap-y-5">
+          <li className="flex items-start lg:col-span-1">
+            <div className="flex-shrink-0">
+              <CheckCircle20 className="h-5 w-5 text-cyan-300" />
+            </div>
+            <p className="ml-3 text-sm text-gray-100">Exterior hand wash</p>
+          </li>
+
+          <li className="flex items-start lg:col-span-1">
+            <div className="flex-shrink-0">
+              <CheckCircle20 className="h-5 w-5 text-cyan-300" />
+            </div>
+            <p className="ml-3 text-sm text-gray-100">
+              Interior vacuum cleaning
+            </p>
+          </li>
+
+          <li className="flex items-start lg:col-span-1">
+            <div className="flex-shrink-0">
+              <CheckCircle20 className="h-5 w-5 text-cyan-300" />
+            </div>
+            <p className="ml-3 text-sm text-gray-100">
+              Under-the-hood wipe down (engine cover)
+            </p>
+          </li>
+        </ul>
       </div>
     </div>
   );
@@ -692,7 +621,7 @@ function WashPricingCard({
               </div>
             </div>
           </div>
-          <div className="relative z-0 flex-1 flex flex-col justify-between border-0 p-6 sm:p-10 lg:p-6 xl:p-10">
+          <div className="relative z-0 flex-1 bg-gray-950 flex flex-col justify-between border-0 p-6 sm:p-10 lg:p-6 xl:p-10">
             <Image
               className={cx(
                 "rounded-none rounded-b-lg lg:rounded-none",
