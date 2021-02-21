@@ -2,7 +2,6 @@ import * as React from "react";
 import { CTASubscribe } from "components/CTASubscribe";
 import { GlitchHero } from "components/GlitchHero";
 import { GetStaticProps } from "next";
-import Image from "next/image";
 import { Testimonials } from "components/Testimonials";
 import { pageMeta, PageMeta } from "utils/pageMeta";
 import { getPageLayout } from "components/Layout";
@@ -28,22 +27,37 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
+const HeroVideo = () => (
+  <>
+    <video
+      width="16"
+      height="9"
+      loop
+      autoPlay
+      muted
+      playsInline
+      preload="metadata"
+      className="absolute inset-0 h-full w-full object-cover z-0"
+      poster="/assets/video/beeple-dvde-loop-poster.png"
+    >
+      <source src="/assets/video/beeple-dvde-loop.mp4" type="video/mp4" />
+      <source
+        src="/assets/video/beeple-dvde-loop.webm"
+        type="application/webm"
+      />
+    </video>
+  </>
+);
+
 const Home: Page = () => {
   return (
     <>
-      <section className="relative z-0 h-screen w-full">
-        <Image
-          alt="Photo by Jason Leung on Unsplash"
-          className="absolute z-0"
-          layout="fill"
-          objectFit="cover"
-          priority
-          src="/assets/imgs/hero_5760x3840.jpg"
-        />
+      <section className="relative z-0 h-screen w-full overflow-hidden bg-cyan-900">
+        <HeroVideo />
         <div className="absolute z-0 top-0 right-0 left-0 bottom-0 bg-gray-950 opacity-70" />
         <GlitchHero>
           <div className="relative z-30 w-full mx-auto max-w-7xl px-4">
-            <div className="text-center max-w-sm mx-auto sm:flex sm:justify-center">
+            <div className="mb-16 sm:mb-0 text-center max-w-sm mx-auto sm:flex sm:justify-center">
               <div className="rounded-md shadow">
                 <LinkButton
                   href="#pricing"
