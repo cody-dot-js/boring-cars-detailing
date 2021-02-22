@@ -2,8 +2,6 @@ import * as React from "react";
 import Head from "next/head";
 import * as hash from "crypto-hash";
 
-// import cx from "classnames";
-
 declare global {
   interface Window {
     gc_params: {
@@ -18,18 +16,20 @@ const GRAPHCOMMENT_BASE_URL = "https://graphcomment.com/js/integration.js";
 
 const getGraphcommentSrc = (id: string) => `${GRAPHCOMMENT_BASE_URL}?${id}`;
 
-interface Props {
+export interface Props {
   scriptId?: string;
 }
 
 export function Comments({ scriptId }: Props) {
   return (
-    <div className="flex justify-center items-center">
+    <>
       <GraphcommentScript scriptId={scriptId} />
-      <div id="graphcomment" className="w-full min-h-400" />
-    </div>
+      <div id="graphcomment" className="w-full" />
+    </>
   );
 }
+
+export default Comments;
 
 function GraphcommentScript({ scriptId }: Props) {
   const [src, setSrc] = React.useState<string | undefined>();

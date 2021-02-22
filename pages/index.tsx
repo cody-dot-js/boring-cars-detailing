@@ -12,6 +12,7 @@ import { LinkButton } from "components/Button";
 import { Link } from "components/Link";
 import { Comments } from "components/Comments";
 import { Heart20 } from "components/icons/HeartIcon";
+import { useInView } from "react-intersection-observer";
 
 interface Props extends BasePageProps {
   meta: PageMeta;
@@ -27,27 +28,49 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const HeroVideo = () => (
-  <>
-    <video
-      width="16"
-      height="9"
-      loop
-      autoPlay
-      muted
-      playsInline
-      preload="metadata"
-      className="absolute inset-0 h-full w-full object-cover z-0"
-      poster="/assets/video/beeple-dvde-loop-poster.png"
-    >
-      <source src="/assets/video/beeple-dvde-loop.mp4" type="video/mp4" />
-      <source
-        src="/assets/video/beeple-dvde-loop.webm"
-        type="application/webm"
-      />
-    </video>
-  </>
-);
+const HeroVideo = () => {
+  const [inViewRef, inView] = useInView();
+  const ref = React.useRef<HTMLVideoElement>();
+
+  React.useEffect(() => {
+    if (inView) {
+      ref.current.play();
+    } else {
+      ref.current.pause();
+    }
+  }, [inView]);
+
+  const setRefs = React.useCallback(
+    (node?: HTMLVideoElement) => {
+      ref.current = node;
+      inViewRef(node);
+    },
+    [inViewRef]
+  );
+
+  return (
+    <>
+      <video
+        ref={setRefs}
+        width="16"
+        height="9"
+        loop
+        autoPlay
+        muted
+        playsInline
+        preload="metadata"
+        className="absolute inset-0 h-full w-full object-cover z-0"
+        poster="/assets/video/beeple-dvde-loop-poster.png"
+      >
+        <source src="/assets/video/beeple-dvde-loop.mp4" type="video/mp4" />
+        <source
+          src="/assets/video/beeple-dvde-loop.webm"
+          type="application/webm"
+        />
+      </video>
+    </>
+  );
+};
 
 const Home: Page = () => {
   return (
