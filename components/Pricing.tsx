@@ -4,7 +4,6 @@ import { Check24 } from "./icons/CheckIcon";
 import { Field } from "formik";
 import {
   FormValues,
-  washTierName,
   washTierPrice,
   WashPricingTier,
   washTierCategory,
@@ -26,9 +25,9 @@ import { Soap24 } from "./icons/SoapIcon";
 import { Sparkles24 } from "./icons/SparklesIcon";
 import { CoronaVirus24 } from "./icons/CoronaVirusIcon";
 import { Flower24 } from "./icons/FlowerIcon";
-import { Fabric24 } from "./icons/FabricIcon";
 import { Style24 } from "./icons/StyleIcon";
 import { Opacity24 } from "./icons/OpacityIcon";
+import { Engine24 } from "./icons/EngineIcon";
 
 interface PricingFormProps {
   className?: string;
@@ -39,7 +38,7 @@ export const WashPackagePricingForm = ({
   className,
   values,
 }: PricingFormProps) => {
-  const { washTier = "Plus" } = values || {};
+  const { washTier = "SuvAndCrossover" } = values || {};
 
   return (
     <div className={className}>
@@ -48,25 +47,25 @@ export const WashPackagePricingForm = ({
           <div className="absolute inset-0 top-8 lg:top-24 h-5/6 lg:h-2/3 bg-gradient-to-r from-teal-500 to-cyan-600" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="relative space-y-16 lg:space-y-0 lg:flex">
-              {/* REGULAR CARD */}
+              {/* Compact CARD */}
               <WashPricingCard
-                tier="Regular"
+                tier="Compact"
                 selectable
-                selected={washTier === "Regular"}
+                selected={washTier === "Compact"}
               />
 
-              {/* PLUS CARD */}
+              {/* SuvAndCrossover CARD */}
               <WashPricingCard
-                tier="Plus"
+                tier="SuvAndCrossover"
                 selectable
-                selected={washTier === "Plus"}
+                selected={washTier === "SuvAndCrossover"}
               />
 
-              {/* PREMIUM CARD */}
+              {/* Oversized CARD */}
               <WashPricingCard
-                tier="Premium"
+                tier="Oversized"
                 selectable
-                selected={washTier === "Premium"}
+                selected={washTier === "Oversized"}
               />
             </div>
           </div>
@@ -222,14 +221,14 @@ export const PricingSection = React.forwardRef<
           <div className="absolute inset-0 top-8 lg:top-24 h-5/6 lg:h-2/3 bg-gradient-to-r from-teal-500 to-cyan-600" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="relative space-y-16 lg:space-y-0 lg:flex">
-              {/* REGULAR CARD */}
-              <WashPricingCard tier="Regular" />
+              {/* Compact CARD */}
+              <WashPricingCard tier="Compact" />
 
-              {/* PLUS CARD */}
-              <WashPricingCard tier="Plus" selected />
+              {/* SuvAndCrossover CARD */}
+              <WashPricingCard tier="SuvAndCrossover" selected />
 
-              {/* PREMIUM CARD */}
-              <WashPricingCard tier="Premium" />
+              {/* Oversized CARD */}
+              <WashPricingCard tier="Oversized" />
             </div>
           </div>
         </div>
@@ -331,11 +330,11 @@ const additionalServices: {
       "Safely remove contaminants and pollutants that penetrate your vehicle's paint, glass, and metal with clay that is less abrasive than polishing or buffing.",
   },
   {
-    service: AddonService.fabricProtection,
-    icon: <Fabric24 />,
+    service: AddonService.engineBayDetailing,
+    icon: <Engine24 />,
     iconClassname: "bg-blue-50 text-blue-700 glow-sm-blue-400",
     description:
-      "Protect your interior fabrics with a clear and odorless coating so spills and messes are easier to clean up.",
+      "We remove thousands of miles' worth of dust, dirt, and grime resulting in a clean and beautiful engine bay that looks brand new!",
   },
   {
     service: AddonService.ozoneTreatment,
@@ -481,9 +480,7 @@ export function CarWashWhatsIncluded({
             <div className="flex-shrink-0">
               <CheckCircle20 className="h-5 w-5 text-cyan-300" />
             </div>
-            <p className="ml-3 text-sm text-gray-100">
-              Interior vacuum cleaning
-            </p>
+            <p className="ml-3 text-sm text-gray-100">Premium Wheel Care</p>
           </li>
 
           <li className="flex items-start lg:col-span-1">
@@ -491,7 +488,7 @@ export function CarWashWhatsIncluded({
               <CheckCircle20 className="h-5 w-5 text-cyan-300" />
             </div>
             <p className="ml-3 text-sm text-gray-100">
-              Under-the-hood wipe down (engine cover)
+              Interior Vacuum Cleaning
             </p>
           </li>
         </ul>
@@ -561,16 +558,16 @@ const pricingTierImage: Record<
   WashPricingTier,
   { alt: string; src: string }
 > = {
-  Regular: {
-    src: "/assets/imgs/pricing/regular.jpg",
+  Compact: {
+    src: "/assets/imgs/pricing/compact.jpg",
     alt: "Photo by Kerem Karaarslan on Unsplash",
   },
-  Plus: {
-    src: "/assets/imgs/pricing/plus.jpg",
+  SuvAndCrossover: {
+    src: "/assets/imgs/pricing/suvAndCrossovers.jpg",
     alt: "Photo by Nev Chonkar on Unsplash",
   },
-  Premium: {
-    src: "/assets/imgs/pricing/premium.jpg",
+  Oversized: {
+    src: "/assets/imgs/pricing/oversized.jpg",
     alt: "Photo by Pavel Anoshin on Unsplash",
   },
 };
@@ -581,7 +578,6 @@ function WashPricingCard({
   selected,
   tier,
 }: WashPricingCardProps) {
-  const name = washTierName[tier];
   const price = washTierPrice[tier];
   const category = washTierCategory[tier];
   const { src, alt } = pricingTierImage[tier];
@@ -599,20 +595,20 @@ function WashPricingCard({
       <div
         className={cx(
           "h-full flex flex-col overflow-hidden shadow-lg rounded-lg lg:rounded-none",
-          tier === "Regular" && "lg:rounded-l-lg",
-          tier === "Premium" && "lg:rounded-r-lg",
+          tier === "Compact" && "lg:rounded-l-lg",
+          tier === "Oversized" && "lg:rounded-r-lg",
           selected && "rounded-lg lg:rounded-lg"
         )}
       >
         <div className="flex-1 flex flex-col">
           <div className="px-6 py-10 bg-gradient-to-t from-fuchsia-500 to-pink-600 shadow">
             <div>
-              <h3
+              {/* <h3
                 className="text-center text-2xl font-medium text-gray-50"
                 id="tier-scale"
               >
                 {name}
-              </h3>
+              </h3> */}
               <div className="mt-4 flex items-center justify-center">
                 <span className="px-3 flex items-start text-6xl tracking-tight text-gray-50">
                   <span className="mt-2 mr-2 text-4xl font-medium">$</span>
@@ -625,8 +621,8 @@ function WashPricingCard({
             <Image
               className={cx(
                 "rounded-none rounded-b-lg lg:rounded-none",
-                tier === "Regular" && "lg:rounded-bl-lg",
-                tier === "Premium" && "lg:rounded-br-lg",
+                tier === "Compact" && "lg:rounded-bl-lg",
+                tier === "Oversized" && "lg:rounded-br-lg",
                 selected && "rounded-b-lg"
               )}
               src={src}

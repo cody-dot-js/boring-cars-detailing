@@ -1,28 +1,32 @@
 import * as yup from "yup";
 
-export type WashPricingTier = "Regular" | "Plus" | "Premium";
+export type WashPricingTier = "Compact" | "SuvAndCrossover" | "Oversized";
 
 export const washTierName: Record<WashPricingTier, WashPricingTier> = {
-  Regular: "Regular",
-  Plus: "Plus",
-  Premium: "Premium",
+  Compact: "Compact",
+  SuvAndCrossover: "SuvAndCrossover",
+  Oversized: "Oversized",
 };
 
 export const washTierCategory: Record<WashPricingTier, string> = {
-  Regular: "Compact Vehicles",
-  Plus: "SUV and Crossovers",
-  Premium: "Oversized Vehicles",
+  Compact: "Compact Vehicles",
+  SuvAndCrossover: "SUV and Crossovers",
+  Oversized: "Oversized Vehicles",
 };
 
-export const washTierNames: WashPricingTier[] = ["Regular", "Plus", "Premium"];
+export const washTierNames: WashPricingTier[] = [
+  "Compact",
+  "SuvAndCrossover",
+  "Oversized",
+];
 
 export const washTierPrice: Record<WashPricingTier, number> = {
-  Regular: 80,
-  Plus: 100,
-  Premium: 150,
+  Compact: 70,
+  SuvAndCrossover: 100,
+  Oversized: 150,
 };
 
-export const detailingBasePrice = 150;
+export const detailingBasePrice = 200;
 
 export function accumulatePrice(values: FormValues): number {
   const { washTier, addons, addDetailing } = values;
@@ -40,7 +44,7 @@ export function accumulatePrice(values: FormValues): number {
 export enum AddonService {
   petHairRemoval = "Pet Hair Removal",
   clayBarTreatment = "Clay Bar Treatment",
-  fabricProtection = "Fabric Protection",
+  engineBayDetailing = "Engine Bay Detailing",
   ozoneTreatment = "Ozone Treatment",
   headlightRestoration = "Headlight Restoration",
   odorRemoval = "Odor Removal",
@@ -52,8 +56,8 @@ export enum AddonService {
 
 export const addonServicePrices: Record<AddonService, number> = {
   [AddonService.petHairRemoval]: 50,
-  [AddonService.clayBarTreatment]: 55,
-  [AddonService.fabricProtection]: 100,
+  [AddonService.clayBarTreatment]: 100,
+  [AddonService.engineBayDetailing]: 55,
   [AddonService.ozoneTreatment]: 100,
   [AddonService.headlightRestoration]: 125,
   [AddonService.odorRemoval]: 125,
@@ -68,7 +72,7 @@ export type AddonServicesSelected = Record<AddonService, boolean>;
 export const initialAddonServices: AddonServicesSelected = {
   [AddonService.petHairRemoval]: false,
   [AddonService.clayBarTreatment]: false,
-  [AddonService.fabricProtection]: false,
+  [AddonService.engineBayDetailing]: false,
   [AddonService.ozoneTreatment]: false,
   [AddonService.headlightRestoration]: false,
   [AddonService.odorRemoval]: false,
@@ -85,7 +89,7 @@ export interface FormValues {
 }
 
 export const initialValues: FormValues = {
-  washTier: "Plus",
+  washTier: "SuvAndCrossover",
   addDetailing: false,
   addons: [],
 };

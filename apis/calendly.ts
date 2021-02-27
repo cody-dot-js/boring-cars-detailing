@@ -2,9 +2,9 @@ import { AddonService, WashPricingTier } from "./pricing";
 import { FormValues } from "./schedule";
 
 const washTierToRadioValue: Record<WashPricingTier, string> = {
-  Regular: "1",
-  Plus: "2",
-  Premium: "3",
+  Compact: "1",
+  SuvAndCrossover: "2",
+  Oversized: "3",
 };
 
 function getAddonCalendlyValue(addon: AddonService) {
@@ -13,7 +13,7 @@ function getAddonCalendlyValue(addon: AddonService) {
       return "1";
     case AddonService.clayBarTreatment:
       return "2";
-    case AddonService.fabricProtection:
+    case AddonService.engineBayDetailing:
       return "3";
     case AddonService.ozoneTreatment:
       return "4";
