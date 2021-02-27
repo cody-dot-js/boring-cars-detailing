@@ -30,7 +30,7 @@ const initialValues: FormValues = {
 };
 
 export const getInitialValues = (
-  washTier: WashPricingTier = "Plus"
+  washTier: WashPricingTier = "SuvAndCrossover"
 ): FormValues => ({
   ...initialValues,
   washTier,
