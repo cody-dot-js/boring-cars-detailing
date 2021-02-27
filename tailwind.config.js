@@ -103,6 +103,7 @@ module.exports = {
       cursor: ["hover", "focus", "disabled"],
       backgroundColor: ["active"],
       borderColor: ["active"],
+      borderWidth: ["active"],
       textColor: ["active"],
     },
   },

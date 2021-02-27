@@ -14,7 +14,7 @@ export interface FormValues extends PricingFormValues {
   phoneNumber: string;
   streetAddress: string;
   city: string;
-  zipPostal: string;
+  zip: string;
   additionalInfo?: string;
 }
 
@@ -25,7 +25,7 @@ const initialValues: FormValues = {
   phoneNumber: "",
   streetAddress: "",
   city: "",
-  zipPostal: "",
+  zip: "",
   additionalInfo: undefined,
 };
 
@@ -48,7 +48,7 @@ export const validationSchema = yup.object({
     .required("Your phone number is required."),
   streetAddress: yup.string().required("Your street address is required."),
   city: yup.string().required("Your city is required."),
-  zipPostal: yup.string().required("Your ZIP / Postal code is required."),
+  zip: yup.string().required("Your ZIP code is required."),
   additionalInfo: yup.string(),
   ...pricingValidationSchemaShape,
 });

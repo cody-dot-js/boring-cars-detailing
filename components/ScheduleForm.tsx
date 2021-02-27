@@ -8,7 +8,7 @@ import {
 import { Form, Formik, useFormikContext, FieldProps } from "formik";
 import { FormValues, getInitialValues, validationSchema } from "apis/schedule";
 import { accumulatePrice, WashPricingTier } from "apis/pricing";
-import { Field } from "./Field";
+import { Field, fieldClassName } from "./Field";
 import { Button } from "./Button";
 import { scrollToTop } from "utils/scrollToTop";
 import { useAutosuggestAddress } from "apis/here";
@@ -19,8 +19,7 @@ import {
   ComboboxList,
   ComboboxOption,
   ComboboxOptionText,
-} from "@reach/combobox";
-import "@reach/combobox/styles.css";
+} from "./Combobox";
 
 interface Props {
   className?: string;
@@ -194,7 +193,7 @@ function ScheduleFormInstance({ className }: { className?: string }) {
                   </label>
                 </div>
 
-                <div className="col-span-6 sm:col-span-6 lg:col-span-3">
+                <div className="col-span-6 sm:col-span-3">
                   <label>
                     <span className="block text-sm font-medium text-gray-300">
                       City
@@ -209,17 +208,34 @@ function ScheduleFormInstance({ className }: { className?: string }) {
                   </label>
                 </div>
 
-                <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <div className="col-span-6 sm:col-span-1">
                   <label>
                     <span className="block text-sm font-medium text-gray-300">
-                      ZIP / Postal
+                      State
+                    </span>
+                    <div
+                      aria-label="We only service the Bay Area"
+                      data-microtip-position="bottom"
+                      data-microtip-size="fit"
+                      role="tooltip"
+                      className="mt-1 relative rounded-md shadow-sm"
+                    >
+                      <input className="mt-1 text-gray-400 bg-gray-600 text-white placeholder-gray-300 border-gray-600 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm rounded-md" type="text" autoComplete="off" name="state" value="CA" readOnly aria-readonly /> 
+                    </div>
+                  </label>
+                </div>
+
+                <div className="col-span-6 sm:col-span-2">
+                  <label>
+                    <span className="block text-sm font-medium text-gray-300">
+                      ZIP
                     </span>
                     <Field
-                      id="zipPostal"
-                      name="zipPostal"
+                      id="zip"
+                      name="zip"
                       type="text"
                       autoComplete="postal-code"
-                      invalid={errors.zipPostal && touched.zipPostal}
+                      invalid={errors.zip && touched.zip}
                     />
                   </label>
                 </div>
@@ -282,35 +298,49 @@ function ScheduleFormInstance({ className }: { className?: string }) {
 function AddressField({ field, form, ...rest }: FieldProps<FormValues>) {
   const [search, setSearch] = React.useState("");
   const { data, isLoading, error } = useAutosuggestAddress(search);
+  const [isFocused, setIsFocused] = React.useState(false);
+
   React.useEffect(() => {
     console.log("search items", { data, streetAddress: field.value.streetAddress });
   }, [data, field.value.streetAddress])
 
   return (
-    <Combobox className="relative z-50" aria-label="street address" onSelect={v => console.log("selected", v)}>
+    <>
+      {/* <span>isFocused? {isFocused ? "yes" : "no"}</span> */}
+    <Combobox
+      className="relative rounded-md overflow-none"
+      aria-label="street address"
+      onSelect={v => console.log("selected", v)}
+      onBlur={() => setIsFocused(false)}
+      onFocus={() => setIsFocused(true)}
+    >
       <ComboboxInput
-        className="block w-full mt-1 bg-gray-500 text-white placeholder-gray-300 border border-transparent rounded-md px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-pink-500"
+        className={fieldClassName()}
+        // className="mt-1 px-3 py-2 bg-gray-500 text-white placeholder-gray-300 border-gray-600 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm rounded-md"
         onChange={e => setSearch(e.target.value)}
         name={field.name}
       />
       {data && (
-        <ComboboxPopover className="relative z-10 mt-2 w-full rounded-md bg-gray-700 shadow-lg">
+          <ComboboxPopover
+          // className="relative overflow-hidden z-10 mt-2 w-full rounded-lg border border-transparent bg-gray-700 shadow-lg"
+          >
           {data.length > 0 ? (
-            <ComboboxList className="bg-gray-700">
+            <ComboboxList>
               {data.map((item) => {
                 // const str = `${city.city}, ${city.state}`;
                 const str = item.address.label;
-                return <ComboboxOption key={str} value={str} />;
+                return <ComboboxOption key={str} value={str} className="active:bg-gray-900" />;
               })}
             </ComboboxList>
           ) : (
-            <span style={{ display: "block", margin: 8 }}>
+            <div className="bg-gray-700 p-2">
               No results found
-            </span>
+            </div>
           )}
         </ComboboxPopover>
       )}
-    </Combobox>
+      </Combobox>
+      </>
   );
 }
 

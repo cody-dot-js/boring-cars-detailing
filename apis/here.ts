@@ -27,15 +27,17 @@ export interface HereEnv {
 export const serverSideAutosuggestParams = (
   env: any,
   { q, limit }: AutosuggestParams
-) =>
-  autosuggestParams({
+) => {
+  const { HERE_API_SEARCH_CTX, HERE_API_KEY }: HereEnv = env;
+
+  return autosuggestParams({
     q,
     limit,
     lang: "en-US",
-    in: "countryCode:USA",
-    at: (env as HereEnv).HERE_API_SEARCH_CTX,
-    apiKey: (env as HereEnv).HERE_API_KEY,
+    in: `circle:${HERE_API_SEARCH_CTX};r=161000`,
+    apiKey: HERE_API_KEY,
   });
+}
 
 const autosuggestParams = (params: AutosuggestParams) => ({
   ...params,
