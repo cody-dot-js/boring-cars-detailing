@@ -563,7 +563,7 @@ const pricingTierImage: Record<
     alt: "Photo by Kerem Karaarslan on Unsplash",
   },
   SuvAndCrossover: {
-    src: "/assets/imgs/pricing/suvAndCrossover.jpg",
+    src: "/assets/imgs/pricing/suvAndCrossovers.jpg",
     alt: "Photo by Nev Chonkar on Unsplash",
   },
   Oversized: {
