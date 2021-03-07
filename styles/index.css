@@ -1,4 +1,5 @@
 @import "microtip";
+@import "./reach-combobox.css";
 
 @tailwind base;
 

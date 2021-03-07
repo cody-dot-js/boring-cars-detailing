@@ -1,16 +1,25 @@
 import * as React from "react";
+import cx from "classnames";
 import {
   AdditionalServices,
   CarWashWhatsIncluded,
   DetailingPackagePricing,
   WashPackagePricingForm,
 } from "./Pricing";
-import { Form, Formik, useFormikContext } from "formik";
+import { Form, Formik, useFormikContext, FieldProps } from "formik";
 import { FormValues, getInitialValues, validationSchema } from "apis/schedule";
 import { accumulatePrice, WashPricingTier } from "apis/pricing";
-import { Field } from "./Field";
+import { Field, fieldClassName } from "./Field";
 import { Button } from "./Button";
 import { scrollToTop } from "utils/scrollToTop";
+import { useAutosuggestAddress } from "apis/here";
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxPopover,
+  ComboboxList,
+  ComboboxOption,
+} from "./Combobox";
 
 interface Props {
   className?: string;
@@ -174,6 +183,7 @@ function ScheduleFormInstance({ className }: { className?: string }) {
                       Street address
                     </span>
                     <Field
+                      component={AddressField}
                       id="streetAddress"
                       name="streetAddress"
                       type="text"
@@ -183,7 +193,7 @@ function ScheduleFormInstance({ className }: { className?: string }) {
                   </label>
                 </div>
 
-                <div className="col-span-6 sm:col-span-6 lg:col-span-3">
+                <div className="col-span-6 sm:col-span-3">
                   <label>
                     <span className="block text-sm font-medium text-gray-300">
                       City
@@ -198,17 +208,42 @@ function ScheduleFormInstance({ className }: { className?: string }) {
                   </label>
                 </div>
 
-                <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <div className="col-span-6 sm:col-span-1">
                   <label>
                     <span className="block text-sm font-medium text-gray-300">
-                      ZIP / Postal
+                      State
+                    </span>
+                    <div
+                      aria-label="We only service the Bay Area"
+                      data-microtip-position="bottom"
+                      data-microtip-size="fit"
+                      role="tooltip"
+                      className="mt-1 relative rounded-md shadow-sm"
+                    >
+                      <input
+                        className="mt-1 bg-gray-600 text-white placeholder-gray-300 border-gray-600 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm rounded-md"
+                        type="text"
+                        autoComplete="off"
+                        name="state"
+                        value="CA"
+                        readOnly
+                        aria-readonly
+                      />
+                    </div>
+                  </label>
+                </div>
+
+                <div className="col-span-6 sm:col-span-2">
+                  <label>
+                    <span className="block text-sm font-medium text-gray-300">
+                      ZIP
                     </span>
                     <Field
-                      id="zipPostal"
-                      name="zipPostal"
+                      id="zip"
+                      name="zip"
                       type="text"
                       autoComplete="postal-code"
-                      invalid={errors.zipPostal && touched.zipPostal}
+                      invalid={errors.zip && touched.zip}
                     />
                   </label>
                 </div>
@@ -265,5 +300,72 @@ function ScheduleFormInstance({ className }: { className?: string }) {
         </div>
       </div>
     </Form>
+  );
+}
+
+function AddressField({ field, form, ...rest }: FieldProps<FormValues>) {
+  const [search, setSearch] = React.useState("");
+  const [selected, setSelected] = React.useState<string | undefined>();
+  const { data } = useAutosuggestAddress(search);
+
+  function onSelect(value: string) {
+    let parts = value.split(",").map((p) => p.trim());
+    if (parts.length === 4) {
+      parts.unshift("");
+    }
+    let [name, address, city, zip] = parts;
+    zip = zip.replace(/[CA]/g, "").trim();
+    const streetAddress = `${name}${name ? "," : ""} ${address}`.trim();
+
+    form.setFieldValue("streetAddress", streetAddress, false);
+    form.setFieldValue("city", city, false);
+    form.setFieldValue("zip", zip, false);
+    form.validateField("streetAddress");
+    form.validateField("city");
+    form.validateField("zip");
+
+    setSelected(streetAddress);
+    setSearch(streetAddress);
+  }
+
+  return (
+    <>
+      <Combobox
+        className="relative rounded-md overflow-none"
+        aria-label="street address"
+        onSelect={onSelect}
+      >
+        <ComboboxInput
+          className={fieldClassName()}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setSelected(undefined);
+          }}
+          value={search}
+          name={field.name}
+          id={field.name}
+        />
+        {data && !selected && (
+          <ComboboxPopover
+            className={cx(
+              data.length === 0 && "pointer-events-none outline-none ring-0"
+            )}
+          >
+            {data.length > 0 ? (
+              <ComboboxList>
+                {data.map((item) => {
+                  const { label } = item.address;
+                  return <ComboboxOption key={label} value={label} />;
+                })}
+              </ComboboxList>
+            ) : (
+              <div className="bg-gray-700 p-4 border border-red-300 rounded-md pointer-events-none">
+                No results found
+              </div>
+            )}
+          </ComboboxPopover>
+        )}
+      </Combobox>
+    </>
   );
 }

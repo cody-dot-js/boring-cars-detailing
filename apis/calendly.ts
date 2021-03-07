@@ -120,8 +120,8 @@ export function makeAppointmentPrefill({
       a2: customAnswers.streetAddress,
       // City
       a3: customAnswers.city,
-      // Zip / Postal
-      a4: customAnswers.zipPostal,
+      // Zip
+      a4: customAnswers.zip,
       // Wash Package
       a5: washTierToRadioValue[customAnswers.washTier],
       // Add Detailing?

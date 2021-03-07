@@ -4,11 +4,14 @@ import "styles/index.css";
 import type { MaybeHasPageLayout } from "types/PageLayout";
 import { measureWebVitals, pageView } from "utils/gtag";
 import { useRouteChanged } from "hooks/useRouteChanged";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 function handleRouteChange(url: string) {
   pageView(url);
   measureWebVitals();
 }
+
+const queryClient = new QueryClient();
 
 function App({ Component, pageProps }: AppProps) {
   const { pageLayout = () => (page) => page } = Component as MaybeHasPageLayout;
@@ -19,7 +22,11 @@ function App({ Component, pageProps }: AppProps) {
 
   useRouteChanged(handleRouteChange);
 
-  return pageLayout(pageProps)(<Component {...pageProps} />);
+  return pageLayout(pageProps)(
+    <QueryClientProvider client={queryClient}>
+      <Component {...pageProps} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;
