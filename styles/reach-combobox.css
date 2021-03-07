@@ -1,0 +1,47 @@
+@import "@reach/combobox/styles.css";
+
+/* https://reach.tech/combobox/#css-selectors */
+[data-reach-combobox] {
+  @apply bg-gray-700;
+}
+
+[data-reach-combobox-popover] {
+  @apply relative overflow-hidden z-10 mt-1 w-full rounded-lg bg-gray-700 shadow;
+}
+
+[data-reach-combobox-list] {
+  @apply bg-gray-700 border border-pink-300 rounded-lg overflow-hidden;
+}
+
+[data-reach-combobox-option] {
+  @apply p-4;
+}
+
+[data-reach-combobox-option]:hover {
+  @apply bg-gray-800;
+}
+
+[data-reach-combobox-option]:focus {
+  @apply outline-none bg-gray-800 ring-2 border-pink-300;
+}
+
+[data-reach-combobox-option][data-highlighted] {
+  @apply bg-gray-900;
+}
+
+[data-reach-combobox-option][data-highlighted]:hover {
+  @apply bg-gray-900;
+}
+
+[data-reach-combobox-option][data-highlighted]:active {
+  @apply border-pink-300;
+}
+
+[data-reach-combobox-option][data-highlighted]:focus {
+  @apply outline-none ring-2 border-pink-300;
+}
+
+/* the string portions that match what the user has typed */
+[data-user-value] {
+  @apply text-cyan-100;
+}

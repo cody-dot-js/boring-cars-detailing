@@ -1,4 +1,5 @@
 import * as React from "react";
+import cx from "classnames";
 import {
   AdditionalServices,
   CarWashWhatsIncluded,
@@ -18,7 +19,6 @@ import {
   ComboboxPopover,
   ComboboxList,
   ComboboxOption,
-  ComboboxOptionText,
 } from "./Combobox";
 
 interface Props {
@@ -220,7 +220,15 @@ function ScheduleFormInstance({ className }: { className?: string }) {
                       role="tooltip"
                       className="mt-1 relative rounded-md shadow-sm"
                     >
-                      <input className="mt-1 text-gray-400 bg-gray-600 text-white placeholder-gray-300 border-gray-600 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm rounded-md" type="text" autoComplete="off" name="state" value="CA" readOnly aria-readonly /> 
+                      <input
+                        className="mt-1 bg-gray-600 text-white placeholder-gray-300 border-gray-600 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm rounded-md"
+                        type="text"
+                        autoComplete="off"
+                        name="state"
+                        value="CA"
+                        readOnly
+                        aria-readonly
+                      />
                     </div>
                   </label>
                 </div>
@@ -297,59 +305,67 @@ function ScheduleFormInstance({ className }: { className?: string }) {
 
 function AddressField({ field, form, ...rest }: FieldProps<FormValues>) {
   const [search, setSearch] = React.useState("");
-  const { data, isLoading, error } = useAutosuggestAddress(search);
-  const [isFocused, setIsFocused] = React.useState(false);
+  const [selected, setSelected] = React.useState<string | undefined>();
+  const { data } = useAutosuggestAddress(search);
 
-  React.useEffect(() => {
-    console.log("search items", { data, streetAddress: field.value.streetAddress });
-  }, [data, field.value.streetAddress])
+  function onSelect(value: string) {
+    let parts = value.split(",").map((p) => p.trim());
+    if (parts.length === 4) {
+      parts.unshift("");
+    }
+    let [name, address, city, zip] = parts;
+    zip = zip.replace(/[CA]/g, "").trim();
+    const streetAddress = `${name}${name ? "," : ""} ${address}`.trim();
+
+    form.setFieldValue("streetAddress", streetAddress, false);
+    form.setFieldValue("city", city, false);
+    form.setFieldValue("zip", zip, false);
+    form.validateField("streetAddress");
+    form.validateField("city");
+    form.validateField("zip");
+
+    setSelected(streetAddress);
+    setSearch(streetAddress);
+  }
 
   return (
     <>
-      {/* <span>isFocused? {isFocused ? "yes" : "no"}</span> */}
-    <Combobox
-      className="relative rounded-md overflow-none"
-      aria-label="street address"
-      onSelect={v => console.log("selected", v)}
-      onBlur={() => setIsFocused(false)}
-      onFocus={() => setIsFocused(true)}
-    >
-      <ComboboxInput
-        className={fieldClassName()}
-        // className="mt-1 px-3 py-2 bg-gray-500 text-white placeholder-gray-300 border-gray-600 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm rounded-md"
-        onChange={e => setSearch(e.target.value)}
-        name={field.name}
-      />
-      {data && (
+      <Combobox
+        className="relative rounded-md overflow-none"
+        aria-label="street address"
+        onSelect={onSelect}
+      >
+        <ComboboxInput
+          className={fieldClassName()}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setSelected(undefined);
+          }}
+          value={search}
+          name={field.name}
+          id={field.name}
+        />
+        {data && !selected && (
           <ComboboxPopover
-          // className="relative overflow-hidden z-10 mt-2 w-full rounded-lg border border-transparent bg-gray-700 shadow-lg"
+            className={cx(
+              data.length === 0 && "pointer-events-none outline-none ring-0"
+            )}
           >
-          {data.length > 0 ? (
-            <ComboboxList>
-              {data.map((item) => {
-                // const str = `${city.city}, ${city.state}`;
-                const str = item.address.label;
-                return <ComboboxOption key={str} value={str} className="active:bg-gray-900" />;
-              })}
-            </ComboboxList>
-          ) : (
-            <div className="bg-gray-700 p-2">
-              No results found
-            </div>
-          )}
-        </ComboboxPopover>
-      )}
+            {data.length > 0 ? (
+              <ComboboxList>
+                {data.map((item) => {
+                  const { label } = item.address;
+                  return <ComboboxOption key={label} value={label} />;
+                })}
+              </ComboboxList>
+            ) : (
+              <div className="bg-gray-700 p-4 border border-red-300 rounded-md pointer-events-none">
+                No results found
+              </div>
+            )}
+          </ComboboxPopover>
+        )}
       </Combobox>
-      </>
+    </>
   );
 }
-
-// const AddressLookup = ({
-//   field,
-//   form,
-//   ...rest
-// }: FieldProps) => {
-//   return (
-
-//   );
-// }

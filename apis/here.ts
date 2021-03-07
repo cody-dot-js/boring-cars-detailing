@@ -1,7 +1,6 @@
 import wretch from "wretch";
 import { useQuery } from "react-query";
-import { DAY, MINUTE } from "utils/time";
-
+import { MINUTE } from "utils/time";
 
 export const baseUrl = "https://discover.search.hereapi.com/v1";
 
@@ -37,7 +36,7 @@ export const serverSideAutosuggestParams = (
     in: `circle:${HERE_API_SEARCH_CTX};r=161000`,
     apiKey: HERE_API_KEY,
   });
-}
+};
 
 const autosuggestParams = (params: AutosuggestParams) => ({
   ...params,
@@ -59,16 +58,12 @@ export const autosuggestAddress = (
 };
 
 export function useAutosuggestAddress(searchValue: string = "", limit = 5) {
-  return useQuery(
-    searchValue,
-    autosuggestAddress(searchValue, limit),
-    {
-      cacheTime: 10 * MINUTE,
-      staleTime: 5 * MINUTE,
-      keepPreviousData: true,
-      enabled: Boolean(searchValue),
-    }
-  );
+  return useQuery(searchValue, autosuggestAddress(searchValue, limit), {
+    cacheTime: 10 * MINUTE,
+    staleTime: 10 * MINUTE,
+    keepPreviousData: true,
+    enabled: Boolean(searchValue),
+  });
 }
 
 interface AutosuggestResponseListItem {
