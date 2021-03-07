@@ -18,8 +18,6 @@ export interface AutosuggestParams {
 
 export interface HereEnv {
   HERE_API_KEY: string;
-  HERE_API_ACCESS_KEY_ID: string;
-  HERE_API_ACCESS_SECRET: string;
   HERE_API_SEARCH_CTX: string;
 }
 
