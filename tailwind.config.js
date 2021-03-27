@@ -12,6 +12,7 @@ module.exports = {
     ],
     options: {
       keyframes: true,
+      safelist: [/glitch/i],
     },
   },
   plugins: [
