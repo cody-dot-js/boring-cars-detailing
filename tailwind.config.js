@@ -10,10 +10,6 @@ module.exports = {
       "./components/**/*.{js,jsx,ts,tsx}",
       "./templates/**/*.{js,jsx,ts,tsx}",
     ],
-    options: {
-      keyframes: true,
-      safelist: [/glitch/i],
-    },
   },
   plugins: [
     require("@tailwindcss/forms"),
