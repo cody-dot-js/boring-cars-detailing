@@ -17,7 +17,7 @@ export function BoringCarsDetailing({ className }: Props) {
           "text-gray-300 text-1em"
         )}
       >
-        Boring
+        BORING
       </Glitch>
       <Glitch
         className={cx(

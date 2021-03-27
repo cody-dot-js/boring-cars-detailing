@@ -3,7 +3,20 @@ const colors = require("tailwindcss/colors");
 const { laserwave, gray } = require("./theme/colors");
 
 module.exports = {
-  purge: ["./pages/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
+  purge: [
+    "./pages/**/*.js",
+    "./pages/**/*.ts",
+    "./pages/**/*.jsx",
+    "./pages/**/*.tsx",
+    "./components/**/*.js",
+    "./components/**/*.ts",
+    "./components/**/*.jsx",
+    "./components/**/*.tsx",
+    "./templates/**/*.js",
+    "./templates/**/*.ts",
+    "./templates/**/*.jsx",
+    "./templates/**/*.tsx",
+  ],
   plugins: [
     require("@tailwindcss/forms"),
     require("@tailwindcss/typography"),
