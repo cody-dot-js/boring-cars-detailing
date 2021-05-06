@@ -21,7 +21,7 @@ export const washTierNames: WashPricingTier[] = [
 ];
 
 export const washTierPrice: Record<WashPricingTier, number> = {
-  Compact: 70,
+  Compact: 80,
   SuvAndCrossover: 100,
   Oversized: 150,
 };
