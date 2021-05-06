@@ -1,5 +1,4 @@
 import * as yup from "yup";
-import "yup-phone";
 import {
   FormValues as PricingFormValues,
   initialValues as pricingInitialValues,
@@ -44,7 +43,7 @@ export const validationSchema = yup.object({
     .required("Your email is required."),
   phoneNumber: yup
     .string()
-    .phone("", false, "Your phone number must be a valid phone number.")
+    // .phone("US", false, "Your phone number must be a valid phone number.")
     .required("Your phone number is required."),
   streetAddress: yup.string().required("Your street address is required."),
   city: yup.string().required("Your city is required."),
