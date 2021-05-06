@@ -1,6 +1,5 @@
 import * as yup from "yup";
 import wretch from "wretch";
-import "yup-phone";
 
 export interface FormValues {
   body: string;
@@ -29,7 +28,7 @@ export const validationSchema = yup.object({
   company: yup.string(),
   phoneNumber: yup
     .string()
-    .phone("", false, "Your phone number must be a valid phone number.")
+    // .phone("US", false, "Your phone number must be a valid phone number.")
     .required("Your phone number is required."),
   body: yup
     .string()
