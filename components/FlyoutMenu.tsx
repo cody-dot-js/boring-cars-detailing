@@ -54,7 +54,11 @@ export function FlyoutMenu({ title, items, footer }: Props) {
       }
       case "enter": {
         e.preventDefault();
-        if (activeIndex >= 0 && activeIndex < items.length) {
+        if (
+          typeof activeIndex === "number" &&
+          activeIndex >= 0 &&
+          activeIndex < items.length
+        ) {
           router.push(items[activeIndex].href);
         } else {
           setShow((s) => !s);

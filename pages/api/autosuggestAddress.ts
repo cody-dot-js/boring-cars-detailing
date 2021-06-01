@@ -15,7 +15,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     return res.status(response.status).json(json);
   } catch (e) {
     const { text, status }: WretcherError = e;
-    const { error = "" }: { error: string } = JSON.parse(text);
+    const { error = "" }: { error: string } = JSON.parse(text || "");
 
     return res.status(status).json({ status, message: error });
   }

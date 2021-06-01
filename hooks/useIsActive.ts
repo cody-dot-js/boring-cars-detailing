@@ -13,10 +13,11 @@ const pathname = (path: string) => {
 /**
  * @returns [isActive: boolean, isPartiallyActive: boolean]
  */
-export function useIsActive(href: string) {
+export function useIsActive(href?: string) {
   const router = useRouter();
   const isActive = href === router.pathname;
-  const isPartiallyActive = pathname(router.pathname).startsWith(href);
+  const isPartiallyActive =
+    typeof href === "string" && pathname(router.pathname).startsWith(href);
 
   return [isActive, isPartiallyActive] as const;
 }

@@ -46,15 +46,15 @@ export function Calendly({ className, prefill, onSchedule }: Props) {
   React.useEffect(() => {
     const calendly = document.getElementById("calendly");
 
-    if (prefill != null && window.Calendly != null) {
+    if (prefill != null && calendly != null && window.Calendly != null) {
       window.Calendly.initInlineWidget({
         url: "https://calendly.com/boringcarsdetailing/detailing-appointment",
         parentElement: calendly,
         prefill,
       });
-    }
 
-    calendly.scrollTo({ top: 0, behavior: "smooth" });
+      calendly.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }, [prefill]);
 
   React.useEffect(() => {
@@ -72,7 +72,7 @@ export function Calendly({ className, prefill, onSchedule }: Props) {
             break;
           }
           case "calendly.event_scheduled": {
-            onSchedule(data.payload);
+            onSchedule?.(data.payload);
             break;
           }
         }

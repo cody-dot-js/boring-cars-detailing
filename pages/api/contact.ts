@@ -4,7 +4,7 @@ import { sendEmail } from "utils/sendEmail";
 import { contactEmailHtml, contactEmailText } from "templates/contact-email";
 import { shortName } from "config";
 
-const { CONTACT_EMAIL_FROM, CONTACT_EMAIL_TO } = process.env;
+const { CONTACT_EMAIL_FROM = "", CONTACT_EMAIL_TO = "" } = process.env;
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const content: FormValues = req.body;

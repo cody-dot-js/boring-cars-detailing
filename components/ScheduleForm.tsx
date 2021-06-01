@@ -6,7 +6,13 @@ import {
   DetailingPackagePricing,
   WashPackagePricingForm,
 } from "./Pricing";
-import { Form, Formik, useFormikContext, FieldProps } from "formik";
+import {
+  Form,
+  Formik,
+  useFormikContext,
+  FieldProps,
+  FormikConfig,
+} from "formik";
 import { FormValues, getInitialValues, validationSchema } from "apis/schedule";
 import { accumulatePrice, WashPricingTier } from "apis/pricing";
 import { Field, fieldClassName } from "./Field";
@@ -25,7 +31,7 @@ interface Props {
   className?: string;
   initialValues?: FormValues;
   initialTier?: WashPricingTier;
-  onSubmit?: (values: FormValues) => void;
+  onSubmit: FormikConfig<FormValues>["onSubmit"];
 }
 
 export function ScheduleForm({
@@ -51,16 +57,12 @@ export function ScheduleForm({
 }
 
 function ScheduleFormInstance({ className }: { className?: string }) {
-  const {
-    isSubmitting,
-    errors,
-    touched,
-    values,
-  } = useFormikContext<FormValues>();
+  const { isSubmitting, errors, touched, values } =
+    useFormikContext<FormValues>();
 
   const anticipatedCost = accumulatePrice(values);
 
-  const personalInfoRef = React.useRef<HTMLHeadingElement>();
+  const personalInfoRef = React.useRef<HTMLHeadingElement>(null);
 
   return (
     <Form className={className}>
@@ -142,7 +144,7 @@ function ScheduleFormInstance({ className }: { className?: string }) {
                       name="name"
                       type="text"
                       autoComplete="name"
-                      invalid={errors.name && touched.name}
+                      invalid={Boolean(errors.name) && Boolean(touched.name)}
                     />
                   </label>
                 </div>
@@ -157,7 +159,10 @@ function ScheduleFormInstance({ className }: { className?: string }) {
                       name="emailAddress"
                       type="email"
                       autoComplete="email"
-                      invalid={errors.emailAddress && touched.emailAddress}
+                      invalid={
+                        Boolean(errors.emailAddress) &&
+                        Boolean(touched.emailAddress)
+                      }
                     />
                   </label>
                 </div>
@@ -172,7 +177,10 @@ function ScheduleFormInstance({ className }: { className?: string }) {
                       name="phoneNumber"
                       type="tel"
                       autoComplete="tel"
-                      invalid={errors.phoneNumber && touched.phoneNumber}
+                      invalid={
+                        Boolean(errors.phoneNumber) &&
+                        Boolean(touched.phoneNumber)
+                      }
                     />
                   </label>
                 </div>
@@ -188,7 +196,10 @@ function ScheduleFormInstance({ className }: { className?: string }) {
                       name="streetAddress"
                       type="text"
                       autoComplete="street-address"
-                      invalid={errors.streetAddress && touched.streetAddress}
+                      invalid={
+                        Boolean(errors.streetAddress) &&
+                        Boolean(touched.streetAddress)
+                      }
                     />
                   </label>
                 </div>
@@ -203,7 +214,7 @@ function ScheduleFormInstance({ className }: { className?: string }) {
                       name="city"
                       type="text"
                       autoComplete="address-level2"
-                      invalid={errors.city && touched.city}
+                      invalid={Boolean(errors.city) && Boolean(touched.city)}
                     />
                   </label>
                 </div>
@@ -243,7 +254,7 @@ function ScheduleFormInstance({ className }: { className?: string }) {
                       name="zip"
                       type="text"
                       autoComplete="postal-code"
-                      invalid={errors.zip && touched.zip}
+                      invalid={Boolean(errors.zip) && Boolean(touched.zip)}
                     />
                   </label>
                 </div>
@@ -269,7 +280,10 @@ function ScheduleFormInstance({ className }: { className?: string }) {
                     as="textarea"
                     rows={3}
                     placeholder="I would like for..."
-                    invalid={errors.additionalInfo && touched.additionalInfo}
+                    invalid={
+                      Boolean(errors.additionalInfo) &&
+                      Boolean(touched.additionalInfo)
+                    }
                   />
                   <p className="mt-2 text-sm text-gray-400">
                     Please share anything that will help us prepare for your
@@ -293,7 +307,7 @@ function ScheduleFormInstance({ className }: { className?: string }) {
             variant="primary"
             disabled={isSubmitting}
             aria-disabled={isSubmitting}
-            onClick={() => scrollToTop(personalInfoRef.current.offsetTop)}
+            onClick={() => scrollToTop(personalInfoRef.current?.offsetTop ?? 0)}
           >
             Next
           </Button>

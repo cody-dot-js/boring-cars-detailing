@@ -16,7 +16,7 @@ interface EmailConfig {
 }
 
 const defaultConfig: EmailConfig = {
-  apiKey: SENDGRID_API_KEY,
+  apiKey: SENDGRID_API_KEY ?? "",
 };
 
 export async function sendEmail(
