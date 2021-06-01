@@ -10,4 +10,7 @@ module.exports = withPWA({
   images: {
     domains: ["www.placehold.it"],
   },
+  future: {
+    webpack5: true,
+  },
 });

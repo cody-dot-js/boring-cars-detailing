@@ -40,10 +40,8 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Contact: Page = () => {
-  const [
-    formSuccessfullySent,
-    setFormSuccessfullySent,
-  ] = React.useState<boolean>(false);
+  const [formSuccessfullySent, setFormSuccessfullySent] =
+    React.useState<boolean>(false);
 
   return (
     <>
@@ -190,7 +188,7 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
                 name="name"
                 type="text"
                 autoComplete="name"
-                invalid={errors.name && touched.name}
+                invalid={Boolean(errors.name) && Boolean(touched.name)}
               />
             </label>
           </div>
@@ -205,7 +203,9 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
                 name="emailAddress"
                 type="email"
                 autoComplete="email"
-                invalid={errors.emailAddress && touched.emailAddress}
+                invalid={
+                  Boolean(errors.emailAddress) && Boolean(touched.emailAddress)
+                }
               />
             </label>
           </div>
@@ -220,7 +220,9 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
                 name="phoneNumber"
                 type="tel"
                 autoComplete="tel"
-                invalid={errors.phoneNumber && touched.phoneNumber}
+                invalid={
+                  Boolean(errors.phoneNumber) && Boolean(touched.phoneNumber)
+                }
               />
             </label>
           </div>
@@ -241,7 +243,7 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
                 name="company"
                 id="company"
                 aria-describedby="company_description"
-                invalid={errors.company && touched.company}
+                invalid={Boolean(errors.company) && Boolean(touched.company)}
               />
             </label>
           </div>
@@ -260,7 +262,7 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
                 name="body"
                 aria-describedby="body_description"
                 rows={4}
-                invalid={errors.body && touched.body}
+                invalid={Boolean(errors.body) && Boolean(touched.body)}
               />
             </label>
           </div>
@@ -281,7 +283,9 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
                 name="discovery"
                 id="discovery"
                 aria-describedby="discovery_description"
-                invalid={errors.discovery && touched.discovery}
+                invalid={
+                  Boolean(errors.discovery) && Boolean(touched.discovery)
+                }
               />
             </label>
           </div>

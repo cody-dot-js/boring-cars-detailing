@@ -30,28 +30,23 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const HeroVideo = () => {
   const [inViewRef, inView] = useInView();
-  const ref = React.useRef<HTMLVideoElement>();
+  let ref = React.useRef<HTMLVideoElement | null>(null);
 
   React.useEffect(() => {
     if (inView) {
-      ref.current.play();
+      ref.current?.play();
     } else {
-      ref.current.pause();
+      ref.current?.pause();
     }
   }, [inView]);
-
-  const setRefs = React.useCallback(
-    (node?: HTMLVideoElement) => {
-      ref.current = node;
-      inViewRef(node);
-    },
-    [inViewRef]
-  );
 
   return (
     <>
       <video
-        ref={setRefs}
+        ref={(node) => {
+          ref.current = node;
+          inViewRef(node);
+        }}
         width="16"
         height="9"
         loop

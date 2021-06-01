@@ -11,8 +11,8 @@ const convertKitApi = wretch.url(convertKitApiBaseUrl);
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { name, email }: FormValues = req.body;
-  const api_key = process.env.CK_API_KEY;
-  const formId = process.env.CK_FORM_ID;
+  const api_key = process.env.CK_API_KEY ?? "";
+  const formId = process.env.CK_FORM_ID ?? "";
   const path = pathForSubscribeToForm(formId);
 
   try {
@@ -31,7 +31,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     return res.status(response.status).json(json);
   } catch (e) {
     const { text, status }: WretcherError = e;
-    const { message = "" }: { message: string } = JSON.parse(text);
+    const { message = "" }: { message: string } = JSON.parse(text || "");
 
     return res.status(status).json({ status, message });
   }

@@ -44,16 +44,15 @@ const autosuggestParams = (params: AutosuggestParams) => ({
 
 export const autosuggestAddressApi = wretch().url("/api/autosuggestAddress");
 
-export const autosuggestAddress = (
-  searchValue: string = "",
-  limit = 5
-) => async () => {
-  const values = autosuggestParams({ q: searchValue, limit });
-  const response = await autosuggestAddressApi.post(values).res();
-  const json: AutosuggestResponse = await response.json();
+export const autosuggestAddress =
+  (searchValue: string = "", limit = 5) =>
+  async () => {
+    const values = autosuggestParams({ q: searchValue, limit });
+    const response = await autosuggestAddressApi.post(values).res();
+    const json: AutosuggestResponse = await response.json();
 
-  return json.items.filter((i) => Boolean(i.address));
-};
+    return json.items.filter((i) => Boolean(i.address));
+  };
 
 export function useAutosuggestAddress(searchValue: string = "", limit = 5) {
   return useQuery(searchValue, autosuggestAddress(searchValue, limit), {

@@ -27,6 +27,5 @@ export function Layout({ children, seo }: Props) {
   );
 }
 
-export const getPageLayout: GetPageLayout = (layoutProps) => (page) => (
-  <Layout {...layoutProps}>{page}</Layout>
-);
+export const getPageLayout: GetPageLayout = (layoutProps) => (page) =>
+  <Layout {...layoutProps}>{page}</Layout>;

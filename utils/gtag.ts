@@ -12,8 +12,8 @@ declare global {
   }
 }
 
-export function gtag() {
-  window.dataLayer.push(arguments);
+export function gtag(...args: any[]) {
+  window.dataLayer.push(...args);
 }
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages

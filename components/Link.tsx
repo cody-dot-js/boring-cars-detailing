@@ -13,7 +13,7 @@ export const Link = ({
   nextProps,
   ...props
 }: Props) => (
-  <NextLink {...nextProps} href={href}>
+  <NextLink {...nextProps} href={href || "#"}>
     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
     {/* @ts-expect-error */}
     <a active={active ? "true" : undefined} {...props}>
