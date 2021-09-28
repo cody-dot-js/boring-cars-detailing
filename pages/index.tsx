@@ -115,14 +115,14 @@ const Home: Page = () => {
           </h3>
         </Link>
         <p className="text-center text-gray-400">
-          Share your story. Let us know how we're doing!
+          Share your story. Let us know how we&apos;re doing!
         </p>
         <Comments scriptId="landing-page" />
       </section>
       <Divider />
       <Link href="#cta" className="headingLink" id="cta">
         <h2 className="relative z-40 text-center px-4 py-8 text-xl font-semibold tracking-wider text-cyan-300 uppercase">
-          We're live! 🚀
+          We&apos;re live! 🚀
         </h2>
       </Link>
       <CTASubscribe />

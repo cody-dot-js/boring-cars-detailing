@@ -188,7 +188,7 @@ export function TopNavigation() {
                             About Us
                           </p>
                           <p className="mt-1 text-sm text-gray-300">
-                            Get to know us! We're a family!
+                            Get to know us! We&apos;re a family!
                           </p>
                         </div>
                       </>

@@ -49,7 +49,7 @@ const Contact: Page = () => {
         <div className="py-16 px-4 sm:px-6 lg:px-8 lg:py-24 xl:pr-12">
           <div className="max-w-lg mx-auto">
             <h2 className="text-2xl font-extrabold tracking-tight text-pink-300 sm:text-3xl">
-              Let's get in touch
+              Let&apos;s get in touch
             </h2>
             <p className="mt-3 text-lg leading-6 text-gray-300">
               We’d love to hear from you! Send us a message using the form
@@ -106,7 +106,7 @@ const Contact: Page = () => {
           <div className="lg:pr-8">
             <div className="max-w-md mx-auto sm:max-w-lg lg:mx-0">
               <h2 className="text-3xl text-cyan-300 font-extrabold tracking-tight sm:text-4xl">
-                We're here to help
+                We&apos;re here to help
               </h2>
               {formSuccessfullySent ? (
                 <div className="mt-16">
@@ -117,7 +117,7 @@ const Contact: Page = () => {
                 <>
                   <p className="mt-4 text-lg text-gray-300 sm:mt-3">
                     Have questions or need to report an issue with any Boring
-                    Cars Detailing service? We've got you covered! Get in touch
+                    Cars Detailing service? We&apos;ve got you covered! Get in touch
                     and let us know how we can help.
                   </p>
                   <ContactForm
@@ -154,7 +154,7 @@ function Success() {
           <h3 className="text-sm font-medium text-green-800">Form Submitted</h3>
           <div className="mt-2 text-sm text-green-700">
             <p>
-              Thank you for reaching out to us! We'll get back to you as soon as
+              Thank you for reaching out to us! We&apos;ll get back to you as soon as
               we can.
             </p>
           </div>

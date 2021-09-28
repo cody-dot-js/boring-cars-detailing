@@ -146,12 +146,12 @@ const PrivacyPolicy: Page = () => {
             </h1>
             <p>
               <strong>
-                Boring Cars Detailing & Wash Services LLC ("Boring Cars
-                Detailing")
+                Boring Cars Detailing & Wash Services LLC (&quot;Boring Cars
+                Detailing&quot;)
               </strong>{" "}
               respects your privacy and recognizes the importance of your
               personal information. This{" "}
-              <strong>Privacy Policy ("Policy")</strong>
+              <strong>Privacy Policy (&qout;Policy&qout;)</strong>
               describes how we collect, use, and disclose data. If you have any
               questions or concerns about this Policy, or our practices with
               regards to your personal information, please contact us at{" "}
@@ -161,10 +161,10 @@ const PrivacyPolicy: Page = () => {
               .
             </p>
             <p>
-              This Policy applies to your use of Boring Cars Detailing's
+              This Policy applies to your use of Boring Cars Detailing&apos;s
               products, services, and Website located at{" "}
               <a href={urls.site}>www.boringcarsdetailing.com</a> on all
-              platforms (collectively, our "Services"), as well as any related
+              platforms (collectively, our &quot;Services&quot;), as well as any related
               services, sales, marketing, or events. We are committed to
               protecting your information through our compliance with this
               Policy.
@@ -343,7 +343,7 @@ const PrivacyPolicy: Page = () => {
                     associated with your usage, pages and files viewed, searches
                     and other actions you take such as which features you use),
                     device event information (such as system activity, error
-                    reports (sometimes called 'crash dumps') and hardware
+                    reports (sometimes called &apos;crash dumps&apos;) and hardware
                     settings).
                   </li>
                   <li>
@@ -359,7 +359,7 @@ const PrivacyPolicy: Page = () => {
                   </li>
                   <li>
                     <span className="italic">Location Data.</span> We collect
-                    location data such as information about your device's
+                    location data such as information about your device&apos;s
                     location, which can be either precise or imprecise. How much
                     information we collect depends on the type and settings of
                     the device you use to access the Website. For example, we
@@ -428,7 +428,7 @@ const PrivacyPolicy: Page = () => {
                 <li>
                   <strong>To enable user-to-user communications.</strong> We may
                   use your information in order to enable user-to-user
-                  communications with each user's consent.
+                  communications with each user&apos;s consent.
                 </li>
                 <li>
                   <strong>To manage user accounts.</strong> We may use your
@@ -472,11 +472,11 @@ const PrivacyPolicy: Page = () => {
                   obtaining information about us or our Website, subscribing to
                   marketing or otherwise contacting us, we will collect personal
                   infromation from you. You can opt-out of our marketing emails
-                  at any time (see the "
+                  at any time (see the &qout;
                   <a href="#your-privacy-rights" className="uppercase">
                     What are your privacy rights?
                   </a>
-                  " below).
+                  &quot; below).
                 </li>
                 <li>
                   <strong>Deliver targeted advertising to you.</strong> We may
@@ -701,7 +701,7 @@ const PrivacyPolicy: Page = () => {
                 We do not knowingly solicit data from or market to children
                 under 18 years of age. By using the Website, you represent that
                 you are at least 18 or that you are the parent or guardian of
-                such a minor and consent to such minor dependent's use of the
+                such a minor and consent to such minor dependent&apos;s use of the
                 Website. If we learn that personal information from users less
                 than 18 years of age has been collected, we will deactivate the
                 account and take reasonable measures to promptly delete such
@@ -754,7 +754,7 @@ const PrivacyPolicy: Page = () => {
               </a>
               <p>
                 Most web browsers and some mobile operating systems and mobile
-                applications include a Do-Not-Track ("DNT") feature or setting
+                applications include a Do-Not-Track (&quot;DNT&quot;) feature or setting
                 you can activate to signal your privacy preference not to have
                 data about your online browsing activities monitored and
                 collected. At this stage no uniform technology standard for
@@ -782,8 +782,8 @@ const PrivacyPolicy: Page = () => {
                 your personal information.
               </p>
               <p>
-                California Civil Code Section 1798.83, also known as the "Shine
-                The Light" law, permits our users who are California residents
+                California Civil Code Section 1798.83, also known as the &quot;Shine
+                The Light&quot; law, permits our users who are California residents
                 to request and obtain from us, once a year and free of charge,
                 information about categories of personal information (if any) we
                 disclosed to third parties for direct marketing purposes and the
@@ -808,7 +808,7 @@ const PrivacyPolicy: Page = () => {
               <article>
                 <h3>CCPA Privacy Notice</h3>
                 <p>
-                  The California Code of Regulations defines a "resident" as:
+                  The California Code of Regulations defines a &quot;resident&quot; as:
                 </p>
                 <ol>
                   <li>
@@ -821,9 +821,9 @@ const PrivacyPolicy: Page = () => {
                     transitory purpose
                   </li>
                 </ol>
-                <p>All other individuals are defined as "non-residents."</p>
+                <p>All other individuals are defined as &quot;non-residents.&quot;</p>
                 <p>
-                  If this definition of "resident" applies to you, we must
+                  If this definition of &quot;resident&quot; applies to you, we must
                   adhere to certain rights and obligations regarding your
                   personal information.
                 </p>
@@ -930,7 +930,7 @@ const PrivacyPolicy: Page = () => {
                       <td>
                         Inferences drawn from any of the collected personal
                         infromation listed above to create a profile or summary
-                        about, for example, an individual's preferences and
+                        about, for example, an individual&apos;s preferences and
                         characteristics
                       </td>
                       <td>NO</td>
@@ -985,7 +985,7 @@ const PrivacyPolicy: Page = () => {
                   We may use your personal information for our own business
                   purposes, such as for undertaking internal research for
                   technological development and demonstration. This is not
-                  considered to be "selling" of your personal data.
+                  considered to be &quot;selling&quot; of your personal data.
                 </p>
                 <p>
                   Boring Cars Detailing & Wash Services LLC has disclosed the
@@ -1075,7 +1075,7 @@ const PrivacyPolicy: Page = () => {
                   data to verify a consumer request.
                 </p>
                 <h5>
-                  Right to Non-Discrimination for the Exercise of a Consumer's
+                  Right to Non-Discrimination for the Exercise of a Consumer&apos;s
                   Privacy Rights
                 </h5>
                 <p>
@@ -1160,7 +1160,7 @@ const PrivacyPolicy: Page = () => {
               </p>
               <p>
                 We may update this Policy from time to time. The updated version
-                will be indicated by an updated "Revised" date and the updated
+                will be indicated by an updated &quot;Revised&quot; date and the updated
                 version will be effective as soon as it is accessible. If we
                 make material changes to this Policy, we may notify you either
                 by prominetly posting a notice of such changes or by directly

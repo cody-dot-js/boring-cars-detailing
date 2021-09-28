@@ -166,7 +166,7 @@ function AdditionalServicesSection() {
             </h3>
           </Link>
           <p className="mt-4 max-w-5xl text-xl text-gray-300 lg:mx-auto">
-            Select from our premium additional services. You'll love the results
+            Select from our premium additional services. You&apos;ll love the results
             and the price*!
           </p>
           <p className="text-sm leading-normal text-gray-500 max-w-5xl">
@@ -248,6 +248,8 @@ export const PricingSection = React.forwardRef<
     </section>
   );
 });
+
+PricingSection.displayName = "PricingSection";
 
 interface AdditionalServiceCardProps {
   className?: string;
@@ -458,13 +460,13 @@ export function CarWashWhatsIncluded({
     >
       {title}
       <p className="mt-6 text-base text-gray-300">
-        No matter what size vehice you have, you're going to love the care that
+        No matter what size vehice you have, you&apos;re going to love the care that
         we put into our services!
       </p>
       <div className="mt-8">
         <div className="flex items-center">
           <h4 className="flex-shrink-0 pr-4 text-sm tracking-wider font-semibold uppercase text-pink-300">
-            What's included
+            What&apos;s included
           </h4>
           <div className="flex-1 border-t-2 border-pink-300 glow-lg-pink-400" />
         </div>

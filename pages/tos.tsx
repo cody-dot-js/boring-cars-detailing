@@ -147,7 +147,7 @@ const TermsOfService: Page = () => {
             <p>
               This website is operated by{" "}
               <strong>
-                {name} ("{shortName}")
+                {name} (&quot;{shortName}&quot;)
               </strong>{" "}
               . Throughout the site, the terms “we”, “us” and “our” refer to{" "}
               <strong>{shortName}</strong>. <strong>{shortName}</strong> offers
@@ -447,7 +447,7 @@ const TermsOfService: Page = () => {
               <p>
                 We have made every effort to display as accurately as possible
                 the colors and images of our products that appear at the store.
-                We cannot guarantee that your computer monitor's display of any
+                We cannot guarantee that your computer monitor&apos;s display of any
                 color will be accurate.
               </p>
               <p>
@@ -549,7 +549,7 @@ const TermsOfService: Page = () => {
                 We are not liable for any harm or damages related to the
                 purchase or use of goods, services, resources, content, or any
                 other transactions made in connection with any third-party
-                websites. Please review carefully the third-party's policies and
+                websites. Please review carefully the third-party&apos;s policies and
                 practices and make sure you understand them before you engage in
                 any transaction. Complaints, claims, concerns, or questions
                 regarding third-party products should be directed to the
@@ -571,7 +571,7 @@ const TermsOfService: Page = () => {
                 example contest entries) or without a request from us you send
                 creative ideas, suggestions, proposals, plans, or other
                 materials, whether online, by email, by postal mail, or
-                otherwise (collectively, 'comments'), you agree that we may, at
+                otherwise (collectively, &apos;comments&apos;), you agree that we may, at
                 any time, without restriction, edit, copy, publish, distribute,
                 translate and otherwise use in any medium any comments that you
                 forward to us. We are and shall be under no obligation (1) to
@@ -697,7 +697,7 @@ const TermsOfService: Page = () => {
                 You expressly agree that your use of, or inability to use, the
                 service is at your sole risk. The service and all products and
                 services delivered to you through the service are (except as
-                expressly stated by us) provided 'as is' and 'as available' for
+                expressly stated by us) provided &apos;as is&apos; and &apos;as available&apos; for
                 your use, without any representation, warranties or conditions
                 of any kind, either express or implied, including all implied
                 warranties or conditions of merchantability, merchantable
