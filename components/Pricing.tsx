@@ -367,7 +367,7 @@ const additionalServices: {
   {
     service: AddonService.washAndWax,
     icon: <Soap24 />,
-    iconClassname: "bg-lightBlue-50 text-lightBlue-700 glow-sm-lightBlue-400",
+    iconClassname: "bg-sky-50 text-sky-700 glow-sm-sky-400",
     description:
       "Hand washed and hand applied wax for a beautiful, clear and thin water resistant coating.",
   },
@@ -554,23 +554,21 @@ interface WashPricingCardProps {
   tier: WashPricingTier;
 }
 
-const pricingTierImage: Record<
-  WashPricingTier,
-  { alt: string; src: string }
-> = {
-  Compact: {
-    src: "/assets/imgs/pricing/compact.jpg",
-    alt: "Photo by Kerem Karaarslan on Unsplash",
-  },
-  SuvAndCrossover: {
-    src: "/assets/imgs/pricing/suvAndCrossovers.jpg",
-    alt: "Photo by Nev Chonkar on Unsplash",
-  },
-  Oversized: {
-    src: "/assets/imgs/pricing/oversized.jpg",
-    alt: "Photo by Pavel Anoshin on Unsplash",
-  },
-};
+const pricingTierImage: Record<WashPricingTier, { alt: string; src: string }> =
+  {
+    Compact: {
+      src: "/assets/imgs/pricing/compact.jpg",
+      alt: "Photo by Kerem Karaarslan on Unsplash",
+    },
+    SuvAndCrossover: {
+      src: "/assets/imgs/pricing/suvAndCrossovers.jpg",
+      alt: "Photo by Nev Chonkar on Unsplash",
+    },
+    Oversized: {
+      src: "/assets/imgs/pricing/oversized.jpg",
+      alt: "Photo by Pavel Anoshin on Unsplash",
+    },
+  };
 
 function WashPricingCard({
   selectable,
