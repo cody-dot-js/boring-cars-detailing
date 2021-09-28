@@ -1,5 +1,6 @@
-import { defaultDescription, defaultTitle, socialIds } from "config";
+import { defaultDescription, defaultTitle, socialIds, urls } from "config";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 export interface SEOProps {
   title?: string;
@@ -10,6 +11,8 @@ export interface SEOProps {
 const defaultRobots = "index,follow";
 
 export function SEO(props: SEOProps) {
+  const router = useRouter();
+  
   const title: string = Boolean(props.title)
     ? `${props.title} | ${defaultTitle}`
     : defaultTitle;
@@ -32,7 +35,7 @@ export function SEO(props: SEOProps) {
         key="twitter:description"
         content={description}
       />
-
+      <meta property="og:url" content={`${urls.site}${router.asPath}`} />
       <meta name="robots" key="robots" content={robots} />
 
       <meta charSet="utf-8" />
