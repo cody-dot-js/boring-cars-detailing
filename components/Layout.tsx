@@ -27,5 +27,6 @@ export function Layout({ children, seo }: Props) {
   );
 }
 
+// eslint-disable-next-line react/display-name
 export const getPageLayout: GetPageLayout = (layoutProps) => (page) =>
   <Layout {...layoutProps}>{page}</Layout>;

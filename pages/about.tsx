@@ -43,7 +43,7 @@ const About: Page = () => {
               and their vehicles. We cater to our clients needs and guarantee
               complete satisfaction. Please ask us any question you may have
               about our business or additional services.{" "}
-              <span className="font-bold">Let's talk</span> about what you need
+              <span className="font-bold">Let&apos;s talk</span> about what you need
               and what we can do for you!
             </p>
           </div>
@@ -103,7 +103,7 @@ const About: Page = () => {
       <section>
         <div className="relative text-center mx-auto max-w-md px-4 py-8 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
           <h2 className="text-xl font-semibold tracking-wider text-gray-400 uppercase">
-            We're a Family
+            We&apos;re a Family
           </h2>
         </div>
         <div className="pb-16 bg-gradient-to-r from-teal-500 to-cyan-600 lg:pb-0 lg:z-10 lg:relative">
