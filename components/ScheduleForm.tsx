@@ -51,12 +51,8 @@ export function ScheduleForm({
 }
 
 function ScheduleFormInstance({ className }: { className?: string }) {
-  const {
-    isSubmitting,
-    errors,
-    touched,
-    values,
-  } = useFormikContext<FormValues>();
+  const { isSubmitting, errors, touched, values } =
+    useFormikContext<FormValues>();
 
   const anticipatedCost = accumulatePrice(values);
 

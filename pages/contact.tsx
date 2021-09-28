@@ -40,10 +40,8 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Contact: Page = () => {
-  const [
-    formSuccessfullySent,
-    setFormSuccessfullySent,
-  ] = React.useState<boolean>(false);
+  const [formSuccessfullySent, setFormSuccessfullySent] =
+    React.useState<boolean>(false);
 
   return (
     <>

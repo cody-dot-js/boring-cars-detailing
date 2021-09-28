@@ -212,7 +212,7 @@ html:focus-within {
         inset 0 0 10px var(--glow-ambient-color), 0 2px 0 #000;
     }
 
-    .glow-sm-lightBlue-400 {
+    .glow-sm-sky-400 {
       --glow-direct-color: rgba(34, 211, 238, 0.6);
       --glow-ambient-color: rgba(34, 211, 238, 0.4);
 
@@ -220,7 +220,7 @@ html:focus-within {
         inset 0 0 5px var(--glow-ambient-color), 0 2px 0 #000;
     }
 
-    .glow-lg-lightBlue-400 {
+    .glow-lg-sky-400 {
       --glow-direct-color: rgba(34, 211, 238, 0.6);
       --glow-ambient-color: rgba(34, 211, 238, 0.4);
 
